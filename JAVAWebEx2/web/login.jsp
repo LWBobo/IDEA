@@ -44,8 +44,7 @@ $(document).ready(function() {
 	    </div>
     <%} %>
    
-  
-  
+
  </dt>
  <form action="userin" method="post">
  	<dd class="user_icon">
