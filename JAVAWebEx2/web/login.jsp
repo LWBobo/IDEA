@@ -43,7 +43,6 @@ $(document).ready(function() {
 	     <span style="font-size: 15px;color:darkred;font-weight: bold;">用户名或者密码错误</span>
 	    </div>
     <%} %>
-   
 
  </dt>
  <form action="userin" method="post">
