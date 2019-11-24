@@ -1,5 +1,6 @@
+<%@ page import="com.lwb.pojo.User" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+         pageEncoding="utf-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -72,9 +73,19 @@ function shownum(i) {
 </script>
 </head>
 <body>
+
+
+<div >
+ <p align="right">第<%= session.getAttribute("user_logincount") %>位访问者:<%=session.getAttribute("logintime") %></p>
+</div>
+
+
+
+
+
 <dl class="admin_login">
  <dt>
-  <strong>游戏界面</strong>
+  <strong>游戏界面:<%= ((User)session.getAttribute("user")).getUname() %></strong>
   <span id="counts" style="font-size: 15px;font-weight: bold;"></span>
   	<!-- 提示文字框 -->
      <span id="result" style="font-size: 15px;color:darkred;font-weight: bold;"></span>

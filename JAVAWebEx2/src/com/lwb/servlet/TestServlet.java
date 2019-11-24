@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -20,10 +21,17 @@ public class TestServlet extends HttpServlet {
 				req.setCharacterEncoding("utf-8");
 				//设置响应编码格式
 				resp.setContentType("text/html;charset=utf-8");
-				resp.getWriter().write("-1");
-				String s1 = req.getParameter("oper");
-				String s2 = req.getParameter("userinnum");
-				System.out.println("opera:" + s1 + "  " +"userinname:" + s2);
+				ServletContext sc=this.getServletContext();
+				System.out.println(sc.getAttribute("nums"));
+				if(sc.getAttribute("nums")!=null){
+					int nums=(int) sc.getAttribute("nums");
+					//计数器自增
+					nums+=1;
+					//再次存储到ServletContext对象中
+					sc.setAttribute("nums", nums);
+				}else{
+					sc.setAttribute("nums", 1);
+				}
 				
 			}
 

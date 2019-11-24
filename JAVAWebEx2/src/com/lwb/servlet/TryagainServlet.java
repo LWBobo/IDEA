@@ -3,6 +3,7 @@ package com.lwb.servlet;
 import java.io.IOException;
 import java.util.Random;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,7 +27,8 @@ public class TryagainServlet extends HttpServlet {
 		//设置响应编码格式
 		resp.setContentType("text/html;charset=utf-8");
 		HttpSession hs= req.getSession();
-		hs.setAttribute("num", new Random().nextInt(100));   //重新生成数字
+		ServletContext sc=this.getServletContext();
+		sc.setAttribute("num", new Random().nextInt(100));   //重新生成数字
 	    hs.setAttribute("count", 0); 					//猜的次数重置
 	    logger.debug(((User)hs.getAttribute("user")).getUname()+":再次发起猜数字");
 	    resp.sendRedirect("main.jsp");

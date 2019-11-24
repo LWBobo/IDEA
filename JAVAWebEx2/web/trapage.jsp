@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ page import="com.lwb.pojo.User" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -8,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
 <head>
 <meta charset="utf-8"/>
-<title>后台登录</title>
+<title>回答正确</title>
 <meta name="author" content="DeathGhost" />
 <link rel="stylesheet" type="text/css" href="css/style.css" tppabs="css/style.css" />
 <style>
@@ -43,12 +44,12 @@ $(document).ready(function() {
 <body>
 <dl class="admin_login">
  <dt>
-  <strong style="color:darkred;">恭喜恭喜</strong>
+  <strong style="color:darkred;">恭喜<%= ((User)session.getAttribute("user")).getUname() %></strong>
   <em style="color:darkred;">猜对啦</em>
   
  </dt>
  	<dd >
- 	<input type="text"  value="<%="正确答案:" + session.getAttribute("num") %>" class="login_txtbx" id="uname" name="uname"/>
+ 	<input type="text"  value="<%="正确答案:" + application.getAttribute("num") %>" class="login_txtbx" id="uname" name="uname"/>
  </dd>
  <dd >
   <input type="text"   value="<%="猜测次数:" + session.getAttribute("count") %>" class="login_txtbx" id="pwd" name="pwd"/>

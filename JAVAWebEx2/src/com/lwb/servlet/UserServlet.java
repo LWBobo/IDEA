@@ -1,9 +1,12 @@
 package com.lwb.servlet;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import org.apache.log4j.Logger;
 
 import com.lwb.pojo.User;
@@ -52,7 +56,7 @@ public class UserServlet extends HttpServlet {
 		logger.debug(((User)hs.getAttribute("user")).getUname()+":退出登录" );
 		hs.invalidate();
 		//重定向到登录页面
-		resp.sendRedirect("/ex2/login.jsp");
+		resp.sendRedirect("login.jsp");
 	}
 	//处理登录
 	private void checkUserLogin(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
@@ -62,21 +66,39 @@ public class UserServlet extends HttpServlet {
 				//处理请求信息
 					//校验
 					User u=us.checkUserLoginService(uname, pwd);
-					if(u!=null){
+					if(u!=null){//登陆成功
 						//创建猜数的对象
 						int num = new Random().nextInt(100);
 						int count = 0;  //猜数的次数
+						//设置基于登录计数器
+						ServletContext sc=this.getServletContext();
 						//获取session对象
 						HttpSession hs=req.getSession();
+						if (sc.getAttribute("num") != null){
+							int nums=(int) sc.getAttribute("nums");
+							//计数器自增
+							nums+=1;
+							//再次存储到ServletContext对象中
+							sc.setAttribute("nums", nums);
+						}else{
+							sc.setAttribute("nums", 1);	//登录次数统计
+							sc.setAttribute("num", num);   //被猜的数字
+						}
+						hs.setAttribute("user_logincount",sc.getAttribute("nums")); //记录用户登录的次数
+						Date d = new Date();
+						SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+						String now = df.format(d);
+						//将登陆时间储存到session中
+						hs.setAttribute("logintime", now);
+
 						//将用户数据存储到session中
 						hs.setAttribute("user", u);
-						//将数存储到session对象中
-						hs.setAttribute("num", num);
+						//将猜测次数存入session
 						hs.setAttribute("count", count);
 						//重定向
 						resp.sendRedirect("main.jsp");
 						return;
-					}else{
+					}else{//登陆失败
 						//添加标识符到request中
 						req.setAttribute("flag",0);
 						//请求转发
@@ -92,8 +114,9 @@ public class UserServlet extends HttpServlet {
 	
 	private void guess(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		HttpSession hs=req.getSession();
+		ServletContext sc=this.getServletContext();
 		String str = req.getParameter("userinnum");
-		int real_num = (int) hs.getAttribute("num");
+		int real_num = (int) sc.getAttribute("num");
 		int ges_count = (int) hs.getAttribute("count");
 		ges_count++;
 		hs.setAttribute("count", ges_count);
