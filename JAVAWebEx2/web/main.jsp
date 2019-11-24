@@ -80,9 +80,6 @@ function shownum(i) {
 </div>
 
 
-
-
-
 <dl class="admin_login">
  <dt>
   <strong>游戏界面:<%= ((User)session.getAttribute("user")).getUname() %></strong>
