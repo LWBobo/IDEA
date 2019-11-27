@@ -20,7 +20,7 @@ canvas{z-index:-1;position:absolute;}
 <script src="js/verificationNumbers.js" tppabs="js/verificationNumbers.js"></script>
 <script src="js/Particleground.js" tppabs="js/Particleground.js"></script>
 <script>
-$(document).ready(function() {
+$(document).ready(function() { 
   //粒子背景特效
   $('body').particleground({
     dotColor: '#5cbdaa',
