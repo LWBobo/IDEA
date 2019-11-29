@@ -5,6 +5,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -106,46 +107,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
     <div class="loginbody">
     
-    <span class="systemlogo"></span> 
-<%--        <br />--%>
-    <%
-    	//声明java代码块进行错误提示语的逻辑校验
-    	Object obj=request.getAttribute("flag");
-    	if(obj!=null){
-    %>
-        <%
-            if((int)obj == 0){ %>
-        <div style="text-align: center;">
-            <span id="d" style="font-size: 15px;color:darkred;font-weight: bold;">账号或密码错误</span>
-        </div>
-        <%}else if((int)obj == 1){ %>
-        <div style="text-align: center;">
-            <span id="d" style="font-size: 15px;color:darkred;font-weight: bold;">请输入正确的验证码</span>
-        </div>
-        <%}
-    } %>
-   <%
-    	//声明java代码块进行密码修改提示语
-    	Object pwd=session.getAttribute("pwd");
-    	if(pwd!=null){
-    %>
-	    <div style="text-align: center;">
-	     <span id="c" style="font-size: 15px;color:darkred;font-weight: bold;">密码修改成功</span>
-	    </div>
-    <%}
-    	session.removeAttribute("pwd");
-    %>
-       <%
-    	//声明java代码块进行注册提示语
-    	Object reg=session.getAttribute("reg");
-    	if(reg!=null){
-    %>
-	   <script language="JavaScript">
-           document.getElementById("a").innerHTML = "注册成功";
-       </script>
-    <%}
-    	session.removeAttribute("reg");
-    %>
+    <span class="systemlogo"></span>
+            <%--验证登录前的状态信息--%>
+        <c:choose>
+            <c:when test="${flag == 0 }">
+                <div style="text-align: center;">
+                    <span style="font-size: 15px;color:darkred;font-weight: bold;">用户名或者密码错误</span>
+                </div>
+            </c:when>
+            <c:when test="${flag == 1 }">
+                <div style="text-align: center;">
+                    <span style="font-size: 15px;color:darkred;font-weight: bold;">请输入正确的验证码</span>
+                </div>
+            </c:when>
+            <c:when test="${flag == 2 }">
+                <div style="text-align: center;">
+                    <span style="font-size: 15px;color:darkred;font-weight: bold;">密码修改成功</span>
+                </div>
+            </c:when>
+            <c:when test="${flag == 3 }">
+                <div style="text-align: center;">
+                    <span style="font-size: 15px;color:darkred;font-weight: bold;">注册成功</span>
+                </div>
+            </c:when>
+        </c:choose>
+        <c:remove var="flag" scope="session"/>
 
         <%--声明验证码提示语--%>
         <div style="text-align: center;">

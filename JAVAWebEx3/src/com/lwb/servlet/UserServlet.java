@@ -97,7 +97,7 @@ public class UserServlet extends HttpServlet {
 			if(index>0){
 				//获取session
 				HttpSession hs=req.getSession();
-				hs.setAttribute("reg", "true");
+				hs.setAttribute("flag", 3);
 				//重定向
 				resp.sendRedirect("login.jsp");
 			}
@@ -131,7 +131,7 @@ public class UserServlet extends HttpServlet {
 			if(index>0){
 				//获取session对象
 				HttpSession hs=req.getSession();
-				hs.setAttribute("pwd","true");
+				hs.setAttribute("flag",2);
 				//重定向到登录页面
 				resp.sendRedirect("login.jsp");
 			}
