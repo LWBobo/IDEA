@@ -1,0 +1,745 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6dc1ff08-e972-4753-9732-b8eacb3e7402" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/.idea/libraries/lib.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/src/com/lwb/dao/UserDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/src/com/lwb/dao/impl/UserDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/src/com/lwb/dao/util/JDBCutil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/src/com/lwb/dao/util/db.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/src/com/lwb/pojo/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/src/com/lwb/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/src/com/lwb/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/src/com/lwb/servlet/UserServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/src/log4j.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/WEB-INF/lib/log4j-1.2.17.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/WEB-INF/lib/mysql-connector-java-5.1.25-bin.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/css/demo.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/css/select.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/kindeditor.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/plugins/about.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/plugins/emoticons/etc_01.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/plugins/emoticons/etc_02.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/plugins/emoticons/etc_03.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/plugins/emoticons/etc_04.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/plugins/emoticons/etc_05.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/plugins/emoticons/etc_06.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/plugins/emoticons/etc_07.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/plugins/emoticons/etc_08.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/plugins/emoticons/etc_09.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/plugins/emoticons/etc_10.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/plugins/emoticons/etc_11.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/plugins/emoticons/etc_12.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/plugins/emoticons/etc_13.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/plugins/emoticons/etc_14.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/plugins/emoticons/etc_15.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/plugins/emoticons/etc_16.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/plugins/emoticons/etc_17.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/plugins/emoticons/etc_18.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/plugins/emoticons/etc_19.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/plugins/emoticons/etc_20.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/plugins/emoticons/etc_21.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/plugins/emoticons/etc_22.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/plugins/emoticons/etc_23.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/plugins/emoticons/etc_24.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/plugins/emoticons/etc_25.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/plugins/emoticons/etc_26.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/plugins/emoticons/etc_27.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/plugins/emoticons/etc_28.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/plugins/emoticons/etc_29.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/plugins/emoticons/etc_30.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/plugins/emoticons/etc_31.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/plugins/emoticons/etc_32.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/plugins/emoticons/etc_33.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/plugins/emoticons/etc_34.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/plugins/emoticons/etc_35.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/plugins/emoticons/etc_36.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/plugins/flash.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/plugins/image.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/plugins/link.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/plugins/media.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/plugins/plainpaste.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/plugins/remote_image.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/plugins/wordpaste.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/skins/default.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/skins/default.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/skins/div.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/skins/dl.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/skins/editor.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/skins/ol.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/skins/p.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/skins/tinymce.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/skins/tinymce.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/editor/skins/ul.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/001.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/404.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/add.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/btnbg(1).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/btnbg1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/btnbg2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/btnbg3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/btnbg4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/buttonbg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/bz00.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/bz01.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/bz02.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/c01.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/c02.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/c03.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/cbg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/clist.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/close.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/close1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/cloud.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/d01.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/d02.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/d03.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/d04.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/d05.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/d06.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/d07.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/diskbg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/dp.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/f01.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/f02.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/f03.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/f04.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/f05.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/f06.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/fjt.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/help.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/i01.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/i02.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/i03.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/i04.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/i05.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/i06.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/i07.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/i08.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/i09.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/iadd.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/ibtnbg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/ico01.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/ico02.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/ico03.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/ico04.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/ico05.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/ico06.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/icon01.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/icon02.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/icon03.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/icon04.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/icon05.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/icon06.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/icon07.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/icon08.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/icon09.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/icon10.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/icon11.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/icon12.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/icon13.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/icon14.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/icon15.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/icon16.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/icon17.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/icon18.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/img01.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/img02.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/img03.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/img04.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/img05.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/img06.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/img07.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/img08.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/img09.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/img10.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/img11.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/img12.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/img13.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/img14.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/img15.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/info.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/inputbg.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/itabbg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/itabbg1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/jszc.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/jtx.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/l01.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/l02.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/l03.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/l04.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/lbg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/lbg1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/lc00.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/lc01.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/lc02.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/lc03.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/lc04.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/lc05.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/lc06.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/leftico.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/leftico01.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/leftico02.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/leftico03.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/leftico04.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/leftline.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/leftmenubg.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/lefttop.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/libg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/light.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/light1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/line.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/line1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/list.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/list1.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/list2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/loginbg1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/loginbg2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/loginbg3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/loginbg4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/logininfo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/logininfo1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/logininfo2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/logininfo3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/loginlogo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/loginpassword.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/loginsj.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/loginuser.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/msg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/navbg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/next.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/pre.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/px.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/righttop.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/rlist.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/search.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/sj.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/sub-menu-icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/sun.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/t01.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/t02.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/t03.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/t04.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/t05.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/tbg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/tcbg.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/th.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/ticon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/time.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/toolbg.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/topbg.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/topleft.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/topright.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/ub1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/uew_icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/uew_icon_hover.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/ulist.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/user.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/userbg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/images/yzmbg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/js/PIE.htc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/js/cloud.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/js/format+zh_CN,default,corechart.I.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/js/jquery.ba-resize.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/js/jquery.easyui.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/js/jquery.gvChart-1.0.1.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/js/jquery.idTabs.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/js/jquery.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/js/jquery.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/js/jsapi.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/js/select-ui.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/login.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/main/down.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/main/index.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/main/left.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/main/main.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/main/top.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/src/jquery.gvChart-1.0.1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/black/accordion.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/black/calendar.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/black/combo.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/black/combobox.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/black/datagrid.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/black/datebox.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/black/dialog.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/black/easyui.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/black/images/accordion_arrows.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/black/images/blank.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/black/images/calendar_arrows.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/black/images/combo_arrow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/black/images/datagrid_icons.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/black/images/datebox_arrow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/black/images/layout_arrows.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/black/images/linkbutton_bg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/black/images/loading.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/black/images/menu_arrows.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/black/images/messager_icons.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/black/images/pagination_icons.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/black/images/panel_tools.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/black/images/searchbox_button.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/black/images/slider_handle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/black/images/spinner_arrows.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/black/images/tabs_icons.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/black/images/tree_icons.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/black/images/validatebox_warning.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/black/layout.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/black/linkbutton.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/black/menu.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/black/menubutton.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/black/messager.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/black/numberbox.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/black/pagination.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/black/panel.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/black/progressbar.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/black/propertygrid.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/black/searchbox.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/black/slider.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/black/spinner.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/black/splitbutton.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/black/tabs.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/black/textbox.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/black/tooltip.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/black/tree.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/black/validatebox.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/black/window.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/bootstrap/accordion.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/bootstrap/calendar.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/bootstrap/combo.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/bootstrap/combobox.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/bootstrap/datagrid.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/bootstrap/datebox.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/bootstrap/dialog.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/bootstrap/easyui.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/bootstrap/images/accordion_arrows.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/bootstrap/images/blank.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/bootstrap/images/calendar_arrows.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/bootstrap/images/combo_arrow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/bootstrap/images/datagrid_icons.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/bootstrap/images/datebox_arrow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/bootstrap/images/layout_arrows.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/bootstrap/images/linkbutton_bg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/bootstrap/images/loading.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/bootstrap/images/menu_arrows.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/bootstrap/images/messager_icons.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/bootstrap/images/pagination_icons.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/bootstrap/images/panel_tools.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/bootstrap/images/searchbox_button.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/bootstrap/images/slider_handle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/bootstrap/images/spinner_arrows.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/bootstrap/images/tabs_icons.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/bootstrap/images/tree_icons.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/bootstrap/images/validatebox_warning.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/bootstrap/layout.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/bootstrap/linkbutton.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/bootstrap/menu.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/bootstrap/menubutton.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/bootstrap/messager.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/bootstrap/numberbox.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/bootstrap/pagination.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/bootstrap/panel.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/bootstrap/progressbar.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/bootstrap/propertygrid.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/bootstrap/searchbox.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/bootstrap/slider.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/bootstrap/spinner.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/bootstrap/splitbutton.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/bootstrap/tabs.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/bootstrap/textbox.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/bootstrap/tooltip.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/bootstrap/tree.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/bootstrap/validatebox.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/bootstrap/window.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/default/accordion.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/default/calendar.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/default/combo.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/default/combobox.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/default/datagrid.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/default/datebox.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/default/dialog.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/default/easyui.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/default/images/accordion_arrows.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/default/images/blank.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/default/images/calendar_arrows.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/default/images/combo_arrow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/default/images/datagrid_icons.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/default/images/datebox_arrow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/default/images/layout_arrows.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/default/images/linkbutton_bg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/default/images/loading.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/default/images/menu_arrows.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/default/images/messager_icons.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/default/images/pagination_icons.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/default/images/panel_tools.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/default/images/searchbox_button.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/default/images/slider_handle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/default/images/spinner_arrows.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/default/images/tabs_icons.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/default/images/tree_icons.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/default/images/validatebox_warning.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/default/layout.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/default/linkbutton.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/default/menu.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/default/menubutton.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/default/messager.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/default/numberbox.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/default/pagination.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/default/panel.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/default/progressbar.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/default/propertygrid.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/default/searchbox.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/default/slider.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/default/spinner.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/default/splitbutton.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/default/tabs.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/default/textbox.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/default/tooltip.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/default/tree.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/default/validatebox.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/default/window.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/gray/accordion.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/gray/calendar.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/gray/combo.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/gray/combobox.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/gray/datagrid.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/gray/datebox.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/gray/dialog.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/gray/easyui.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/gray/images/accordion_arrows.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/gray/images/blank.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/gray/images/calendar_arrows.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/gray/images/combo_arrow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/gray/images/datagrid_icons.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/gray/images/datebox_arrow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/gray/images/layout_arrows.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/gray/images/linkbutton_bg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/gray/images/loading.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/gray/images/menu_arrows.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/gray/images/messager_icons.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/gray/images/pagination_icons.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/gray/images/panel_tools.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/gray/images/searchbox_button.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/gray/images/slider_handle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/gray/images/spinner_arrows.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/gray/images/tabs_icons.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/gray/images/tree_icons.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/gray/images/validatebox_warning.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/gray/layout.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/gray/linkbutton.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/gray/menu.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/gray/menubutton.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/gray/messager.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/gray/numberbox.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/gray/pagination.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/gray/panel.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/gray/progressbar.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/gray/propertygrid.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/gray/searchbox.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/gray/slider.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/gray/spinner.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/gray/splitbutton.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/gray/tabs.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/gray/textbox.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/gray/tooltip.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/gray/tree.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/gray/validatebox.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/gray/window.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/icon.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/icons/back.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/icons/blank.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/icons/cancel.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/icons/cut.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/icons/edit_add.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/icons/edit_remove.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/icons/filesave.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/icons/filter.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/icons/help.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/icons/large_chart.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/icons/large_clipart.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/icons/large_picture.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/icons/large_shapes.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/icons/large_smartart.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/icons/mini_add.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/icons/mini_edit.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/icons/mini_refresh.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/icons/no.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/icons/ok.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/icons/pencil.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/icons/print.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/icons/redo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/icons/reload.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/icons/search.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/icons/sum.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/icons/tip.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/icons/undo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/metro/accordion(1).css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/metro/calendar.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/metro/combo.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/metro/combobox.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/metro/datagrid.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/metro/datebox.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/metro/dialog.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/metro/easyui.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/metro/images/accordion_arrows.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/metro/images/blank.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/metro/images/calendar_arrows.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/metro/images/combo_arrow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/metro/images/datagrid_icons.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/metro/images/datebox_arrow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/metro/images/layout_arrows.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/metro/images/linkbutton_bg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/metro/images/loading.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/metro/images/menu_arrows.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/metro/images/messager_icons.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/metro/images/pagination_icons.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/metro/images/panel_tools.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/metro/images/searchbox_button.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/metro/images/slider_handle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/metro/images/spinner_arrows.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/metro/images/tabs_icons.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/metro/images/tree_icons.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/metro/images/validatebox_warning.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/metro/layout.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/metro/linkbutton.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/metro/menu.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/metro/menubutton.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/metro/messager.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/metro/numberbox.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/metro/pagination.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/metro/panel.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/metro/progressbar.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/metro/propertygrid.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/metro/searchbox.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/metro/slider.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/metro/spinner.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/metro/splitbutton.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/metro/tabs.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/metro/textbox.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/metro/tooltip.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/metro/tree.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/metro/validatebox.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/themes/metro/window.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/user/pwd.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/user/reg.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/user/showuser.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JAVAWebEx3/web/user/userinfo.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JAVAWebEx2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../JAVAWebEx2/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/out/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/aa.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" selection-start-line="5" selection-end-line="5" />
+              <folding>
+                <element signature="e#61#62#0" expanded="true" />
+                <element signature="e#97#98#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/aa.java" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="10" />
+    <option name="y" value="20" />
+    <option name="width" value="1346" />
+    <option name="height" value="688" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Test01" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Test01" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Test01" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Test01" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Test01" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Test01" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="production" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Test01" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Test01" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="production" type="462c0819:PsiDirectoryNode" />
+              <item name="Test01" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Test01" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Test01" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1574817756199" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../JAVAWebEx3" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="aa" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="aa" />
+      <module name="Test01" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.aa" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6dc1ff08-e972-4753-9732-b8eacb3e7402" name="Default Changelist" comment="" />
+      <created>1574817715309</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1574817715309</updated>
+      <workItem from="1574817720267" duration="72000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="72000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <layout>
+      <window_info id="Designer" />
+      <window_info id="Image Layers" />
+      <window_info id="UI Designer" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info id="Capture Tool" />
+      <window_info id="Learn" />
+      <window_info id="Web" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" />
+      <window_info anchor="bottom" id="Java Enterprise" />
+      <window_info anchor="bottom" id="Database Changes" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32962137" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Maven" />
+      <window_info anchor="right" id="Palette" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="right" id="Database" />
+      <window_info anchor="right" id="Palette&#9;" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/aa.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+          <folding>
+            <element signature="e#61#62#0" expanded="true" />
+            <element signature="e#97#98#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

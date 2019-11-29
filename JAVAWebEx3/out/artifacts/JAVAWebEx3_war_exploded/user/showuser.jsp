@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ page import="java.util.*, com.lwb.pojo.*" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -65,25 +66,17 @@ $(document).ready(function(){
         </tr>
         </thead>
         <tbody>
-        <%
-        	List<User> lu=(ArrayList<User>)request.getAttribute("lu");
-        	for(User u:lu){
-        %>
-	        <tr>
-	        <td><%=u.getUid() %></td>
-	        <td><%=u.getUname() %></td>
-	        <td><%=u.getPwd()%></td>
-	        <%
-	        	if("1".equals(u.getSex())){
-	        %>
-	        <td>男</td>
-	        <%}else{ %>
-	         <td>女</td>
-	        <%} %>
-	        <td><%=u.getAge() %></td>
-	        <td><%=u.getBirth() %></td>
-	        </tr>
-        <%} %> 
+        <c:forEach items="${lu }" var="u">
+            <tr>
+                <td>${u.uid }</td>
+                <td>${u.uname }</td>
+                <td>${u.pwd }</td>
+                <td>${u.sex == "1"?'男':'女' }</td>
+                <td>${u.age }</td>
+                <td>${u.birth }</td>
+            </tr>
+
+        </c:forEach>
         </tbody>
     </table>
     
