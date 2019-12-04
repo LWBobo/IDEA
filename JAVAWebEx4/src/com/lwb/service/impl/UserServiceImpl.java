@@ -2,6 +2,7 @@ package com.lwb.service.impl;
 
 import java.util.List;
 
+import com.lwb.pojo.MsBoard;
 import org.apache.log4j.Logger;
 
 import com.lwb.dao.UserDao;
@@ -54,6 +55,24 @@ public class UserServiceImpl implements UserService{
 			return ud.userRegDao(u);
 		}
 
+	@Override
+	public int addUserMsBoardService(MsBoard msboard) {
+		int index = ud.userMsBoard(msboard);
+		logger.debug(msboard.getUid()+":进行留言");
+		if(index > 0){
+			logger.debug(msboard.getUid()+":留言成功");
+		}else{
+			logger.debug(msboard.getUid()+":留言失败");
+		}
+		return index;
+	}
+
+	@Override
+	public List<MsBoard> userShowMsBoard() {
+		List<MsBoard> lm = ud.userMsShowDao();
+		logger.debug("显示所有留言信息："+lm);
+		return  lm;
+	}
 
 
 }

@@ -26,14 +26,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				alert("两次密码不一致!");
 				return false;
 			}
-			
-			
+
 		})
-		
-		
-		
-		
-		
+
 	})
 
 
@@ -45,9 +40,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="place">
     <span>位置：</span>
     <ul class="placeul">
-    <li><a href="main/main.jsp#">首页</a></li>
-    <li><a href="#">个人信息</a></li>
-    <li><a href="">修改密码</a></li>
+    <li><a href="javascript:;">首页</a></li>
+    <li><a href="javascript:;">个人信息</a></li>
+    <li><a href="javascript:;">修改密码</a></li>
     </ul>
     </div>
     

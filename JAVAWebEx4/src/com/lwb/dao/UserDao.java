@@ -2,6 +2,7 @@ package com.lwb.dao;
 
 import java.util.List;
 
+import com.lwb.pojo.MsBoard;
 import com.lwb.pojo.User;
 
 public interface UserDao {
@@ -30,4 +31,17 @@ public interface UserDao {
 	 * @return
 	 */
 	int userRegDao(User u);
+
+	/**
+	 * 向数据库中添加留言信息
+	 * @param msboard
+	 * @return
+	 */
+	int userMsBoard(MsBoard msboard);
+
+	/**
+	 * 显示所有用户的留言信息
+	 * @return
+	 */
+	List<MsBoard> userMsShowDao();
 }

@@ -12,9 +12,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>无标题文档</title>
 <link href="css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/jquery.js"></script>
-
 </head>
+<script language="JavaScript">
 
+    function relogin() {
+        var flag=window.confirm("确定要重新登录吗?");
+        if(flag){
+            window.top.location.href="user?oper=out"
+        }
+    }
+
+    function count() {
+        var date = new Date();//当前时间
+        document.getElementById("div1").innerHTML =  date.toLocaleString();
+        var t = date.getHours();
+        if(t<10 && t>6){
+            document.getElementById("div2").innerHTML = "早上";
+        }else if(t>10 && t < 14){
+            document.getElementById("div2").innerHTML = "中午";
+        }else if(t>14 && t < 18){
+            document.getElementById("div2").innerHTML = "下午";
+        }else{
+            document.getElementById("div2").innerHTML = "晚上";
+        }
+
+        setTimeout("count()", 1000);
+    }
+    window.onload = count;
+</script>
 
 <body>
 
@@ -26,17 +51,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>
     
     <div class="mainindex">
-    
-    
+
     <div class="welinfo">
     <span><img src="images/sun.png" alt="天气" /></span>
-    <b>Admin早上好，欢迎使用信息管理系统</b>(admin@uimaker.com)
-    <a href="#">帐号设置</a>
+        <b><i>${user.uname}</i><i id="div2"></i> 好，欢迎使用信息管理系统</b>
+    <a href="user/pwd.jsp">帐号设置</a>
     </div>
-    
+
+
     <div class="welinfo">
+
+
+
     <span><img src="images/time.png" alt="时间" /></span>
-    <i>您上次登录的时间：2013-10-09 15:22</i> （不是您登录的？<a href="#">请点这里</a>）
+    <i>当前时间：<i id="div1"></i> </i> （不是您登录的？<a href="javascript:void(0)" onclick="relogin()">请点这里 </a>）
     </div>
     
     <div class="xline"></div>
@@ -69,21 +97,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </ul>
     
     <div class="xline"></div>
-    
-    <div class="uimakerinfo"><b>查看Uimaker网站使用指南，您可以了解到多种风格的B/S后台管理界面,软件界面设计，图标设计，手机界面等相关信息</b>(<a href="http://www.uimaker.com" target="_blank">www.uimaker.com</a>)</div>
-    
-    <ul class="umlist">
-    <li><a href="#">如何发布文章</a></li>
-    <li><a href="#">如何访问网站</a></li>
-    <li><a href="#">如何管理广告</a></li>
-    <li><a href="#">后台用户设置(权限)</a></li>
-    <li><a href="#">系统设置</a></li>
-    </ul>
-    
-    
-    </div>
-    
-    
+
 
 </body>
 

@@ -65,6 +65,7 @@ $(function(){
     	<ul class="menuson">
         <li><cite></cite><a href="user/userinfo.jsp" target="rightFrame">查看个人信息</a><i></i></li>
          <li><cite></cite><a href="user/pwd.jsp" target="rightFrame">修改密码</a><i></i></li>
+            <li><cite></cite><a href="user/msboard.jsp" target="rightFrame">添加留言</a><i></i></li>
         </ul>    
     </dd>
 	   <dd>
@@ -75,6 +76,14 @@ $(function(){
 	        <li><cite></cite><a href="user?oper=show" target="rightFrame">查看用户信息</a><i></i></li>
 	        </ul>    
 	    </dd>
+        <dd>
+            <div class="title">
+                <span><img src="images/leftico01.png" /></span>留言板
+            </div>
+            <ul class="menuson">
+                <li><cite></cite><a href="user?oper=showboard" target="rightFrame">查看留言板</a><i></i></li>
+            </ul>
+        </dd>
     </dl>
 </body>
 </html>

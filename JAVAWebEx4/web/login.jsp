@@ -164,7 +164,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </li>
 
         <li><input name="pwd" type="password" placeholder="密码" class="loginpwd" /></li>
-    <li><input name="" type="submit" class="loginbtn" value="登录"  onclick="javascript:window.location='main.jsp'"  /><label><a href="user/reg.jsp">注册</a></label></li>
+    <li><input name="" type="submit" class="loginbtn" value="登录"   /><label><a href="user/reg.jsp">注册</a></label></li>
     </ul>
     </form>
     

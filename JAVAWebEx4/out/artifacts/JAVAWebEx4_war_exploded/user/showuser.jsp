@@ -45,9 +45,9 @@ $(document).ready(function(){
 	<div class="place">
     <span>位置：</span>
     <ul class="placeul">
-    <li><a href="#">首页</a></li>
-    <li><a href="#">个人信息</a></li>
-    <li><a href="#">查看个人信息</a></li>
+    <li><a href="javascript:;">首页</a></li>
+    <li><a href="javascript:;">管理信息</a></li>
+    <li><a href="javascript:;">查看用户信息</a></li>
     </ul>
     </div>
     

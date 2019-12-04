@@ -2,6 +2,7 @@ package com.lwb.service;
 
 import java.util.List;
 
+import com.lwb.pojo.MsBoard;
 import com.lwb.pojo.User;
 
 public interface UserService {
@@ -30,5 +31,15 @@ public interface UserService {
 	 * @return
 	 */
 	int userRegService(User u);
+
+	/**
+	 * 添加用户留言
+	 * @param msboard
+	 * @return
+	 */
+	int addUserMsBoardService(MsBoard msboard);
+
+
+	List<MsBoard> userShowMsBoard();
 
 }

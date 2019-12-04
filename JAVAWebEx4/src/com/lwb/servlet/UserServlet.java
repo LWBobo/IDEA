@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.lwb.pojo.MsBoard;
 import org.apache.log4j.Logger;
 
 import com.lwb.pojo.User;
@@ -43,16 +44,7 @@ public class UserServlet extends HttpServlet {
 		req.setCharacterEncoding("utf-8");
 		//设置响应编码格式
 		resp.setContentType("text/html;charset=utf-8");
-		
-		
-		
-		
-	//	resp.sendRedirect("/lt/main/main.jsp");
-//		String oper1=req.getParameter("uname");
-//		System.out.println(oper1);
 
-		
-		
 		
 		//获取操做符
 		String oper=req.getParameter("oper");
@@ -71,6 +63,12 @@ public class UserServlet extends HttpServlet {
 		}else if("reg".equals(oper)){
 			//调用注册功能
 			userReg(req,resp);
+		}else if("board".equals(oper)){
+			//调用留言功能
+			addUserMsBoard(req,resp);
+		}else if("showboard".equals(oper)){
+			//调用显示留言板功能
+			broderShow(req,resp);
 		}else{
 			logger.debug("没有找到对应的操作符："+oper);
 		}
@@ -179,6 +177,48 @@ public class UserServlet extends HttpServlet {
 
 					
 	}
+	//处理留言板信息
+	private  void addUserMsBoard(HttpServletRequest req,HttpServletResponse resp) throws IOException {
+		String title = req.getParameter("mstitle");
+		String keyword = req.getParameter("mskeyword");
+		String info = req.getParameter("msinfo");
+
+		if(title.equals("") || keyword.equals("") || info.equals("")){
+
+		}else{
+			//获取session对象
+			HttpSession hs=req.getSession();
+			User u = (User) hs.getAttribute("user");
+			MsBoard ms = new MsBoard();
+			ms.setUid(u.getUid());
+			ms.setUname(u.getUname());
+			ms.setMstitle(title);
+			ms.setMskeyword(keyword);
+			ms.setMsinfo(info);
+			if(us.addUserMsBoardService(ms) >0){  //插入成功
+					resp.sendRedirect("main/main.jsp");
+					return;
+			}
+
+		}
+
+
+	}
+
+	private void broderShow(HttpServletRequest req,HttpServletResponse resp) throws IOException, ServletException {
+		List<MsBoard> lm = us.userShowMsBoard();
+		if(lm!=null){
+			//将查询的用户数据存储到request对象
+			req.setAttribute("lm",lm);
+			//请求转发
+			req.getRequestDispatcher("user/showmsboard.jsp").forward(req, resp);
+			return;
+		}
+
+
+
+	}
+
 
 	
 }
