@@ -52,7 +52,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         xmlHttp.onreadystatechange = handleResponse;//设置返回处理函数
         xmlHttp.send(null);
     }
-    function handleResponse() {
+        function handleResponse() {
         if (xmlHttp.readyState == 4) {
             if (xmlHttp.status == 200) {
                 var res = xmlHttp.responseText;
@@ -164,7 +164,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </li>
 
         <li><input name="pwd" type="password" placeholder="密码" class="loginpwd" /></li>
-    <li><input name="" type="submit" class="loginbtn" value="登录"  onclick="javascript:window.location='main.jsp'"  /><label><a href="user/reg.jsp">注册</a></label></li>
+    <li><input name="" type="submit" class="loginbtn" value="登录"   /><label><a href="user/reg.jsp">注册</a></label></li>
     </ul>
     </form>
     

@@ -52,7 +52,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         xmlHttp.onreadystatechange = handleResponse;//设置返回处理函数
         xmlHttp.send(null);
     }
-    function handleResponse() {
+        function handleResponse() {
         if (xmlHttp.readyState == 4) {
             if (xmlHttp.status == 200) {
                 var res = xmlHttp.responseText;
