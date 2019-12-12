@@ -47,7 +47,9 @@ public class StuTest {
 
     }
 
-
+    /**
+     * 获取所有学生信息,包括选课信息
+     */
     @Test
     public void testfindAllWithCourse(){
         List<Student> students = studao.findAllWithCourse();
@@ -55,6 +57,13 @@ public class StuTest {
             System.out.println(s);
             System.out.println(s.getCourses());
         }
+    }
+
+    @Test
+    public void findWithCourseById(){
+       Student stu = studao.findWithCourseById("201716040224");
+        System.out.println(stu);
+        System.out.println(stu.getCourses());
     }
 
 }

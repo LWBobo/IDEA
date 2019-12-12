@@ -1,6 +1,7 @@
 package com.lwb.pojo;
 
 import java.util.Date;
+import java.util.List;
 
 public class Course {
     private String cnum;
@@ -8,6 +9,8 @@ public class Course {
     private Integer ccredit;   //课程对应的学分
     private Date cbegintime;    //课程开始时间
     private Date cendtime;      //课程结束时间
+
+    List<Student> students;
 
     public Course() {
     }
@@ -18,6 +21,14 @@ public class Course {
         this.ccredit = ccredit;
         this.cbegintime = cbegintime;
         this.cendtime = cendtime;
+    }
+
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
     }
 
     public String getCnum() {
