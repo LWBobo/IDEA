@@ -60,10 +60,11 @@ public class StuTest {
     }
 
     @Test
-    public void findWithCourseById(){
-       Student stu = studao.findWithCourseById("201716040224");
+    public void testfindWithCourseById(){
+       Student stu = studao.findWithCourseById("201716040223");
         System.out.println(stu);
         System.out.println(stu.getCourses());
     }
+
 
 }

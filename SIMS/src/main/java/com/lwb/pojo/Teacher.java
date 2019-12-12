@@ -1,11 +1,15 @@
 package com.lwb.pojo;
 
+import java.util.List;
+
 public class Teacher {
     private String tnum;
     private String tname;
     private String tsex;
     private String ttitle;  //教师职称
     private String tbirthday;
+
+    private List<Course> courses;   //一位老师可以教授多门课
 
     public Teacher() {
     }
@@ -16,6 +20,14 @@ public class Teacher {
         this.tsex = tsex;
         this.ttitle = ttitle;
         this.tbirthday = tbirthday;
+    }
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
     }
 
     public String getTnum() {

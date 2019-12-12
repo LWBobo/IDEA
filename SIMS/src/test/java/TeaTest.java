@@ -37,6 +37,10 @@ public class TeaTest {
         in.close();
     }
 
+
+    /**
+     * 获取所有教师信息,不带有所教授课程
+     */
     @Test
     public void testfindAllStu(){
 
@@ -46,5 +50,48 @@ public class TeaTest {
         }
 
     }
+
+    /**
+     * 获取所有教师信息,带有所教授的课程
+     */
+    @Test
+    public void testselAllCoursByTeaId(){
+        List<Teacher> teachers = teadao.findAllTeaWitnCourse();
+        for(Teacher t :teachers){
+            System.out.println(t);
+            System.out.println(t.getCourses());
+        }
+    }
+
+
+    /**
+     * 根据课程编号获取带有课程信息的教师信息
+     */
+    @Test
+    public void testfindTeaWitnCourseById(){
+        Teacher teachers = teadao.findTeaWitnCourseById("10010611");
+        System.out.println(teachers);
+        System.out.println(teachers.getCourses());
+    }
+
+    /**
+     * 根据教师编号获取不带有课程信息的教师信息
+     */
+    @Test
+    public void testfindTeaNoWitnCourseById(){
+        Teacher teachers = teadao.findTeaNoWitnCourseById("10010611");
+        System.out.println(teachers);
+        System.out.println(teachers.getCourses());
+    }
+    @Test
+    public void testfindTeaByCnum(){
+        Teacher teachers = teadao.findTeaNoWitnCourseById("10010611");
+        System.out.println(teachers);
+        System.out.println(teachers.getCourses());
+    }
+
+
+
+
 
 }

@@ -10,7 +10,9 @@ public class Course {
     private Date cbegintime;    //课程开始时间
     private Date cendtime;      //课程结束时间
 
-    List<Student> students;
+    private Teacher teacher;    //一门课有一位老师
+
+    List<Student> students;        //一门课有多个学生选修
 
     public Course() {
     }
@@ -21,6 +23,14 @@ public class Course {
         this.ccredit = ccredit;
         this.cbegintime = cbegintime;
         this.cendtime = cendtime;
+    }
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
     }
 
     public List<Student> getStudents() {
