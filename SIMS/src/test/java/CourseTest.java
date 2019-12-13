@@ -7,6 +7,8 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import javax.sound.midi.VoiceStatus;
 import java.io.InputStream;
 import java.util.List;
 
@@ -55,6 +57,73 @@ public class CourseTest {
         for(Course c :courses){
             System.out.println(c);
         }
+    }
+
+    @Test
+    public void testselAllCourseWithStu(){
+        List<Course> courses = coursedao.selAllCourseWithStu();
+        for (Course c :courses){
+            System.out.println(c);
+            System.out.println(c.getStudents());
+        }
+    }
+
+    /**
+     * 根据课程号获取带有学生信息的课程信息
+     */
+    @Test
+    public void testfindCourseWithStuBycId(){
+        Course courses = coursedao.findCourseWithStuBycId("5003001");
+        System.out.println(courses);
+        System.out.println(courses.getStudents());
+    }
+
+    /**
+     * 获取所有带有教师信息的课程信息
+     */
+    @Test
+    public void testfindAllCourseWithTea(){
+        List<Course> courses = coursedao.findAllCourseWithTea();
+       for(Course c :courses){
+           System.out.println(c);
+           System.out.println(c.getTeacher());
+       }
+    }
+
+
+    /**
+     * 根据课程号获取带有学生信息的课程信息
+     */
+    @Test
+    public void testfindAllCourseWithTeaByid(){
+        Course courses = coursedao.findCourseWithTeaByid("5003003");
+        System.out.println(courses);
+        System.out.println(courses.getTeacher());
+    }
+
+    /**
+     * 获取所有带有教师和学生信息的课程信息
+     */
+    @Test
+    public void testfindAllCourseWithTeaAndStu(){
+        List<Course> courses = coursedao.findAllCourseWithTeaAndStu();
+        for(Course c :courses){
+            System.out.println(c);
+            System.out.println(c.getTeacher());
+            System.out.println(c.getStudents());
+        }
+    }
+
+
+    /**
+     * 格局课程号获取所有带有教师和学生信息的课程信息
+     */
+    @Test
+    public void testfindAllCourseWithTeaAndStuByCnum(){
+        Course courses = coursedao.findAllCourseWithTeaAndStuByCnum("5003003");
+            System.out.println(courses);
+            System.out.println(courses.getTeacher());
+            System.out.println(courses.getStudents());
     }
 
 }

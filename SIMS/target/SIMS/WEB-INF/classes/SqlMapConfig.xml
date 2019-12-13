@@ -40,7 +40,12 @@
     <!-- 配置映射文件的位置 -->
     <mappers>
         <!-- package标签是用于指定dao接口所在的包,当指定了之后就不需要在写mapper以及resource或者class了 -->
+<<<<<<< HEAD
         <!--<package name="com.itheima.dao"></package>-->
         <mapper class="com.lwb.dao.StudentDao"></mapper>
+=======
+        <package name="com.lwb.dao"></package>
+        <!--<mapper class="com.lwb.dao.StudentDao"></mapper>-->
+>>>>>>> 7be9dcaa40d4b41030a5a68b89d43422b8445d6e
     </mappers>
 </configuration>

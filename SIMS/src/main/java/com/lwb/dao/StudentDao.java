@@ -25,7 +25,7 @@ public interface StudentDao {
      * @return
      */
     @Select("select * from student where s_num in (select s_num from stu_cours_sele where c_num = #{cnum})")
-    List<Student> findStudentByCourse(String cnum);
+    List<Student> findStudentByCoursenum(String cnum);
 
     /**
      * 获取所有学生信息,并且附带学生选课表 1:n
