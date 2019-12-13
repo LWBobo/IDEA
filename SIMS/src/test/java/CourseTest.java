@@ -92,7 +92,7 @@ public class CourseTest {
 
 
     /**
-     * 根据课程号获取带有学生信息的课程信息
+     * 根据课程号获取带有教师信息的课程信息
      */
     @Test
     public void testfindAllCourseWithTeaByid(){
@@ -116,7 +116,7 @@ public class CourseTest {
 
 
     /**
-     * 格局课程号获取所有带有教师和学生信息的课程信息
+     * 根据课程号获取所有带有教师和学生信息的课程信息
      */
     @Test
     public void testfindAllCourseWithTeaAndStuByCnum(){
