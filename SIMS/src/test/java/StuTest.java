@@ -1,5 +1,6 @@
 import com.lwb.dao.StudentDao;
 import com.lwb.pojo.Student;
+import com.lwb.pojo.Users;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -8,6 +9,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import java.io.InputStream;
+import java.util.Date;
 import java.util.List;
 
 
@@ -64,6 +66,14 @@ public class StuTest {
        Student stu = studao.findWithCourseById("201716040223");
         System.out.println(stu);
         System.out.println(stu.getCourses());
+
+    }
+
+
+    @Test
+    public void testUpdate(){
+        int index = studao.ChStuInfo("201716040223","韩旭","男","13253376824","天津市大港区",new Date());
+        System.out.println(index);
     }
 
 

@@ -1,12 +1,10 @@
 package com.lwb.dao;
 
 import com.lwb.pojo.Student;
-import org.apache.ibatis.annotations.Many;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.mapping.FetchType;
 
+import java.util.Date;
 import java.util.List;
 
 public interface StudentDao {
@@ -49,4 +47,19 @@ public interface StudentDao {
     Student findWithCourseById(String snum);
 
 
+    /**
+     * 修改学生信息
+     * @param snum
+     * @param newname
+     * @param newsex
+     * @param newtel
+     * @param newaddress
+     * @param newbirthday
+     * @return
+     */
+    @Update("update student set s_name = #{newname},s_sex=#{newsex},s_tel=#{newtel},s_address=#{newaddress},s_birthday=#{newbirthday} where s_num =#{snum}")
+    int ChStuInfo(@Param("snum") String snum,@Param("newname")String newname,@Param("newsex")String newsex,@Param("newtel")String newtel,@Param("newaddress")String newaddress,@Param("newbirthday") Date newbirthday);
+
+    @Update("update")
+    int chStuInfomation(Student student);
 }

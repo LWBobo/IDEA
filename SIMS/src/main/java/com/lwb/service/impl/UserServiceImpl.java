@@ -1,78 +1,117 @@
 package com.lwb.service.impl;
 
+import com.lwb.dao.CourseDao;
+import com.lwb.dao.StudentDao;
+import com.lwb.dao.TeacherDao;
+import com.lwb.dao.UsersDao;
+import com.lwb.pojo.Course;
+import com.lwb.pojo.Student;
+import com.lwb.pojo.Teacher;
+import com.lwb.pojo.Users;
+import com.lwb.service.UserService;
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Date;
 import java.util.List;
 
-import com.lwb.pojo.MsBoard;
-import org.apache.log4j.Logger;
+public class UserServiceImpl implements UserService {
+    private InputStream in;
+    private SqlSession sqlSession;
+    private TeacherDao teadao;
+    private StudentDao studao;
+    private UsersDao usersdao;
+    private CourseDao coursedao;
 
-import com.lwb.dao.UserDao;
-import com.lwb.dao.impl.UserDaoImpl;
-import com.lwb.pojo.User;
-import com.lwb.service.UserService;
-
-public class UserServiceImpl implements UserService{
-	
-	//声明日志对象
-	Logger logger=Logger.getLogger(UserServiceImpl.class);
-	//声明Dao层对象
-	UserDao ud=new UserDaoImpl();
-	//用户登录
-	@Override
-	public User checkUserLoginService(String uname, String pwd) {
-		//打印日志
-		logger.debug(uname+"发起登录请求");
-		User u=ud.checkUserLoginDao(uname, pwd);
-		//判断
-		if(u!=null){
-			logger.debug(uname+"登录成功");
-		}else{
-			logger.debug(uname+"登录失败");
-		}
-		return u;
-	}
-	//修改用户密码
-	@Override
-	public int userChangePwdService(String newPwd, int uid) {
-		logger.debug(uid+":发起密码请求");
-		int index=ud.userChangePwdDao(newPwd,uid);
-		if(index>0){
-			logger.debug(uid+":密码修改成功");
-		}else{
-			logger.debug(uid+":密码修改失败");
-		}
-		return index;
-	}
-	//获取所有的用户信息
-	@Override
-	public List<User> userShowService() {
-		List<User> lu=ud.userShowDao();
-		logger.debug("显示所有用户信息："+lu);
-		return lu;
-	}
-	//用户注册
-		@Override
-		public int userRegService(User u) {
-			return ud.userRegDao(u);
-		}
-
-	@Override
-	public int addUserMsBoardService(MsBoard msboard) {
-		int index = ud.userMsBoard(msboard);
-		logger.debug(msboard.getUid()+":进行留言");
-		if(index > 0){
-			logger.debug(msboard.getUid()+":留言成功");
-		}else{
-			logger.debug(msboard.getUid()+":留言失败");
-		}
-		return index;
-	}
-
-	@Override
-	public List<MsBoard> userShowMsBoard() {
-		List<MsBoard> lm = ud.userMsShowDao();
-		logger.debug("显示所有留言信息："+lm);
-		return  lm;
-	}
+    public UserServiceImpl(){
+        //1.读取配置文件，生成字节输入流
+        try {
+            in = Resources.getResourceAsStream("SqlMapConfig.xml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //2.获取SqlSessionFactory
+        SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(in);
+        //3.获取SqlSession对象
+        sqlSession = factory.openSession(true);
+        //4.获取dao的代理对象
+        teadao = sqlSession.getMapper(TeacherDao.class);
+        studao = sqlSession.getMapper(StudentDao.class);
+        usersdao = sqlSession.getMapper(UsersDao.class);
+        coursedao = sqlSession.getMapper(CourseDao.class);
+    }
 
 
+
+    @Override
+    public Users checkUserLogin(String uid, String upwd) {
+        Users u = usersdao.findUser(uid,upwd);
+        if(u != null){
+            System.out.println(u);
+            Student student = studao.findWithCourseById(u.getUid());
+            Teacher teacher = teadao.findTeaNoWitnCourseById(u.getUid());
+            if(student != null){
+                u.setUname(student.getSname());
+            }else if(teacher != null){
+                u.setUname(teacher.getTname());
+            }else{
+                u.setUname(u.getUid());
+            }
+
+        }
+        return u;
+    }
+
+    @Override
+    public int checkUserLevel(Users users) {
+        Student student = studao.findWithCourseById(users.getUid());
+        Teacher teacher = teadao.findTeaNoWitnCourseById(users.getUid());
+        if(student != null){
+            return 1;
+        }else if(teacher != null){
+            return 2;
+        }
+        return 3;
+    }
+
+    @Override
+    public Student getStu(String snum) {
+        Student student = studao.findWithCourseById(snum);
+        return student;
+    }
+
+    @Override
+    public Teacher getTeacher(String tnum) {
+        Teacher teacher = teadao.findTeaWitnCourseById(tnum);
+        return teacher;
+    }
+
+    @Override
+    public String getpwd(String unum) {
+       return usersdao.getpwd(unum);
+    }
+
+    @Override
+    public int changePwd(String uid,String newpwd) {
+       return usersdao.changePwd(uid,newpwd);
+    }
+
+    @Override
+    public List<Course> showAllCourse() {
+       return coursedao.findAllCourseWithTea();
+    }
+
+    @Override
+    public int chStuInfo(String snum, String newname, String newsex, String newtel, String newaddress, Date newbirthday) {
+       return studao.ChStuInfo(snum,newname,newsex,newtel,newaddress,newbirthday);
+    }
+
+    @Override
+    public List<Student> showAllStudent() {
+        return studao.findAllWithCourse();
+    }
 }

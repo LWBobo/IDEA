@@ -1,11 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
 Built-By: Bo
 Created-By: IntelliJ IDEA
 Build-Jdk: 1.8.0_231
-=======
-Built-By: 博
-Created-By: IntelliJ IDEA
-Build-Jdk: 1.8
->>>>>>> 7be9dcaa40d4b41030a5a68b89d43422b8445d6e
 

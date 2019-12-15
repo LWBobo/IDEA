@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<%@ page import="com.lwb.pojo.User" %>
+<%@ page import="com.lwb.pojo.Users" %>
+<%@ page import="com.lwb.pojo.Student" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -48,7 +49,7 @@ $(function(){
     </ul>
      
     <div class="user">
-    <span><%=((User)session.getAttribute("user")).getUname()%></span>
+    <span>${user.uname}</span>
     <i>消息</i>
     <b>0</b>
     </div>    

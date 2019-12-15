@@ -1,20 +1,21 @@
 package com.lwb.pojo;
 
+import java.util.Date;
 import java.util.List;
 
-public class Teacher {
+public class Teacher extends Users{
     private String tnum;
     private String tname;
     private String tsex;
     private String ttitle;  //教师职称
-    private String tbirthday;
+    private Date tbirthday;
 
     private List<Course> courses;   //一位老师可以教授多门课
 
     public Teacher() {
     }
 
-    public Teacher(String tnum, String tname, String tsex, String ttitle, String tbirthday) {
+    public Teacher(String tnum, String tname, String tsex, String ttitle, Date tbirthday) {
         this.tnum = tnum;
         this.tname = tname;
         this.tsex = tsex;
@@ -62,11 +63,11 @@ public class Teacher {
         this.ttitle = ttitle;
     }
 
-    public String getTbirthday() {
+    public Date getTbirthday() {
         return tbirthday;
     }
 
-    public void setTbirthday(String tbirthday) {
+    public void setTbirthday(Date tbirthday) {
         this.tbirthday = tbirthday;
     }
 

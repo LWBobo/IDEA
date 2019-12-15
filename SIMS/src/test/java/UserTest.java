@@ -51,17 +51,27 @@ public class UserTest {
      */
     @Test
     public void testLogin(){
-        Users u = usersdao.findUser("10010611","123456");
+        Users u = usersdao.findUser("10010611","666666");
         System.out.println(u);
-        Student student = studao.findWithCourseById(u.getUid());
-        Teacher teacher = teadao.findTeaNoWitnCourseById(u.getUid());
+        Users student = studao.findWithCourseById(u.getUid());
+        Users teacher = teadao.findTeaNoWitnCourseById(u.getUid());
         if(student != null){
-            System.out.println("学生:" + student.getSname() + "登录");
+            System.out.println("学生:" + ((Student) student).getSname() + "登录");
             System.out.println(student);
         }if(teacher != null){
-        System.out.println("教师:"+teacher.getTname() + "登录");
+        System.out.println("教师:"+ ((Teacher) teacher).getTname() + "登录");
             System.out.println(teacher);
         }
 
         }
+
+    @Test
+    public void testChangePwd(){
+        int index = usersdao.changePwd("10010611","666666");
+        if(index > 0){
+            System.out.println("密码修改成功");
+        }else{
+            System.out.println("密码修改失败");
+        }
+    }
 }

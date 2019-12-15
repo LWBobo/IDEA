@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<%@ page import="com.lwb.pojo.User" %>
+<%@ page import="com.lwb.pojo.Users" %>
+<%@ page import="com.lwb.pojo.Student" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -37,7 +38,7 @@ $(function(){
 <body style="background:url(images/topbg.gif) repeat-x;">
 
     <div class="topleft">
-    <a href="main/main.jsp" target="_parent"><img src="images/logo.png" title="系统首页" /></a>
+    <a href="main/studentmain/studentmain.jsp" target="_parent"><img src="images/logo.png" title="系统首页" /></a>
     </div>
             
     <div class="topright">    
@@ -48,7 +49,7 @@ $(function(){
     </ul>
      
     <div class="user">
-    <span><%=((User)session.getAttribute("user")).getUname()%></span>
+    <span>${user.sname}</span>
     <i>消息</i>
     <b>0</b>
     </div>    

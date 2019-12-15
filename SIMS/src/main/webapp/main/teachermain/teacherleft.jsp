@@ -63,19 +63,39 @@ $(function(){
     <span><img src="images/leftico01.png" /></span>个人信息
     </div>
     	<ul class="menuson">
-        <li><cite></cite><a href="user/userinfo.jsp" target="rightFrame">查看个人信息</a><i></i></li>
+        <li><cite></cite><a href="user/tea/teainfo.jsp" target="rightFrame">查看个人信息</a><i></i></li>
          <li><cite></cite><a href="user/pwd.jsp" target="rightFrame">修改密码</a><i></i></li>
             <li><cite></cite><a href="user/msboard.jsp" target="rightFrame">添加留言</a><i></i></li>
         </ul>    
     </dd>
-	   <dd>
-	    <div class="title">
-	    <span><img src="images/leftico01.png" /></span>管理信息
-	    </div>
-	    	<ul class="menuson">
-	        <li><cite></cite><a href="user?oper=show" target="rightFrame">查看用户信息</a><i></i></li>
-	        </ul>    
-	    </dd>
+
+
+        <dd>
+            <div class="title">
+                <span><img src="images/leftico01.png" /></span>管理信息
+            </div>
+            <ul class="menuson">
+
+
+                <li><cite></cite><a href="user?oper=showcourse" target="rightFrame">查看课程信息</a><i></i></li>
+
+
+                <li>
+                    <div class="header">
+                        <cite></cite>
+                        <a href="user?oper=showstudent" target="rightFrame">查看学生信息</a>
+                        <i></i>
+                    </div>
+                    <ul class="sub-menus">
+                        <li><a href="user/tea/showstudentwithcourse.jsp" target="rightFrame">查看详细学生信息</a></li>
+
+                    </ul>
+                </li>
+
+
+        </dd>
+
+
         <dd>
             <div class="title">
                 <span><img src="images/leftico01.png" /></span>留言板

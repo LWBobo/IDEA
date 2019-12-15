@@ -3,7 +3,7 @@ package com.lwb.pojo;
 import java.util.Date;
 import java.util.List;
 
-public class Student {
+public class Student extends Users{
     private String snum;
     private String sname;
     private String ssex;
@@ -13,7 +13,7 @@ public class Student {
 
     private List<Course> courses;
 
-    public Student() {
+    public Student(){
     }
 
     public Student(String snum, String sname, String ssex, String stel, String saddress, Date sbirthday) {

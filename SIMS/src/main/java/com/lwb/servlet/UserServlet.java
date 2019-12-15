@@ -1,21 +1,26 @@
 package com.lwb.servlet;
 
-import java.io.IOException;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
+import javax.xml.crypto.Data;
 
-import com.lwb.pojo.MsBoard;
-import org.apache.log4j.Logger;
-
-import com.lwb.pojo.User;
+import com.lwb.pojo.Course;
+import com.lwb.pojo.Student;
+import com.lwb.pojo.Teacher;
+import com.lwb.pojo.Users;
 import com.lwb.service.UserService;
 import com.lwb.service.impl.UserServiceImpl;
+import org.apache.log4j.Logger;
+
+import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+
 /**
  * Servlet重定向路径总结：
  * 	相对路径：从当前请求的路径查找资源的路径
@@ -35,8 +40,8 @@ public class UserServlet extends HttpServlet {
 	//声明日志对象
 	Logger logger =Logger.getLogger(UserServlet.class);
 	//获取service层对象
-	UserService us=new UserServiceImpl();
 
+	UserService us = new UserServiceImpl();
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
@@ -51,84 +56,117 @@ public class UserServlet extends HttpServlet {
 		if("login".equals(oper)){
 			//调用登录处理方法
 			checkUserLogin(req,resp);
+		}else if("pwd".equals(oper)){
+			//调用密码修改功能
+			userChangePwd(req,resp);
 		}else if("out".equals(oper)){
 			//调用退出功能
 			userOut(req,resp);
-		}else if("pwd".equals(oper)){
-			//调用密码修改功能
-			userChangePwd(req,resp);	
-		}else if("show".equals(oper)){
-			//调用显示所有用户功能
-			userShow(req,resp);
-		}else if("reg".equals(oper)){
-			//调用注册功能
-			userReg(req,resp);
-		}else if("board".equals(oper)){
-			//调用留言功能
-			addUserMsBoard(req,resp);
-		}else if("showboard".equals(oper)){
-			//调用显示留言板功能
-			broderShow(req,resp);
+		}else if("showcourse".equals(oper)){
+			//调用显示所有课程功能
+			showAllCourse(req,resp);
+		}else if("chstuinfo".equals(oper)){
+			//调用更改学生信息功能
+			try {
+				chStuInfo(req,resp);
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+		}else if("showstudent".equals(oper)){
+			//调用显示所有学生信息功能
+			showAllStudent(req,resp);
 		}else{
 			logger.debug("没有找到对应的操作符："+oper);
 		}
+
+
+
+
 	}
-	//注册用户
-	private void userReg(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-		//获取请求信息
-			String uname=req.getParameter("uname");
-			String pwd=req.getParameter("pwd");
-			String sex=req.getParameter("sex");
-			int age=req.getParameter("age")!=""?Integer.parseInt(req.getParameter("age")):0;
-			String birth=req.getParameter("birth");
-			String[] bs=null;
-			if(birth!=""){
-				bs=birth.split("/");
-				birth=bs[2]+"-"+bs[0]+"-"+bs[1];
-			}
-			System.out.println(uname+":"+pwd+":"+sex+":"+age+":"+birth);
-			User u=new User(0, uname, pwd, sex, age, birth);
-		//处理请求信息
-			//调用业务层处理
-			int index=us.userRegService(u);
-		//响应处理结果
-			if(index>0){
-				//获取session
-				HttpSession hs=req.getSession();
-				hs.setAttribute("flag", 3);
-				//重定向
-				resp.sendRedirect("login.jsp");
-			}
-		
-	}
-	//显示所有的用户信息
-	private void userShow(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+
+	//显示所有的课程信息
+	private void showAllCourse(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//处理请求
 			//调用service
-			List<User> lu=us.userShowService();
+			List<Course> lu=us.showAllCourse();
+			HttpSession hs=req.getSession();
 			//判断
 			if(lu!=null){
 				//将查询的用户数据存储到request对象
-				req.setAttribute("lu",lu);
+				hs.setAttribute("lu",lu);
 				//请求转发
-				req.getRequestDispatcher("user/showuser.jsp").forward(req, resp);
+				//req.getRequestDispatcher("user/stu/showcourse.jsp").forward(req, resp);
+				resp.sendRedirect("user/stu/showcourse.jsp");
 				return;
 			}
 		
 	}
+	//显示所有的学生信息
+	private void showAllStudent(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		//处理请求
+			//调用service
+			List<Student> students=us.showAllStudent();
+			HttpSession hs=req.getSession();
+			//判断
+			if(students!=null){
+				//将查询的用户数据存储到request对象
+				hs.setAttribute("students",students);
+				resp.sendRedirect("user/tea/showstudent.jsp");
+				return;
+			}
+
+	}
+
+	//更改学生信息
+	private void chStuInfo(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, ParseException {
+		HttpSession hs=req.getSession();
+		Student student = (Student) hs.getAttribute("user");
+		String newname = req.getParameter("newname");
+		String newsex = req.getParameter("newsex");
+		String newtel = req.getParameter("newtel");
+		String newaddress = req.getParameter("newaddress");
+		String b =  req.getParameter("newbirthday");
+		Date newbirthday = null;
+		if(newname.equals("") ){
+				newname = student.getSname();
+		}if(newsex.equals("")){
+			newsex=student.getSsex();
+		}if(newtel.equals("")){
+			newtel=student.getStel();
+		}if(newaddress.equals("")){
+			newaddress=student.getSaddress();
+		}
+		if(b.equals("")){
+			newbirthday = student.getSbirthday();
+		}else{
+			newbirthday = new SimpleDateFormat("yyyy-MM-dd").parse(b);
+		}
+		//System.out.println(student.getSnum()+" " + newname + " " + newsex + " " + newtel + " " + newaddress + " " + newbirthday);
+		int index = us.chStuInfo(student.getSnum(),newname,newsex,newtel,newaddress,newbirthday);
+		if(index > 0){//更新成功
+			Student s = us.getStu(student.getSnum());
+			hs.setAttribute("user",s);
+			resp.sendRedirect("user/stu/stuchInfo.jsp");
+			return;
+		}
+
+
+
+	}
+
 	//用户修改密码
 	private void userChangePwd(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		//获取数据
 			String newPwd=req.getParameter("newpwd");
-			//从session中获取用户信息
-			User u=(User)req.getSession().getAttribute("user");
-			int uid=u.getUid();
+			//获取session对象
+			HttpSession hs=req.getSession();
+		//从session中获取用户信息
+			String uid= (String) hs.getAttribute("uid");
 		//处理请求
 			//调用service处理
-			int index=us.userChangePwdService(newPwd,uid);
+			int index=us.changePwd(uid,newPwd);
 			if(index>0){
-				//获取session对象
-				HttpSession hs=req.getSession();
 				hs.setAttribute("flag",2);
 				//重定向到登录页面
 				resp.sendRedirect("login.jsp");
@@ -142,24 +180,56 @@ public class UserServlet extends HttpServlet {
 		hs.invalidate();
 		//重定向到登录页面
 		resp.sendRedirect("login.jsp");
+
 	}
+
 	//处理登录
 	private void checkUserLogin(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 				//获取请求信息
 				String uname=req.getParameter("uname");
 				String pwd=req.getParameter("pwd");
+				//获取session对象
+				HttpSession hs=req.getSession();
 				//处理请求信息
 					//校验
-					User u=us.checkUserLoginService(uname, pwd);
+					Users u=us.checkUserLogin(uname,pwd);
+					Student student = null;
+					Teacher teacher = null;
 					if(u!=null){
-						//获取session对象
-						HttpSession hs=req.getSession();
+						System.out.println(u);
+						hs.setAttribute("uid",u.getUid());
+
+						int level = us.checkUserLevel(u);
+						if(level == 1){//学生登录
+							hs.setAttribute("level",1);
+							student = us.getStu(u.getUid());
+						}else if (level == 2){  //教师登录
+							hs.setAttribute("level",2);
+							teacher = us.getTeacher(u.getUid());
+						}else if(level == 3){  //管理员登录
+							hs.setAttribute("level",3);
+						}
+
+
 						if((int)hs.getAttribute("vcistrue") == 0){
 							//将用户数据存储到session中
-							hs.setAttribute("user", u);
-							//重定向
-							resp.sendRedirect("main/main.jsp");
-							return;
+							if(level == 1){
+								hs.setAttribute("user", student);
+								//重定向
+								resp.sendRedirect("main/studentmain/studentmain.jsp");
+								return;
+							}else if(level == 2){
+								hs.setAttribute("user", teacher);
+								//重定向
+								resp.sendRedirect("main/teachermain/teachermain.jsp");
+								return;
+							}else{
+								hs.setAttribute("user", u);
+								//重定向
+								resp.sendRedirect("main/adminmain/adminmain.jsp");
+								return;
+							}
+
 						}else if((int)hs.getAttribute("vcistrue") == 1){
 							//添加标识符到request中
 							req.setAttribute("flag",1);
@@ -177,48 +247,7 @@ public class UserServlet extends HttpServlet {
 
 					
 	}
-	//处理留言板信息
-	private  void addUserMsBoard(HttpServletRequest req,HttpServletResponse resp) throws IOException {
-		String title = req.getParameter("mstitle");
-		String keyword = req.getParameter("mskeyword");
-		String info = req.getParameter("msinfo");
-
-		if(title.equals("") || keyword.equals("") || info.equals("")){
-
-		}else{
-			//获取session对象
-			HttpSession hs=req.getSession();
-			User u = (User) hs.getAttribute("user");
-			MsBoard ms = new MsBoard();
-			ms.setUid(u.getUid());
-			ms.setUname(u.getUname());
-			ms.setMstitle(title);
-			ms.setMskeyword(keyword);
-			ms.setMsinfo(info);
-			if(us.addUserMsBoardService(ms) >0){  //插入成功
-					resp.sendRedirect("main/main.jsp");
-					return;
-			}
-
-		}
-
-
-	}
-
-	private void broderShow(HttpServletRequest req,HttpServletResponse resp) throws IOException, ServletException {
-		List<MsBoard> lm = us.userShowMsBoard();
-		if(lm!=null){
-			//将查询的用户数据存储到request对象
-			req.setAttribute("lm",lm);
-			//请求转发
-			req.getRequestDispatcher("user/showmsboard.jsp").forward(req, resp);
-			return;
-		}
 
 
 
-	}
-
-
-	
 }

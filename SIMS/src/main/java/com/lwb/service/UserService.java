@@ -1,45 +1,82 @@
 package com.lwb.service;
 
+import com.lwb.pojo.Course;
+import com.lwb.pojo.Student;
+import com.lwb.pojo.Teacher;
+import com.lwb.pojo.Users;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Update;
+import org.omg.CORBA.StringHolder;
+
+import java.util.Date;
 import java.util.List;
 
-import com.lwb.pojo.MsBoard;
-import com.lwb.pojo.User;
-
 public interface UserService {
-	/**
-	 * 校验用户登录
-	 * @param uname 用户名
-	 * @param pwd	密码
-	 * @return	返回查询到的用户信息
-	 */
-	User checkUserLoginService(String uname, String pwd);
-	/**
-	 * 修改用户密码
-	 * @param newPwd
-	 * @param uid
-	 * @return
-	 */
-	int userChangePwdService(String newPwd, int uid);
-	/**
-	 * 获取所有的用户信息
-	 * @return
-	 */
-	List<User> userShowService();
-	/**
-	 * 用户注册
-	 * @param u
-	 * @return
-	 */
-	int userRegService(User u);
+    /**
+     * 用户登录
+     * @param uid
+     * @param upwd
+     * @return
+     */
+    Users checkUserLogin(String uid,String upwd);
 
-	/**
-	 * 添加用户留言
-	 * @param msboard
-	 * @return
-	 */
-	int addUserMsBoardService(MsBoard msboard);
+    /**
+     * 监测用户等级:学生/老师/管理员
+     * @param users
+     * @return
+     */
+    int checkUserLevel(Users users);
+
+    /**
+     * 获取学生
+     * @param snum
+     * @return
+     */
+    Student getStu(String snum);
+
+    /**
+     *
+     * @param tnum
+     * @return
+     */
+    Teacher getTeacher(String tnum);
 
 
-	List<MsBoard> userShowMsBoard();
+    /**
+     * 获取密码
+     * @param unum
+     * @return
+     */
+    String getpwd(String unum);
 
+    /**
+     * 修改密码
+     * @param uid
+     * @return
+     */
+    int changePwd(String uid,String newpwd);
+
+    /**
+     * 显示所有课程信息
+     * @return
+     */
+    List<Course> showAllCourse();
+
+    /**
+     * 更新学生信息
+     * @param snum
+     * @param newname
+     * @param newsex
+     * @param newtel
+     * @param newaddress
+     * @param newbirthday
+     * @return
+     */
+    int chStuInfo( String snum,String newname,String newsex,String newtel,String newaddress,Date newbirthday );
+
+    /**
+     * 显示所有学生信息
+     * @return
+     */
+    List<Student> showAllStudent();
 }
