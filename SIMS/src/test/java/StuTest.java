@@ -74,6 +74,7 @@ public class StuTest {
     public void testUpdate(){
         int index = studao.ChStuInfo("201716040223","韩旭","男","13253376824","天津市大港区",new Date());
         System.out.println(index);
+
     }
 
 
