@@ -7,76 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a0958dca-61ba-499e-8471-380b42bd7c1a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/lwb/servlet/AjaxServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/main/studentmain/studentindex.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/main/studentmain/studentleft.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/main/studentmain/studentmain.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/main/studentmain/studenttop.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/main/teachermain/teacherindex.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/main/teachermain/teacherleft.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/main/teachermain/teachermain.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/main/teachermain/teachertop.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/user/stu/showcourse.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/user/stu/stuchInfo.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/user/tea/showstudent.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/user/tea/showstudentwithcourse.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/user/tea/teainfo.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lwb/dao/StudentDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lwb/dao/StudentDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lwb/dao/UserDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lwb/dao/UsersDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lwb/dao/UsersDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lwb/dao/impl/UserDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lwb/dao/util/JDBCutil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lwb/pojo/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lwb/pojo/Student.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lwb/pojo/Teacher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lwb/pojo/Teacher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lwb/pojo/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lwb/pojo/Users.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lwb/pojo/Users.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lwb/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lwb/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lwb/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lwb/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lwb/servlet/UserServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lwb/servlet/UserServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/main/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/main/adminmain/adminindex.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/main/left.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/main/adminmain/adminleft.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/main/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/main/adminmain/adminmain.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/main/top.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/main/adminmain/admintop.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/user/pwd.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/user/pwd.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/user/userinfo.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/user/stu/stuinfo.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/StuTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/StuTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/UserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/UserTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/SIMS/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/SIMS/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/SIMS/WEB-INF/classes/SqlMapConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/SIMS/WEB-INF/classes/SqlMapConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/SIMS/WEB-INF/classes/com/lwb/dao/CourseDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/SIMS/WEB-INF/classes/com/lwb/dao/CourseDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/SIMS/WEB-INF/classes/com/lwb/dao/StudentDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/SIMS/WEB-INF/classes/com/lwb/dao/StudentDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/SIMS/WEB-INF/classes/com/lwb/dao/TeacherDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/SIMS/WEB-INF/classes/com/lwb/dao/TeacherDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/SIMS/WEB-INF/classes/com/lwb/dao/UserDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/SIMS/WEB-INF/classes/com/lwb/dao/impl/UserDaoImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/SIMS/WEB-INF/classes/com/lwb/dao/util/JDBCutil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/SIMS/WEB-INF/classes/com/lwb/pojo/Course.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/SIMS/WEB-INF/classes/com/lwb/pojo/Course.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/SIMS/WEB-INF/classes/com/lwb/pojo/Student.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/SIMS/WEB-INF/classes/com/lwb/pojo/Student.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/SIMS/WEB-INF/classes/com/lwb/pojo/Teacher.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/SIMS/WEB-INF/classes/com/lwb/pojo/Teacher.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/SIMS/WEB-INF/classes/com/lwb/pojo/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/SIMS/WEB-INF/classes/com/lwb/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/SIMS/WEB-INF/classes/com/lwb/service/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/SIMS/WEB-INF/classes/com/lwb/service/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/SIMS/WEB-INF/classes/com/lwb/service/impl/UserServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/SIMS/WEB-INF/classes/com/lwb/servlet/UserServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/SIMS/WEB-INF/classes/com/lwb/servlet/UserServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/SIMS/index.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/SIMS/main/index.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/SIMS/main/left.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/SIMS/main/main.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/SIMS/main/top.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/SIMS/user/pwd.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/SIMS/user/pwd.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/SIMS/user/userinfo.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lwb/dao/StudentDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lwb/dao/StudentDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lwb/dao/UserDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lwb/dao/impl/UserDaoImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lwb/dao/util/JDBCutil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lwb/pojo/Student.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lwb/pojo/Student.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lwb/pojo/Teacher.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lwb/pojo/Teacher.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lwb/pojo/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lwb/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lwb/service/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lwb/service/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lwb/service/impl/UserServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lwb/servlet/UserServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lwb/servlet/UserServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/META-INF/SIMS.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/StuTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/StuTest.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -122,8 +53,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/user/tea/showstudentwithcourse.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="65" column="13" lean-forward="true" selection-start-line="65" selection-start-column="13" selection-end-line="65" selection-end-column="13" />
+            <state relative-caret-position="421">
+              <caret line="78" column="33" lean-forward="true" selection-start-line="78" selection-start-column="33" selection-end-line="78" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -457,7 +388,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1576415054801" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1576415735053" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -675,7 +606,7 @@
       <workItem from="1576161738784" duration="924000" />
       <workItem from="1576212937427" duration="394000" />
       <workItem from="1576332480951" duration="4472000" />
-      <workItem from="1576382608363" duration="32030000" />
+      <workItem from="1576382608363" duration="32379000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1576213299620</created>
@@ -691,7 +622,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576336799397</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="2019年12月15日21:14:48">
+      <created>1576415707788</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1576415707788</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -727,7 +665,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49739000" />
+    <option name="totallyTimeSpent" value="50088000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -740,8 +678,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7" visible="true" weight="0.21268657" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7" visible="true" weight="0.21268657" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -753,7 +692,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32962137" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" weight="0.344098" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49946696" visible="true" weight="0.21046771" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49946696" weight="0.21046771" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32962137" />
@@ -782,7 +721,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="1" />
     <MESSAGE value="2019年12月14日23:19:52" />
-    <option name="LAST_COMMIT_MESSAGE" value="2019年12月14日23:19:52" />
+    <MESSAGE value="2019年12月15日21:14:48" />
+    <option name="LAST_COMMIT_MESSAGE" value="2019年12月15日21:14:48" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lwb/pojo/MD5.java">
@@ -1181,8 +1121,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/user/tea/showstudentwithcourse.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="65" column="13" lean-forward="true" selection-start-line="65" selection-start-column="13" selection-end-line="65" selection-end-column="13" />
+        <state relative-caret-position="421">
+          <caret line="78" column="33" lean-forward="true" selection-start-line="78" selection-start-column="33" selection-end-line="78" selection-end-column="33" />
         </state>
       </provider>
     </entry>
