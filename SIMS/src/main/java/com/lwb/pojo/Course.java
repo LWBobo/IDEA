@@ -14,6 +14,8 @@ public class Course {
 
     List<Student> students;        //一门课有多个学生选修
 
+    private int cgrade;    //课程成绩,只有在学生中才有效
+
     public Course() {
     }
 
@@ -23,6 +25,14 @@ public class Course {
         this.ccredit = ccredit;
         this.cbegintime = cbegintime;
         this.cendtime = cendtime;
+    }
+
+    public int getCgrade() {
+        return cgrade;
+    }
+
+    public void setCgrade(int cgrade) {
+        this.cgrade = cgrade;
     }
 
     public Teacher getTeacher() {

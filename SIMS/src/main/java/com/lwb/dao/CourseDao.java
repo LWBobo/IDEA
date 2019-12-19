@@ -32,6 +32,32 @@ public interface CourseDao {
     @Select("select * from course where c_num in (select c_num from stu_cours_sele where s_num = #{snum}) ")
     List<Course> selAllCoursByStuId(String snum);
 
+
+    /**
+     * 根据学生号获取带有教师信息的课程信息
+     * @param snum
+     * @return
+     */
+    @Results({@Result(id = true,column = "c_num",property = "cnum"),
+            @Result(column = "c_num",property = "teacher",one = @One(select = "com.lwb.dao.TeacherDao.findTeaByCnum",fetchType = FetchType.LAZY))
+
+    })
+    @Select("select * from course where c_num in (select c_num from stu_cours_sele where s_num = #{snum}) ")
+    List<Course> selAllCoursWithTeaByStuId(String snum);
+
+    /**
+     * 根据学生号获取带有教师信息和成绩的课程信息
+     * @param snum
+     * @return
+     */
+    @Results({@Result(id = true,column = "c_num",property = "cnum"),
+            @Result(column = "c_grade",property = "cgrade"),
+            @Result(column = "c_num",property = "teacher",one = @One(select = "com.lwb.dao.TeacherDao.findTeaByCnum",fetchType = FetchType.LAZY))
+
+    })
+    @Select("select course.*,stu_cours_sele.c_grade from course,stu_cours_sele where course.c_num in (select c_num from stu_cours_sele where s_num = #{snum}) and  course.c_num = stu_cours_sele.c_num and stu_cours_sele.s_num = #{snum}")
+    List<Course> selAllCoursWithTeaAndGradeByStuId(String snum);
+
     /**
      * 根据教师号获取教师所教课程信息
      * @param tnum

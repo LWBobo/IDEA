@@ -26,14 +26,24 @@ public interface StudentDao {
     List<Student> findStudentByCoursenum(String cnum);
 
     /**
-     * 获取所有学生信息,并且附带学生选课表 1:n
+     * 获取所有学生信息,并且附带学生选课表,教师信息 1:n
      * @return
      */
     @Results({@Result(id = true,column = "s_num",property = "snum"),
-            @Result(column = "s_num",property = "courses",many = @Many(select = "com.lwb.dao.CourseDao.selAllCoursByStuId",fetchType = FetchType.LAZY))
+            @Result(column = "s_num",property = "courses",many = @Many(select = "com.lwb.dao.CourseDao.selAllCoursWithTeaByStuId",fetchType = FetchType.LAZY))
     })
     @Select("select * from student")
-    List<Student> findAllWithCourse();
+    List<Student> findAllWithCourseAndTea();
+
+    /**
+     * 获取所有学生信息,并且附带学生选课表,教师信息,课程分数 1:n
+     * @return
+     */
+    @Results({@Result(id = true,column = "s_num",property = "snum"),
+            @Result(column = "s_num",property = "courses",many = @Many(select = "com.lwb.dao.CourseDao.selAllCoursWithTeaAndGradeByStuId",fetchType = FetchType.LAZY))
+    })
+    @Select("select * from student")
+    List<Student> findAllWithCourseAndTeaAndGrade();
 
     /**
      * 根据用户的编号获取用户信息
@@ -45,6 +55,18 @@ public interface StudentDao {
     })
     @Select("select * from student where s_num = #{snum}")
     Student findWithCourseById(String snum);
+
+
+    /**
+     * 根据用户的编号获取用户信息带有成绩还有课程信息
+     * @param snum
+     * @return
+     */
+    @Results({@Result(id = true,column = "s_num",property = "snum"),
+            @Result(column = "s_num",property = "courses",many = @Many(select = "com.lwb.dao.CourseDao.selAllCoursWithTeaAndGradeByStuId",fetchType = FetchType.LAZY))
+    })
+    @Select("select * from student where s_num = #{snum}")
+    Student findWithCourseAndGradeById(String snum);
 
 
     /**

@@ -126,4 +126,28 @@ public class CourseTest {
             System.out.println(courses.getStudents());
     }
 
+    /**
+     * 根据学生号获取带有教师信息的课程信息
+     */
+    @Test
+    public void testselAllCoursWithTeaByStuId(){
+        List<Course> courses = coursedao.selAllCoursWithTeaByStuId("201716040224");
+        for(Course c :courses){
+            System.out.println(c);
+            System.out.println(c.getTeacher());
+        }
+    }
+    /**
+     * 根据学生号获取带有教师信息的课程信息
+     */
+    @Test
+    public void testselAllCoursWithTeaAndGradeByStuId(){
+        List<Course> courses = coursedao.selAllCoursWithTeaAndGradeByStuId("201716040224");
+        for(Course c :courses){
+            System.out.println(c);
+            System.out.println(c.getCgrade());
+            System.out.println(c.getTeacher());
+        }
+    }
+
 }

@@ -54,7 +54,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
     <div class="welinfo">
     <span><img src="images/sun.png" alt="天气" /></span>
-        <b><i>${user.sname}</i><i id="div2"></i> 好，欢迎使用信息管理系统</b>
+        <b><i>${user.uname}</i><i id="div2"></i> 好，欢迎使用信息管理系统</b>
     <a href="user/pwd.jsp">帐号设置</a>
     </div>
 

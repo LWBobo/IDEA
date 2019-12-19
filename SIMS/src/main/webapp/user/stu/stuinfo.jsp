@@ -73,8 +73,7 @@ $(document).ready(function(){
         <td>${user.ssex}</td>
         <td>${user.stel}</td>
         <td>${user.saddress}</td>
-         <td><fmt:formatDate
-             type="both"
+         <td><fmt:formatDate type="date"
              dateStyle="long" timeStyle="long"
              value="${user.sbirthday}" /></td>
         </tr> 
@@ -90,6 +89,7 @@ $(document).ready(function(){
         <th>课程学分</th>
         <th>开课时间</th>
         <th>结课时间</th>
+        <th>成绩</th>
         </tr>
         </thead>
         <tbody>
@@ -102,6 +102,7 @@ $(document).ready(function(){
                                     value="${c.cbegintime}" /></td>
                 <td><fmt:formatDate type="date"
                                     value="${c.cendtime}" /></td>
+                <td>${c.cgrade }</td>
 
             </tr>
 

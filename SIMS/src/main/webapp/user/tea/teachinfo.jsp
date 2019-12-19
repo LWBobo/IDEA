@@ -62,18 +62,24 @@ $(document).ready(function(){
         <th>性别</th>
         <th>职称</th>
     	<th>出生年月</th>
+        <th>操作</th>
         </tr>
         </thead>
         <tbody>
-        <tr>
 
-        <td>${user.tnum}</td>
-        <td>${user.tname}</td>
-        <td>${user.tsex}</td>
-        <td>${user.ttitle}</td>
-        <td><fmt:formatDate type="date" dateStyle="long" timeStyle="long" value= "${user.tbirthday}" /></td>
+        <form action="user" method="post">
+            <tr>
+                <input type="hidden" name="tnum" value="${user.tnum}">
+                <td>${user.tnum}</td>
+                <td><input type="text" name="newtname" placeholder="${user.tname}"></td>
+                <td><input type="text" name="newtsex" placeholder="${user.tsex}"></td>
+                <td>${user.ttitle}</td>      <%--职称无法自由更改--%>
+                <td><input type="text" name="newbirthday" placeholder="<fmt:formatDate type="date" dateStyle="long" timeStyle="long" value= "${user.tbirthday}" />"></td>
+                <td> <input type="submit" value="确定修改"></td>
+            </tr>
 
-        </tr>
+        </form>
+
         </tbody>
     </table>
 
@@ -85,20 +91,27 @@ $(document).ready(function(){
             <th>课程学分</th>
             <th>开课时间</th>
             <th>结课时间</th>
+            <th>操作</th>
         </tr>
         </thead>
         <tbody>
         <c:forEach items="${user.courses}" var="c">
-            <tr>
-                <td>${c.cnum }</td>
-                <td>${c.cname }</td>
-                <td>${c.ccredit }</td>
-                <td><fmt:formatDate type="date"
-                                    value="${c.cbegintime}" /></td>
-                <td><fmt:formatDate type="date"
-                                    value="${c.cendtime}" /></td>
 
-            </tr>
+            <form action="user" method="post">
+                <input type="hidden" name="cnum" value="${c.cnum }">
+                <tr>
+                    <td>${c.cnum }</td>
+                    <td><input type="text" name="newcname" placeholder="${c.cname }"></td>
+                    <td><input type="text" name="newccredit" placeholder="${c.ccredit }"></td>
+                    <td><input type="text" name="newcbegintime" placeholder="<fmt:formatDate type="date"
+                                        value="${c.cbegintime}" />"></td>
+                    <td><input type="text" name="newcendtime" placeholder="<fmt:formatDate type="date"
+                                        value="${c.cendtime}" />" ></td>
+                   <td> <input type="submit" value="确定修改"></td>
+                </tr>
+
+
+            </form>
 
         </c:forEach>
 

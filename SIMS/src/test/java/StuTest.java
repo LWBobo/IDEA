@@ -54,7 +54,7 @@ public class StuTest {
      */
     @Test
     public void testfindAllWithCourse(){
-        List<Student> students = studao.findAllWithCourse();
+        List<Student> students = studao.findAllWithCourseAndTea();
         for(Student s :students){
             System.out.println(s);
             System.out.println(s.getCourses());
@@ -75,6 +75,14 @@ public class StuTest {
         int index = studao.ChStuInfo("201716040223","韩旭","男","13253376824","天津市大港区",new Date());
         System.out.println(index);
 
+    }
+
+    @Test
+    public void testfindWithCourseAndGradeById(){
+        Student student = studao.findWithCourseAndGradeById("201716040224");
+        System.out.println(student);
+        System.out.println(student.getCourses());
+        System.out.println(student.getCourses().get(2).getCgrade());
     }
 
 

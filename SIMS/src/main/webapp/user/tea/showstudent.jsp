@@ -75,7 +75,7 @@ $(document).ready(function(){
                <td>${s.stel}</td>
                <td>${s.saddress}</td>
                <td><fmt:formatDate
-                       type="both"
+                       type="date"
                        dateStyle="long" timeStyle="long"
                        value="${s.sbirthday}" /></td>
            </tr>

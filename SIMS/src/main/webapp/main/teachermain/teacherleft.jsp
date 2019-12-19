@@ -92,6 +92,8 @@ $(function(){
                     </ul>
                 </li>
 
+                <li><cite></cite><a href="user/tea/teachinfo.jsp" target="rightFrame">修改个人/课程信息</a><i></i></li>
+
 
         </dd>
 

@@ -80,7 +80,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Student getStu(String snum) {
-        Student student = studao.findWithCourseById(snum);
+        Student student = studao.findWithCourseAndGradeById(snum);
         return student;
     }
 
@@ -112,6 +112,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<Student> showAllStudent() {
-        return studao.findAllWithCourse();
+        return studao.findAllWithCourseAndTeaAndGrade();
     }
 }
