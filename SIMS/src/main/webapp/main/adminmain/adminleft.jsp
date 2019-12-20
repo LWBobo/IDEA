@@ -77,6 +77,19 @@ $(function(){
 
                 <li><cite></cite><a href="user?oper=showcourse" target="rightFrame">查看课程信息</a><i></i></li>
 
+                <li>
+                    <div class="header">
+                        <cite></cite>
+                        <a href="user?oper=showteainfo" target="rightFrame">查看教师信息</a>
+                        <i></i>
+                    </div>
+                    <ul class="sub-menus">
+                        <li><a href="user/admin/showteainfowithcourse.jsp" target="rightFrame">查看教师详细信息</a></li>
+
+                    </ul>
+                </li>
+
+
 
                 <li>
                     <div class="header">
@@ -91,6 +104,8 @@ $(function(){
                 </li>
 
                 <li><cite></cite><a href="user/admin/changecourseinfo.jsp" target="rightFrame">修改课程信息</a><i></i></li>
+                <li><cite></cite><a href="user/admin/changeteainfo.jsp" target="rightFrame">修改教师信息</a><i></i></li>
+                <li><cite></cite><a href="user/admin/changestuinfo.jsp" target="rightFrame">修改学生信息</a><i></i></li>
 
 
         </dd>

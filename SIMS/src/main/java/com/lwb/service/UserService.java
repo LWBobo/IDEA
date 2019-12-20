@@ -79,4 +79,7 @@ public interface UserService {
      * @return
      */
     List<Student> showAllStudent();
+
+
+    List<Teacher> showAllTeacherWithCourse();
 }

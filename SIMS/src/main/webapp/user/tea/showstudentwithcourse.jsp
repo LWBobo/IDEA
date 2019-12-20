@@ -47,25 +47,12 @@ $(document).ready(function(){
     <ul class="placeul">
     <li><a href="javascript:;">首页</a></li>
     <li><a href="javascript:;">管理信息</a></li>
-    <li><a href="javascript:;">查看学生信息</a></li>
+    <li><a href="javascript:;">查看学生详细信息</a></li>
     </ul>
     </div>
     
     
-    
-   <%--
-    <table class="tablelist">
-    	<thead>
-    	<tr>
-        <th>用户ID<i class="sort"><img src="images/px.gif" /></i></th>
-        <th>用户名</th>
-        <th>性别</th>
-        <th>联系方式</th>
-        <th>地址</th>
-    	<th>出生年月</th>
-        </tr>
-        </thead>
-        <tbody>--%>
+
        <c:forEach items="${students}" var="s">
 
             <table class="tablelist">

@@ -114,4 +114,9 @@ public class UserServiceImpl implements UserService {
     public List<Student> showAllStudent() {
         return studao.findAllWithCourseAndTeaAndGrade();
     }
+
+    @Override
+    public List<Teacher> showAllTeacherWithCourse() {
+        return teadao.findAllTeaWitnCourse();
+    }
 }

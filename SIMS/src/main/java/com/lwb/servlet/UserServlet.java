@@ -75,6 +75,9 @@ public class UserServlet extends HttpServlet {
 		}else if("showstudent".equals(oper)){
 			//调用显示所有学生信息功能
 			showAllStudent(req,resp);
+		}else if("showteainfo".equals(oper)){
+			//调用显示所有学生信息功能
+			showAllTeacher(req,resp);
 		}else{
 			logger.debug("没有找到对应的操作符："+oper);
 		}
@@ -113,6 +116,21 @@ public class UserServlet extends HttpServlet {
 				//将查询的用户数据存储到request对象
 				hs.setAttribute("students",students);
 				resp.sendRedirect("user/tea/showstudent.jsp");
+				return;
+			}
+
+	}
+	//显示所有的教师信息
+	private void showAllTeacher(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		//处理请求
+			//调用service
+			List<Teacher> teachers=us.showAllTeacherWithCourse();
+			HttpSession hs=req.getSession();
+			//判断
+			if(teachers!=null){
+				//将查询的用户数据存储到request对象
+				hs.setAttribute("teachers",teachers);
+				resp.sendRedirect("user/admin/showteainfo.jsp");
 				return;
 			}
 

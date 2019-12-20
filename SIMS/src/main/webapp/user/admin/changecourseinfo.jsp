@@ -47,8 +47,8 @@ $(document).ready(function(){
     <span>位置：</span>
     <ul class="placeul">
     <li><a href="javascript:;">首页</a></li>
-    <li><a href="javascript:;">其他信息</a></li>
-    <li><a href="javascript:;">查看课程</a></li>
+    <li><a href="javascript:;">管理信息</a></li>
+    <li><a href="javascript:;">修改课程信息</a></li>
     </ul>
     </div>
 
@@ -58,12 +58,13 @@ $(document).ready(function(){
     <table class="tablelist">
         <thead>
         <tr>
-            <th>所选课程<i class="sort"><img src="images/px.gif" /></i></th>
+            <th>课程编号<i class="sort"><img src="images/px.gif" /></i></th>
             <th>课程名</th>
             <th>课程学分</th>
             <th>开课时间</th>
             <th>结课时间</th>
             <th>授课教师</th>
+            <th>操作</th>
         </tr>
         </thead>
         <tbody>
@@ -71,13 +72,16 @@ $(document).ready(function(){
             <form action="user" method="post">
                 <tr>
                     <td>${c.cnum }</td>
+                         <input type="hidden" name="oper" value="changecourseinfo" >
+                         <input type="hidden" name="cnum" value="${c.cnum}">
                     <td><input type="text" name="newcname" placeholder="${c.cname }"></td>
-                    <td>${c.ccredit }</td>
-                    <td><fmt:formatDate type="date"
-                                        value="${c.cbegintime}" /></td>
-                    <td><fmt:formatDate type="date"
-                                        value="${c.cendtime}" /></td>
+                    <td><input type="text" name="newccredit" placeholder="${c.ccredit }"></td>
+                    <td><input type="text" name="newcbegintime" placeholder="<fmt:formatDate type="date"
+                                        value="${c.cbegintime}" />"></td>
+                    <td><input type="text" name="newcendtime" placeholder="<fmt:formatDate type="date"
+                                        value="${c.cendtime}" />"></td>
                     <td>${c.teacher.tname}</td>
+                    <td><input type="submit" name="submit" value="确认修改"></td>
 
                 </tr>
 
