@@ -119,4 +119,19 @@ public class UserServiceImpl implements UserService {
     public List<Teacher> showAllTeacherWithCourse() {
         return teadao.findAllTeaWitnCourse();
     }
+
+    @Override
+    public int updateStuInfo(Student student) {
+        return studao.updateStuInfo(student);
+    }
+
+    @Override
+    public int updateTeaInfo(Teacher teacher) {
+        return teadao.updateTeaInfo(teacher);
+    }
+
+    @Override
+    public int updateCourseInfo(Course course) {
+        return coursedao.updateCourseInfo(course);
+    }
 }

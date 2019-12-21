@@ -63,7 +63,7 @@ $(function(){
     <span><img src="images/leftico01.png" /></span>个人信息
     </div>
     	<ul class="menuson">
-        <li><cite></cite><a href="user/stuinfo.jsp" target="rightFrame">查看个人信息</a><i></i></li>
+        <li><cite></cite><a href="javascript:;" target="rightFrame">查看个人信息</a><i></i></li>
          <li><cite></cite><a href="user/pwd.jsp" target="rightFrame">修改密码</a><i></i></li>
             <li><cite></cite><a href="user/msboard.jsp" target="rightFrame">添加留言</a><i></i></li>
         </ul>    

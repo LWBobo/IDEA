@@ -5,7 +5,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.*;
-import javax.xml.crypto.Data;
 
 import com.lwb.pojo.Course;
 import com.lwb.pojo.Student;
@@ -76,8 +75,23 @@ public class UserServlet extends HttpServlet {
 			//调用显示所有学生信息功能
 			showAllStudent(req,resp);
 		}else if("showteainfo".equals(oper)){
-			//调用显示所有学生信息功能
+			//调用显示所有教师信息功能
 			showAllTeacher(req,resp);
+		}else if("teachteainfo".equals(oper)){
+			//调用教师修改自己信息
+			teaUpdateTeaInfo(req,resp);
+		}else if("teachcourseinfo".equals(oper)){
+			//调用教师修改自己所教授课程信息
+			teaUpdateCourseInfo(req,resp);
+		}else if("adminchangecourseinfo".equals(oper)){
+			//调用管理员修改课程信息
+			adminUpdateCourseInfo(req,resp);
+		}else if("adminupdateteainfo".equals(oper)){
+			//调用管理员修改教师信息
+			adminUpdateTeaInfo(req,resp);
+		}else if("adminupdatestuinfo".equals(oper)){
+			//调用管理员修改教师信息
+			adminUpdateStuInfo(req,resp);
 		}else{
 			logger.debug("没有找到对应的操作符："+oper);
 		}
@@ -264,6 +278,257 @@ public class UserServlet extends HttpServlet {
 					}
 
 					
+	}
+
+
+	private void teaUpdateTeaInfo(HttpServletRequest req, HttpServletResponse resp) {
+		HttpSession hs = req.getSession();
+		Teacher teacher = new Teacher();
+		String tnum = req.getParameter("tnum");
+		teacher.setTnum(tnum);
+		String newtname = req.getParameter("newtname");
+		String newtsex = req.getParameter("newtsex");
+		String birthday = req.getParameter("newbirthday");
+		Date newbirthday = null;
+		if(!newtname.equals("")){//若姓名不为空
+			teacher.setTname(newtname);
+		}if(!newtsex.equals("")){
+			teacher.setTsex(newtsex);
+		}if(!birthday.equals("")){
+			try {
+				newbirthday =new SimpleDateFormat("yyyy-MM-dd").parse(birthday);
+				teacher.setTbirthday(newbirthday);
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+		}
+
+		int index = us.updateTeaInfo(teacher);
+		if(index == 1){//更新成功
+			Teacher teacher1 =us.getTeacher(tnum);
+			//及时更新教师信息
+			if(teacher1 != null){
+				//将查询的用户数据存储到request对象
+				hs.setAttribute("user",teacher1);
+
+			}
+
+
+				//进行请求转发
+			try {
+				resp.sendRedirect("user/tea/teachinfo.jsp");
+				return;
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+		}
+
+	}
+
+private void teaUpdateCourseInfo(HttpServletRequest req, HttpServletResponse resp) {
+	HttpSession hs = req.getSession();
+	Course course = new Course();
+	String cnum = req.getParameter("cnum");
+	String tnum = req.getParameter("tnum");
+	String newcname = req.getParameter("newcname");
+	String credit = req.getParameter("newccredit");
+	String cbegintime = req.getParameter("newcbegintime");
+	String cendtime = req.getParameter("newcendtime");
+	course.setCnum(cnum);
+	Date time = null;
+	if(!newcname.equals("")){
+		course.setCname(newcname);
+	}if(!credit.equals("")){
+		int newcredit = Integer.parseInt(credit);
+		course.setCcredit(newcredit);
+	}if(!cbegintime.equals("")){
+		try {
+			time = new SimpleDateFormat("yyyy-MM-dd").parse(cbegintime);
+			course.setCbegintime(time);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+	}if(!cendtime.equals("")){
+		try {
+			time = new SimpleDateFormat("yyyy-MM-dd").parse(cendtime);
+			course.setCendtime(time);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+	}
+
+	int index = us.updateCourseInfo(course);
+	if(index == 1){//更新成功
+		//及时更新课程信息
+		List<Course> lu=us.showAllCourse();
+		Teacher teacher = us.getTeacher(tnum);
+		//判断
+		if(lu!=null && teacher != null){
+			//将查询的用户数据存储到request对象
+			hs.setAttribute("lu",lu);
+			hs.setAttribute("user",teacher);
+
+			try {
+				resp.sendRedirect("user/tea/teachinfo.jsp");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+		}
+
+	}
+
+
+	}
+
+private void adminUpdateCourseInfo(HttpServletRequest req, HttpServletResponse resp) {
+	HttpSession hs = req.getSession();
+	Course course = new Course();
+	String cnum = req.getParameter("cnum");
+	String newcname = req.getParameter("newcname");
+	String credit = req.getParameter("newccredit");
+	String cbegintime = req.getParameter("newcbegintime");
+	String cendtime = req.getParameter("newcendtime");
+	course.setCnum(cnum);
+	Date time = null;
+	if(!newcname.equals("")){
+		course.setCname(newcname);
+	}if(!credit.equals("")){
+		int newcredit = Integer.parseInt(credit);
+		course.setCcredit(newcredit);
+	}if(!cbegintime.equals("")){
+		try {
+			time = new SimpleDateFormat("yyyy-MM-dd").parse(cbegintime);
+			course.setCbegintime(time);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+	}if(!cendtime.equals("")){
+		try {
+			time = new SimpleDateFormat("yyyy-MM-dd").parse(cendtime);
+			course.setCendtime(time);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+	}
+
+	int index = us.updateCourseInfo(course);
+	if(index == 1){//更新成功
+		//及时更新课程信息
+		List<Course> lu=us.showAllCourse();
+		//判断
+		if(lu!=null ){
+			//将查询的用户数据存储到request对象
+			hs.setAttribute("lu",lu);
+
+			try {
+				resp.sendRedirect("user/admin/changecourseinfo.jsp");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+		}
+
+	}
+
+
+	}
+
+	private void adminUpdateTeaInfo(HttpServletRequest req, HttpServletResponse resp) {
+		HttpSession hs = req.getSession();
+		Teacher teacher = new Teacher();
+		String tnum = req.getParameter("tnum");
+		teacher.setTnum(tnum);
+		String newtname = req.getParameter("newtname");
+		String newtsex = req.getParameter("newtsex");
+		String newttitle = req.getParameter("newttitle");
+		String birthday = req.getParameter("newtbirthday");
+		Date newbirthday = null;
+		if(!newtname.equals("")){//若姓名不为空
+			teacher.setTname(newtname);
+		}if(!newtsex.equals("")){
+			teacher.setTsex(newtsex);
+		}if(!newttitle.equals("")){
+			teacher.setTtitle(newttitle);
+		}if(!birthday.equals("")){
+			try {
+				newbirthday =new SimpleDateFormat("yyyy-MM-dd").parse(birthday);
+				teacher.setTbirthday(newbirthday);
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+		}
+
+		int index = us.updateTeaInfo(teacher);
+		if(index == 1){//更新成功
+			List<Teacher> teachers=us.showAllTeacherWithCourse();
+			//判断
+			if(teachers!=null){
+				//将查询的用户数据存储到request对象
+				hs.setAttribute("teachers",teachers);
+				try {
+					resp.sendRedirect("user/admin/changeteainfo.jsp");
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				return;
+			}
+
+		}
+
+	}
+
+	private void adminUpdateStuInfo(HttpServletRequest req, HttpServletResponse resp) {
+		HttpSession hs = req.getSession();
+		Student student = new Student();
+		String snum = req.getParameter("snum");
+		student.setSnum(snum);
+		String newsname = req.getParameter("newsname");
+		String newssex = req.getParameter("newssex");
+		String newstel = req.getParameter("newstel");
+		String newsaddress = req.getParameter("newsaddress");
+		String birthday = req.getParameter("newsbirthday");
+		Date newsbirthday = null;
+		if(!newsname.equals("")){
+			student.setSname(newsname);
+
+		}if(!newssex.equals("")){
+
+			student.setSsex(newssex);
+		}if(!newstel.equals("")){
+
+			student.setStel(newstel);
+		}if(!newsaddress.equals("")){
+
+			student.setSaddress(newsaddress);
+		}if(!birthday.equals("")){
+			try {
+				newsbirthday =new SimpleDateFormat("yyyy-MM-dd").parse(birthday);
+				student.setSbirthday(newsbirthday);
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+		}
+
+		int index = us.updateStuInfo(student);
+		if(index == 1){
+			List<Student> students=us.showAllStudent();
+			//判断
+			if(students!=null){
+				//将查询的用户数据存储到request对象
+				hs.setAttribute("students",students);
+				try {
+					resp.sendRedirect("user/admin/changestuinfo.jsp");
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				return;
+			}
+
+		}
+
+
 	}
 
 

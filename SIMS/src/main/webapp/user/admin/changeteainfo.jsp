@@ -71,7 +71,7 @@
             <tr>
 
                 <td> ${t.tnum}</td>
-                <input type="hidden" name="oper" value="chteainfo">
+                <input type="hidden" name="oper" value="adminupdateteainfo">
                 <input type="hidden" name="tnum" value="${t.tnum}">
                 <td><input type="text" name="newtname" placeholder="${t.tname}"></td>
                 <td><input type="text" name="newtsex" placeholder="${t.tsex}"></td>

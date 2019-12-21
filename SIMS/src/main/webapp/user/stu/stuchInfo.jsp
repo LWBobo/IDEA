@@ -104,7 +104,7 @@
                 <td><input type="text" name="newtel" placeholder="${user.stel}"></td>
                 <td><input type="text" name="newaddress" placeholder="${user.saddress}"></td>
                 <td><input type="text" name="newbirthday" placeholder="<fmt:formatDate
-                    type="both"
+                    type="date"
                     dateStyle="long" timeStyle="long"
                     value="${user.sbirthday}" />"></td>
                 <td> <input type="submit" value="修改">    </td>

@@ -7,7 +7,12 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import javax.swing.text.StyledEditorKit;
 import java.io.InputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 
@@ -91,6 +96,22 @@ public class TeaTest {
     }
 
 
+
+    @Test
+    public void testupdate() throws ParseException {
+        Teacher teacher = new Teacher();
+        teacher.setTnum("10010611");
+    //    teacher.setTname("费选");
+        teacher.setTsex("男");
+        teacher.setTtitle("主任");
+        Date date = new SimpleDateFormat("yyyy-MM-dd").parse("1982-7-21");
+        teacher.setTbirthday(date);
+        int index = teadao.updateTeaInfo(teacher);
+        System.out.println(index);
+
+
+
+    }
 
 
 

@@ -1,10 +1,7 @@
 package com.lwb.dao;
 
 import com.lwb.pojo.Teacher;
-import org.apache.ibatis.annotations.Many;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.mapping.FetchType;
 
 import java.util.List;
@@ -56,6 +53,25 @@ public interface TeacherDao {
      */
     @Select("select * from teacher where t_num = (select t_num from tea_cours_teach where c_num = #{cnum})")
     Teacher findTeaByCnum(String cnum);
+
+
+
+
+    @Update({
+            "<script>",
+            "update teacher ",
+            "<set>",
+            "<if test='tname != null'>","t_name = #{tname},","</if>",
+            "<if test='tsex != null'>","t_sex = #{tsex},","</if>",
+            "<if test='ttitle != null'>","t_title = #{ttitle},","</if>",
+            "<if test='tbirthday != null'>","t_birthday = #{tbirthday},","</if>",
+            "</set>",
+            "where t_num = #{tnum}",
+            "</script>"
+
+    })
+    int updateTeaInfo(Teacher t);
+
 
 
 }

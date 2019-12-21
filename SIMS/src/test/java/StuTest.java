@@ -9,6 +9,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import java.io.InputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -83,6 +85,19 @@ public class StuTest {
         System.out.println(student);
         System.out.println(student.getCourses());
         System.out.println(student.getCourses().get(2).getCgrade());
+    }
+
+
+
+    @Test
+    public void testupdate() throws ParseException {
+        Student student = new Student();
+        student.setSnum("201716040224");
+        student.setSsex("男");
+        Date date = new SimpleDateFormat("yyyy-MM-dd").parse("1998-02-11");
+        student.setSbirthday(date);
+        int index = studao.updateStuInfo(student);
+        System.out.println(index);
     }
 
 

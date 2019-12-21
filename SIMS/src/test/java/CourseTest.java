@@ -10,6 +10,9 @@ import org.junit.Test;
 
 import javax.sound.midi.VoiceStatus;
 import java.io.InputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 
@@ -148,6 +151,25 @@ public class CourseTest {
             System.out.println(c.getCgrade());
             System.out.println(c.getTeacher());
         }
+    }
+
+
+    /**
+     * 测试更新函数
+     * @throws ParseException
+     */
+    @Test
+    public void testupdate() throws ParseException {
+        Course course = new Course();
+        course.setCnum("5003001");
+        course.setCname("JAVAEE");
+        Date date = new SimpleDateFormat("yyyy-MM-dd").parse("2019-10-10");
+        course.setCbegintime(date);
+        int index = coursedao.updateCourseInfo(course);
+        System.out.println(index);
+
+
+
     }
 
 }

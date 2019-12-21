@@ -72,7 +72,7 @@ $(document).ready(function(){
             <form action="user" method="post">
                 <tr>
                     <td>${c.cnum }</td>
-                         <input type="hidden" name="oper" value="changecourseinfo" >
+                         <input type="hidden" name="oper" value="adminchangecourseinfo" >
                          <input type="hidden" name="cnum" value="${c.cnum}">
                     <td><input type="text" name="newcname" placeholder="${c.cname }"></td>
                     <td><input type="text" name="newccredit" placeholder="${c.ccredit }"></td>

@@ -70,7 +70,7 @@
     <c:forEach items="${students}" var="s">
        <form action="user" method="post">
            <tr>
-               <input type="hidden" name="oper" value="teachstuinfo">
+               <input type="hidden" name="oper" value="adminupdatestuinfo">
                <input type="hidden" name="snum" value="${s.snum}">
 
                <td>${s.snum}</td>

@@ -81,5 +81,33 @@ public interface UserService {
     List<Student> showAllStudent();
 
 
+    /**
+     * 显示带有所课程信息的教师信息
+     * @return
+     */
     List<Teacher> showAllTeacherWithCourse();
+
+
+    /**
+     * 更新学生信息
+     * @param student
+     * @return
+     */
+    int updateStuInfo(Student student);
+
+    /**
+     * 更新教师信息
+     * @param teacher
+     * @return
+     */
+    int updateTeaInfo(Teacher teacher);
+
+    /**
+     * 更新课程信息
+     * @param course
+     * @return
+     */
+    int updateCourseInfo(Course course);
+
+
 }

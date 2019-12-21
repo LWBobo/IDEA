@@ -140,4 +140,20 @@ public interface CourseDao {
     })
     @Select("select * from course where c_num = #{cnum}")
     Course findAllCourseWithTeaAndStuByCnum(String cnum);
+
+
+
+    @Update({
+            "<script>",
+            "update course ",
+            "<set>",
+            "<if test='cname != null'>","c_name = #{cname},","</if>",
+            "<if test='ccredit != null'>","c_credit = #{ccredit},","</if>",
+            "<if test='cbegintime != null'>","c_begintime = #{cbegintime},","</if>",
+            "<if test='cendtime != null'>","c_endtime = #{cendtime},","</if>",
+            "</set>",
+            "where c_num = #{cnum}",
+            "</script>"
+    })
+    int updateCourseInfo(Course c);
 }

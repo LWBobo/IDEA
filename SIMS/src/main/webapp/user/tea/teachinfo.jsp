@@ -70,6 +70,7 @@ $(document).ready(function(){
         <form action="user" method="post">
             <tr>
                 <input type="hidden" name="tnum" value="${user.tnum}">
+                <input type="hidden" name="oper" value="teachteainfo">
                 <td>${user.tnum}</td>
                 <td><input type="text" name="newtname" placeholder="${user.tname}"></td>
                 <td><input type="text" name="newtsex" placeholder="${user.tsex}"></td>
@@ -98,6 +99,8 @@ $(document).ready(function(){
         <c:forEach items="${user.courses}" var="c">
 
             <form action="user" method="post">
+                <input type="hidden" name="tnum" value="${user.tnum}">  <%--用于更新教师信息--%>
+                <input type="hidden" name="oper" value="teachcourseinfo">
                 <input type="hidden" name="cnum" value="${c.cnum }">
                 <tr>
                     <td>${c.cnum }</td>

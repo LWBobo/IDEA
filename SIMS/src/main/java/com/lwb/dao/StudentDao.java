@@ -82,6 +82,18 @@ public interface StudentDao {
     @Update("update student set s_name = #{newname},s_sex=#{newsex},s_tel=#{newtel},s_address=#{newaddress},s_birthday=#{newbirthday} where s_num =#{snum}")
     int ChStuInfo(@Param("snum") String snum,@Param("newname")String newname,@Param("newsex")String newsex,@Param("newtel")String newtel,@Param("newaddress")String newaddress,@Param("newbirthday") Date newbirthday);
 
-    @Update("update")
-    int chStuInfomation(Student student);
+    @Update({
+            "<script>",
+            "update student ",
+            "<set>",
+            "<if test='sname != null'>","s_name = #{sname},","</if>",
+            "<if test='ssex != null'>","s_sex = #{ssex},","</if>",
+            "<if test='stel != null'>","s_tel = #{stel},","</if>",
+            "<if test='saddress != null'>","s_address = #{saddress},","</if>",
+            "<if test='sbirthday != null'>","s_birthday = #{sbirthday},","</if>",
+            "</set>",
+            "where s_num = #{snum}",
+            "</script>"
+    })
+    int updateStuInfo(Student s);
 }
