@@ -30,7 +30,7 @@
 
     <form action="user" method="post" id="fm" target="_top">
     <ul class="forminfo">
-        <input type="hidden" name="oper" value="board" >
+        <input type="hidden" name="oper" value="addboard" >
         <li><label>留言标题</label><input name="mstitle" type="text" class="dfinput" /><i>标题不能超过30个字符</i></li>
         <li><label>关键字</label><input name="mskeyword" type="text" class="dfinput" /><i>多个关键字用,隔开</i></li>
         <li><label>留言内容</label><textarea name="msinfo" cols="" rows="" class="textinput"></textarea></li>

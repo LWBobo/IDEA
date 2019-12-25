@@ -72,7 +72,7 @@
             <td>${m.uname }</td>
             <td>${m.mstitle }</td>
             <td>${m.mskeyword }</td>
-            <td>${m.msinfo }</td>
+            <td>${m.mscontents }</td>
         </tr>
 
     </c:forEach>

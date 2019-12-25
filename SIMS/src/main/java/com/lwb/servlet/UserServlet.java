@@ -6,10 +6,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.*;
 
-import com.lwb.pojo.Course;
-import com.lwb.pojo.Student;
-import com.lwb.pojo.Teacher;
-import com.lwb.pojo.Users;
+import com.lwb.pojo.*;
 import com.lwb.service.UserService;
 import com.lwb.service.impl.UserServiceImpl;
 import org.apache.log4j.Logger;
@@ -90,8 +87,11 @@ public class UserServlet extends HttpServlet {
 			//调用管理员修改教师信息
 			adminUpdateTeaInfo(req,resp);
 		}else if("adminupdatestuinfo".equals(oper)){
-			//调用管理员修改教师信息
+			//调用管理员修改学生信息
 			adminUpdateStuInfo(req,resp);
+		}else if("showallmessage".equals(oper)){
+			//调用显示所有留言信息
+			showAllMessage(req,resp);
 		}else{
 			logger.debug("没有找到对应的操作符："+oper);
 		}
@@ -247,16 +247,22 @@ public class UserServlet extends HttpServlet {
 							//将用户数据存储到session中
 							if(level == 1){
 								hs.setAttribute("user", student);
+								hs.setAttribute("userid",student.getSnum());
+								hs.setAttribute("username",student.getSname());
 								//重定向
 								resp.sendRedirect("main/studentmain/studentmain.jsp");
 								return;
 							}else if(level == 2){
 								hs.setAttribute("user", teacher);
+								hs.setAttribute("userid",teacher.getTnum());
+								hs.setAttribute("username",teacher.getTname());
 								//重定向
 								resp.sendRedirect("main/teachermain/teachermain.jsp");
 								return;
 							}else{
 								hs.setAttribute("user", u);
+								hs.setAttribute("userid",u.getUid());
+								hs.setAttribute("username",u.getUname());
 								//重定向
 								resp.sendRedirect("main/adminmain/adminmain.jsp");
 								return;
@@ -527,6 +533,25 @@ private void adminUpdateCourseInfo(HttpServletRequest req, HttpServletResponse r
 			}
 
 		}
+
+
+	}
+
+	private void showAllMessage(HttpServletRequest req, HttpServletResponse resp) {
+		HttpSession hs = req.getSession();
+		List<MsBoard> msboards = us.showAllMessage();
+		if(msboards != null){
+			hs.setAttribute("lm",msboards);
+
+			try {
+				resp.sendRedirect("user/showmsboard.jsp");
+				return;
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+
+
 
 
 	}

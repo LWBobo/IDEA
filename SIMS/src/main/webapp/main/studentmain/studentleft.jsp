@@ -82,7 +82,7 @@ $(function(){
                 <span><img src="images/leftico01.png" /></span>留言板
             </div>
             <ul class="menuson">
-                <li><cite></cite><a href="javascript:;" target="rightFrame">查看留言板</a><i></i></li>
+                <li><cite></cite><a href="user?oper=showallmessage" target="rightFrame">查看留言板</a><i></i></li>
             </ul>
         </dd>
     </dl>

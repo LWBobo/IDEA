@@ -1,13 +1,7 @@
 package com.lwb.service.impl;
 
-import com.lwb.dao.CourseDao;
-import com.lwb.dao.StudentDao;
-import com.lwb.dao.TeacherDao;
-import com.lwb.dao.UsersDao;
-import com.lwb.pojo.Course;
-import com.lwb.pojo.Student;
-import com.lwb.pojo.Teacher;
-import com.lwb.pojo.Users;
+import com.lwb.dao.*;
+import com.lwb.pojo.*;
 import com.lwb.service.UserService;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -26,6 +20,7 @@ public class UserServiceImpl implements UserService {
     private StudentDao studao;
     private UsersDao usersdao;
     private CourseDao coursedao;
+    private MsBoardDao msboarddao;
 
     public UserServiceImpl(){
         //1.读取配置文件，生成字节输入流
@@ -43,6 +38,7 @@ public class UserServiceImpl implements UserService {
         studao = sqlSession.getMapper(StudentDao.class);
         usersdao = sqlSession.getMapper(UsersDao.class);
         coursedao = sqlSession.getMapper(CourseDao.class);
+        msboarddao = sqlSession.getMapper(MsBoardDao.class);
     }
 
 
@@ -133,5 +129,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public int updateCourseInfo(Course course) {
         return coursedao.updateCourseInfo(course);
+    }
+
+    @Override
+    public List<MsBoard> showAllMessage() {
+        return msboarddao.showAllMessage();
     }
 }

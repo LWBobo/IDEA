@@ -1,9 +1,6 @@
 package com.lwb.service;
 
-import com.lwb.pojo.Course;
-import com.lwb.pojo.Student;
-import com.lwb.pojo.Teacher;
-import com.lwb.pojo.Users;
+import com.lwb.pojo.*;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Update;
 import org.omg.CORBA.StringHolder;
@@ -108,6 +105,13 @@ public interface UserService {
      * @return
      */
     int updateCourseInfo(Course course);
+
+
+    /**
+     * 显示所有留言信息
+     * @return
+     */
+    List<MsBoard> showAllMessage();
 
 
 }
