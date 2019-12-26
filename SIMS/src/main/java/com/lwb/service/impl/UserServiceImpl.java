@@ -135,4 +135,25 @@ public class UserServiceImpl implements UserService {
     public List<MsBoard> showAllMessage() {
         return msboarddao.showAllMessage();
     }
+
+    @Override
+    public int addMessage(MsBoard msboard) {
+        return msboarddao.addMessage(msboard);
+    }
+
+    @Override
+    public List<MsBoard> showMyBoard(String uid) {
+        return msboarddao.findByUid(uid);
+    }
+
+    @Override
+    public int delmessage(int msid) {
+        return msboarddao.delMsessage(msid);
+    }
+
+    @Override
+    public int updateMessage(MsBoard msboard) {
+        return msboarddao.updatemessage(msboard);
+    }
+
 }

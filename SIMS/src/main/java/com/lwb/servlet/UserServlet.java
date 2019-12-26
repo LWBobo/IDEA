@@ -92,6 +92,15 @@ public class UserServlet extends HttpServlet {
 		}else if("showallmessage".equals(oper)){
 			//调用显示所有留言信息
 			showAllMessage(req,resp);
+		}else if("addmessage".equals(oper)){
+			//调用显示所有留言信息
+			addMessage(req,resp);
+		}else if("delmessage".equals(oper)){
+			//调用显示所有留言信息
+			delMessage(req,resp);
+		}else if("updatemessage".equals(oper)){
+			//调用显示所有留言信息
+			updateMessage(req,resp);
 		}else{
 			logger.debug("没有找到对应的操作符："+oper);
 		}
@@ -230,6 +239,12 @@ public class UserServlet extends HttpServlet {
 					if(u!=null){
 						System.out.println(u);
 						hs.setAttribute("uid",u.getUid());
+
+						/**
+						 * 获取用户本人的留言信息
+						 */
+						List<MsBoard> myboard = us.showMyBoard(u.getUid());
+						hs.setAttribute("myboard",myboard);
 
 						int level = us.checkUserLevel(u);
 						if(level == 1){//学生登录
@@ -551,11 +566,95 @@ private void adminUpdateCourseInfo(HttpServletRequest req, HttpServletResponse r
 			}
 		}
 
+	}
 
+
+	private void addMessage(HttpServletRequest req, HttpServletResponse resp) {
+		HttpSession hs = req.getSession();
+		MsBoard msboard = new MsBoard();
+		String userid = req.getParameter("userid");
+		String username = req.getParameter("username");
+		msboard.setUid(userid);
+		msboard.setUname(username);
+		String mstitle = req.getParameter("mstitle");
+		String mskeyword = req.getParameter("mskeyword");
+		String mscontents = req.getParameter("mscontents");
+		if(!mstitle.equals("")){
+			msboard.setMstitle(mstitle);
+		}if(!mskeyword.equals("")){
+			msboard.setMskeyword(mskeyword);
+		}if(!mscontents.equals("")){
+			msboard.setMscontents(mscontents);
+		}
+		int index = us.addMessage(msboard);
+		if(index == 1){
+			/**
+			 * 更新个人留言板
+			 */
+			List<MsBoard> myboard = us.showMyBoard((String) hs.getAttribute("userid"));
+			hs.setAttribute("myboard",myboard);
+            try {
+                resp.sendRedirect("user/showmymsboard.jsp");
+                return;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+		}
+
+	}
+private void delMessage(HttpServletRequest req, HttpServletResponse resp) {
+		HttpSession hs = req.getSession();
+		String msid = req.getParameter("msid");
+		int index =us.delmessage(Integer.parseInt(msid));
+		if(index == 1){
+			/**
+			 * 更新个人留言板
+			 */
+			List<MsBoard> myboard = us.showMyBoard((String) hs.getAttribute("userid"));
+			hs.setAttribute("myboard",myboard);
+            try {
+                resp.sendRedirect("user/showmymsboard.jsp");
+                return;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+		}
+
+	}
+private void updateMessage(HttpServletRequest req, HttpServletResponse resp) {
+		HttpSession hs = req.getSession();
+		MsBoard msboard = new MsBoard();
+		String msid = req.getParameter("msid");
+		msboard.setMsid(Integer.parseInt(msid));
+		String mstitle = req.getParameter("mstitle");
+		String mskeyword = req.getParameter("mskeyword");
+		String mscontents = req.getParameter("mscontents");
+        if(!mstitle.equals("")){
+            msboard.setMstitle(mstitle);
+        }if(!mskeyword.equals("")){
+            msboard.setMskeyword(mskeyword);
+        }if(!mscontents.equals("")){
+            msboard.setMscontents(mscontents);
+        }
+        int index = us.updateMessage(msboard);
+        if(index == 1){
+            /**
+             * 更新个人留言板
+             */
+            List<MsBoard> myboard = us.showMyBoard((String) hs.getAttribute("userid"));
+            hs.setAttribute("myboard",myboard);
+            try {
+                resp.sendRedirect("user/showmymsboard.jsp");
+                return;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 
 
 	}
-
 
 
 }

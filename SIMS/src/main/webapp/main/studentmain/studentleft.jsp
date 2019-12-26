@@ -83,6 +83,7 @@ $(function(){
             </div>
             <ul class="menuson">
                 <li><cite></cite><a href="user?oper=showallmessage" target="rightFrame">查看留言板</a><i></i></li>
+                <li><cite></cite><a href="user/showmymsboard.jsp" target="rightFrame">管理我的留言</a><i></i></li>
             </ul>
         </dd>
     </dl>

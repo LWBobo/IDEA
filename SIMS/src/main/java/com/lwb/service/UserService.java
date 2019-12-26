@@ -113,5 +113,32 @@ public interface UserService {
      */
     List<MsBoard> showAllMessage();
 
+    /**
+     * 添加一条留言
+     * @param msboard
+     * @return
+     */
+    int addMessage(MsBoard msboard);
+
+    /**
+     * 显示用户的留言
+     * @return
+     */
+    List<MsBoard> showMyBoard(String uid);
+
+    /**
+     * 删除一条留言记录
+     * @param msid
+     * @return
+     */
+    int delmessage(int msid);
+
+    /**
+     * 更新留言板信息
+     * @param msboard
+     * @return
+     */
+    int updateMessage(MsBoard msboard);
+
 
 }

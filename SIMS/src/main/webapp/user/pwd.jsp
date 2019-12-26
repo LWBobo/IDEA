@@ -44,7 +44,7 @@
         }
 
 
-        //ajax发送并判断验证码
+        //ajax发送并判断密码
         function showHint() {
             //输入框显示
             var number = document.getElementById("oldpwd").value;
