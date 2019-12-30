@@ -21,6 +21,7 @@ public class UserServiceImpl implements UserService {
     private UsersDao usersdao;
     private CourseDao coursedao;
     private MsBoardDao msboarddao;
+    private TimeTableDao tabledao;
 
     public UserServiceImpl(){
         //1.读取配置文件，生成字节输入流
@@ -39,6 +40,7 @@ public class UserServiceImpl implements UserService {
         usersdao = sqlSession.getMapper(UsersDao.class);
         coursedao = sqlSession.getMapper(CourseDao.class);
         msboarddao = sqlSession.getMapper(MsBoardDao.class);
+        tabledao = sqlSession.getMapper(TimeTableDao.class);
     }
 
 
@@ -154,6 +156,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public int updateMessage(MsBoard msboard) {
         return msboarddao.updatemessage(msboard);
+    }
+
+    @Override
+    public List<List<String>> getStuTable(int tableid) {
+        TimeTable timetable = tabledao.findTableById(tableid);
+        List<List<String>> table = timetable.getTable();
+        return table;
     }
 
 }

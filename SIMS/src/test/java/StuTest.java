@@ -1,6 +1,5 @@
 import com.lwb.dao.StudentDao;
 import com.lwb.pojo.Student;
-import com.lwb.pojo.Users;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;

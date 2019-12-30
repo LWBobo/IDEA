@@ -1,10 +1,6 @@
 package com.lwb.service;
 
 import com.lwb.pojo.*;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Update;
-import org.omg.CORBA.StringHolder;
-
 import java.util.Date;
 import java.util.List;
 
@@ -140,5 +136,5 @@ public interface UserService {
      */
     int updateMessage(MsBoard msboard);
 
-
+    List<List<String>> getStuTable(int tableid);
 }
