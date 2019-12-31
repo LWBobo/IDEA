@@ -162,14 +162,25 @@ public class CourseTest {
     public void testupdate() throws ParseException {
         Course course = new Course();
         course.setCnum("5003001");
-        course.setCname("JAVAEE");
-        Date date = new SimpleDateFormat("yyyy-MM-dd").parse("2019-10-10");
-        course.setCbegintime(date);
+        course.setCislabcourse(0);
         int index = coursedao.updateCourseInfo(course);
         System.out.println(index);
 
 
 
     }
+
+    @Test
+    public void testFindAllCourseWitnLabCourse(){
+        List<Course> courses = coursedao.findAllCourseWithLabCourse();
+        for(Course c :courses){
+            System.out.println(c);
+            if(c.getLabcourse() != null){
+                System.out.println(c.getLabcourse());
+            }
+        }
+    }
+
+
 
 }

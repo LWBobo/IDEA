@@ -151,9 +151,26 @@ public interface CourseDao {
             "<if test='ccredit != null'>","c_credit = #{ccredit},","</if>",
             "<if test='cbegintime != null'>","c_begintime = #{cbegintime},","</if>",
             "<if test='cendtime != null'>","c_endtime = #{cendtime},","</if>",
+            "<if test='cislabcourse >= 0'>","c_islabcourse = #{cislabcourse},","</if>",
             "</set>",
             "where c_num = #{cnum}",
             "</script>"
     })
     int updateCourseInfo(Course c);
+
+
+    /**
+     * 获取带有实验课信息的课程信息
+     * @return
+     */
+    @Results({@Result(id = true,column = "c_num",property = "cnum"),
+            @Result(column = "c_num",property = "teacher",one = @One(select = "com.lwb.dao.TeacherDao.findTeaByCnum",fetchType = FetchType.LAZY)),
+            @Result(column = "c_num",property = "labcourse",one = @One(select = "com.lwb.dao.LabCourseDao.findLabCourseByCnum",fetchType = FetchType.LAZY))
+
+    })
+    @Select("select * from course")
+    List<Course> findAllCourseWithLabCourse();
+
+
+
 }

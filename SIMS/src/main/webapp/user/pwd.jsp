@@ -48,7 +48,7 @@
         function showHint() {
             //输入框显示
             var number = document.getElementById("oldpwd").value;
-                sendRequest("ajax?oper=changepwd&newpwd=" + number);
+            sendRequest("ajax?oper=changepwd&newpwd=" + number);
         }
         function sendRequest(url) {     ///发送验证请求
             createXMLHttp()
@@ -61,9 +61,9 @@
             if (xmlHttp.readyState == 4) {
                 if (xmlHttp.status == 200) {
 
-                   var res = xmlHttp.responseText;
+                    var res = xmlHttp.responseText;
                     //alert(res);
-                        document.getElementById("a").innerHTML = res;
+                    document.getElementById("a").innerHTML = res;
 
                 }
             }

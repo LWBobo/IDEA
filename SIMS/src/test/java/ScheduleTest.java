@@ -1,11 +1,14 @@
 import com.lwb.dao.LabClassScheduleDao;
+import com.lwb.dao.LabCourseDao;
 import com.lwb.dao.MsBoardDao;
 import com.lwb.dao.TimeTableDao;
 import com.lwb.pojo.LabClassSchedule;
+import com.lwb.pojo.LabCourse;
 import com.lwb.pojo.TimeTable;
 import com.lwb.service.ScheduleService;
 import com.lwb.service.impl.ScheduleServiceImpl;
 import com.lwb.util.ClassUtil;
+import javafx.scene.media.VideoTrack;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -24,6 +27,7 @@ public class ScheduleTest {
     private SqlSession sqlSession;
     private LabClassScheduleDao lcsd;
     private TimeTableDao tabledao;
+    private LabCourseDao labcoursedao;
 
     @Before//用于在测试方法执行之前执行
     public void init()throws Exception{
@@ -36,6 +40,7 @@ public class ScheduleTest {
         //4.获取dao的代理对象
         lcsd = sqlSession.getMapper(LabClassScheduleDao.class);
         tabledao = sqlSession.getMapper(TimeTableDao.class);
+        labcoursedao = sqlSession.getMapper(LabCourseDao.class);
     }
 
     @After//用于在测试方法执行之后执行
@@ -109,12 +114,22 @@ public class ScheduleTest {
     @Test
     public void testdoScheduleToTimetable(){
         LabClassSchedule labschedule = lcsd.findScheduleByLcnum("5003005X");
+        System.out.println(labschedule);
         TimeTable timeTable = tabledao.findTableById(1);
         ScheduleService scheduleService = new ScheduleServiceImpl();
         System.out.println("更新前:");
         System.out.println(timeTable);
         scheduleService.doScheduleToTimetable(labschedule);
 
+
+    }
+
+
+
+    @Test
+    public void testLabCourse(){
+        LabCourse labCourse = labcoursedao.findLabCourseByCnum("5003005");
+        System.out.println(labCourse);
 
     }
 

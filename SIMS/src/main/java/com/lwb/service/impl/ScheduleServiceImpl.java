@@ -1,6 +1,8 @@
 package com.lwb.service.impl;
 
 import com.lwb.dao.*;
+import com.lwb.pojo.Course;
+import com.lwb.pojo.Lab;
 import com.lwb.pojo.LabClassSchedule;
 import com.lwb.pojo.TimeTable;
 import com.lwb.service.ScheduleService;
@@ -14,16 +16,16 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.List;
 
 public class ScheduleServiceImpl implements ScheduleService {
 
     private InputStream in;
     private SqlSession sqlSession;
-    private TeacherDao teadao;
-    private StudentDao studao;
     private CourseDao coursedao;
     private TimeTableDao tabledao;
     private LabClassScheduleDao labclasssdao;
+    private LabDao labdao;
 
     public ScheduleServiceImpl(){
         //1.读取配置文件，生成字节输入流
@@ -37,11 +39,10 @@ public class ScheduleServiceImpl implements ScheduleService {
         //3.获取SqlSession对象
         sqlSession = factory.openSession(true);
         //4.获取dao的代理对象
-        teadao = sqlSession.getMapper(TeacherDao.class);
-        studao = sqlSession.getMapper(StudentDao.class);
         coursedao = sqlSession.getMapper(CourseDao.class);
         tabledao = sqlSession.getMapper(TimeTableDao.class);
         labclasssdao = sqlSession.getMapper(LabClassScheduleDao.class);
+        labdao = sqlSession.getMapper(LabDao.class);
     }
 
 
@@ -60,8 +61,9 @@ public class ScheduleServiceImpl implements ScheduleService {
                             doset(timetable,"setMonday" + k,labClassSchedule.getLcname());
 
 
-                        }else {
-                            System.out.println("这节课已经被安排过啦" + ":i=" + i + " k=" + k);
+                        }else {   //如果这节课已经被安排过其他的课程
+                            System.out.println("这节课已经被安排过啦"  + " 周一第" + k + "节:" + obj);
+                            return -1;
                         }
 
 
@@ -69,12 +71,85 @@ public class ScheduleServiceImpl implements ScheduleService {
             }
 
         }if(labClassSchedule.getTuesday() != 0){
+            String str1 = ClassUtil.decimalToBinary(labClassSchedule.getTuesday());
+            System.out.println("转换后的字符串:"+str1);
+            for(int i = str1.length()-1,k=1 ; i >=0 ; i--,k++){
+                if(str1.charAt(i) == '1'){  //该课程被安排在这一节
+
+                    Object obj = doget(timetable,"getTuesday" + k);
+                    if(obj == null){
+                        doset(timetable,"setTuesday" + k,labClassSchedule.getLcname());
+
+
+                    }else {   //如果这节课已经被安排过其他的课程
+                        System.out.println("这节课已经被安排过啦"  + " 周二第" + k + "节:" + obj);
+                        return -1;
+                    }
+
+
+                }
+            }
 
         }if(labClassSchedule.getWednesday() != 0){
+            String str1 = ClassUtil.decimalToBinary(labClassSchedule.getWednesday());
+            System.out.println("转换后的字符串:"+str1);
+            for(int i = str1.length()-1,k=1 ; i >=0 ; i--,k++){
+                if(str1.charAt(i) == '1'){  //该课程被安排在这一节
+
+                    Object obj = doget(timetable,"getWednesday" + k);
+                    if(obj == null){
+                        doset(timetable,"setWednesday" + k,labClassSchedule.getLcname());
+
+
+                    }else {   //如果这节课已经被安排过其他的课程
+                        System.out.println("这节课已经被安排过啦"  + " 周三第" + k + "节:" + obj);
+                        return -1;
+                    }
+
+
+                }
+            }
 
         }if(labClassSchedule.getThursday() != 0){
+            String str1 = ClassUtil.decimalToBinary(labClassSchedule.getThursday());
+            System.out.println("转换后的字符串:"+str1);
+            for(int i = str1.length()-1,k=1 ; i >=0 ; i--,k++){
+                if(str1.charAt(i) == '1'){  //该课程被安排在这一节
+
+                    Object obj = doget(timetable,"getThursday" + k);
+                    if(obj == null){
+                        doset(timetable,"setThursday" + k,labClassSchedule.getLcname());
+
+
+                    }else {   //如果这节课已经被安排过其他的课程
+                        System.out.println("这节课已经被安排过啦"  + " 周四第" + k + "节:" + obj);
+                        return -1;
+                    }
+
+
+                }
+            }
 
         }if(labClassSchedule.getFriday() != 0){
+
+            String str1 = ClassUtil.decimalToBinary(labClassSchedule.getFriday());
+            System.out.println("转换后的字符串:"+str1);
+            for(int i = str1.length()-1,k=1 ; i >=0 ; i--,k++){
+                if(str1.charAt(i) == '1'){  //该课程被安排在这一节
+
+                    Object obj = doget(timetable,"getFriday" + k);
+                    if(obj == null){
+                        doset(timetable,"setFriday" + k,labClassSchedule.getLcname());
+
+
+                    }else {   //如果这节课已经被安排过其他的课程
+                        System.out.println("这节课已经被安排过啦"  + " 周五第" + k + "节:" + obj);
+                        return -1;
+                    }
+
+
+                }
+            }
 
         }
 
@@ -83,6 +158,16 @@ public class ScheduleServiceImpl implements ScheduleService {
         System.out.println(timetable);
 
         return 0;
+    }
+
+    @Override
+    public List<Course> findAllCourseWithLabCourse() {
+        return coursedao.findAllCourseWithLabCourse();
+    }
+
+    @Override
+    public List<Lab> findAllLab() {
+        return labdao.findAllLab();
     }
 
 
