@@ -39,14 +39,14 @@ public class TableTest {
 
     @Test
     public void testfindbyid(){
-        TimeTable timetable = tabledao.findTableById(1);
+        TimeTable timetable = tabledao.findTableById("201716040224");
         System.out.println(timetable);
     }
 
 
     @Test
     public void testschedule(){
-        TimeTable timetable = tabledao.findTableById(1);
+        TimeTable timetable = tabledao.findTableById("201716040224");
         List<List<String>> table = timetable.getTable();
        int i = 1;
         for (List<String> s1 : table){

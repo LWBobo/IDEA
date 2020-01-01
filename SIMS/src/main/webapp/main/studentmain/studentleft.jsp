@@ -91,7 +91,7 @@ $(function(){
                 <span><img src="images/leftico01.png" /></span>课程表
             </div>
             <ul class="menuson">
-                <li><cite></cite><a href="table?oper=showstutable&tableid=1" target="rightFrame">查看课程表</a><i></i></li>
+                <li><cite></cite><a href="table?oper=showstutable" target="rightFrame">查看课程表</a><i></i></li>
             </ul>
         </dd>
     </dl>

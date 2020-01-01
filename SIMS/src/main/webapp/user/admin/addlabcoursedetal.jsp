@@ -93,6 +93,8 @@
     </thead>
 
         <input type="hidden" name="oper" value="addlabsinfo"/>
+    <input type="hidden" name="labccnum" value="${labcourseinfo.cnum }">
+    <input type="hidden" name="labccname" value="${labcourseinfo.cname }">
 
 
 
@@ -143,7 +145,7 @@
                 <c:if test="${empty c}">
 
                        <%-- <td>${rowcount.count}行${linecount.count}列</td>--%>
-                    <td><input type="checkbox" name="like" value="${rowcount.count}-${linecount.count}" id="3" style="color: #00ee00">选择 </td>
+                    <td><input type="checkbox" name="classchoice" value="${rowcount.count}-${linecount.count}" id="3" ><a style="color: #00ee00">选择</a> </td>
                 </c:if>
 
                 <c:if test="${not empty c}">

@@ -7,7 +7,7 @@ import java.util.List;
  * 课程表类
  */
 public class TimeTable {
-    private  int tableid;
+    private String tableid;
     private String monday1;
     private String monday2;
     private String monday3;
@@ -37,11 +37,11 @@ public class TimeTable {
     public TimeTable() {
     }
 
-    public int getTableid() {
+    public String getTableid() {
         return tableid;
     }
 
-    public void setTableid(int tableid) {
+    public void setTableid(String tableid) {
         this.tableid = tableid;
     }
 
@@ -265,8 +265,8 @@ public class TimeTable {
 
     @Override
     public String toString() {
-        return "Timetable{" +
-                "tableid=" + tableid +
+        return "TimeTable{" +
+                "tableid='" + tableid + '\'' +
                 ", monday1='" + monday1 + '\'' +
                 ", monday2='" + monday2 + '\'' +
                 ", monday3='" + monday3 + '\'' +

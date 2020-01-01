@@ -2,6 +2,7 @@ import com.lwb.dao.LabClassScheduleDao;
 import com.lwb.dao.LabCourseDao;
 import com.lwb.dao.MsBoardDao;
 import com.lwb.dao.TimeTableDao;
+import com.lwb.pojo.ClassRepeatException;
 import com.lwb.pojo.LabClassSchedule;
 import com.lwb.pojo.LabCourse;
 import com.lwb.pojo.TimeTable;
@@ -56,7 +57,7 @@ public class ScheduleTest {
     @Test
     public void testFindById(){
         LabClassSchedule labschedule = lcsd.findScheduleByLcnum("5003005X");
-        TimeTable timetable = tabledao.findTableById(1);
+        TimeTable timetable = tabledao.findTableById("201716040224");
         System.out.println(labschedule);
         System.out.println(timetable);
 
@@ -115,11 +116,11 @@ public class ScheduleTest {
     public void testdoScheduleToTimetable(){
         LabClassSchedule labschedule = lcsd.findScheduleByLcnum("5003005X");
         System.out.println(labschedule);
-        TimeTable timeTable = tabledao.findTableById(1);
+        TimeTable timeTable = tabledao.findTableById("201716040224");
         ScheduleService scheduleService = new ScheduleServiceImpl();
         System.out.println("更新前:");
         System.out.println(timeTable);
-        scheduleService.doScheduleToTimetable(labschedule);
+       // scheduleService.doLabScheduleToTimetable(labschedule,"201716040224");
 
 
     }
@@ -128,8 +129,13 @@ public class ScheduleTest {
 
     @Test
     public void testLabCourse(){
-        LabCourse labCourse = labcoursedao.findLabCourseByCnum("5003005");
-        System.out.println(labCourse);
+        ScheduleService scheduleService = new ScheduleServiceImpl();
+        try {
+            scheduleService.initTimeTable();
+        } catch (ClassRepeatException e) {
+            System.out.println("存在冲突课程");
+            e.printStackTrace();
+        }
 
     }
 

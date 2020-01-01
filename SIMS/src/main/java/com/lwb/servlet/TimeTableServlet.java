@@ -1,8 +1,6 @@
 package com.lwb.servlet;
 
-import com.lwb.pojo.Course;
-import com.lwb.pojo.Lab;
-import com.lwb.pojo.TimeTable;
+import com.lwb.pojo.*;
 import com.lwb.service.ScheduleService;
 import com.lwb.service.UserService;
 import com.lwb.service.impl.ScheduleServiceImpl;
@@ -39,9 +37,7 @@ public class TimeTableServlet extends HttpServlet {
         }else if(oper.equals("addlabcourse")){
             addLabCourse(req,resp);
         }else if(oper.equals("addlabsinfo")){
-
-            String s = req.getParameter("labroom");
-            System.out.println(s);
+            addLabCourseinfo(req,resp);
         }else{
             System.out.println("未找到操作符:" + oper);
         }
@@ -49,8 +45,8 @@ public class TimeTableServlet extends HttpServlet {
 
     private void showStuTable(HttpServletRequest req, HttpServletResponse resp) {
         HttpSession hs = req.getSession();
-        String tableid = req.getParameter("tableid");
-        List<List<String>> table = us.getStuTable(Integer.parseInt(tableid));
+        String uid = (String) hs.getAttribute("userid");
+        List<List<String>> table = ss.getStuTable(uid);
        if(null != table){
            hs.setAttribute("stutable",table);
            try {
@@ -86,7 +82,7 @@ public class TimeTableServlet extends HttpServlet {
         course.setCname(req.getParameter("cname"));
 
         /** 获取课程表*/
-        List<List<String>> table = us.getStuTable(1);
+        List<List<String>> table = ss.getStuTable("201716040224");
         List<Lab> labs = ss.findAllLab();
         if(table != null){
             hs.setAttribute("addlabcoursetabletemp",table);
@@ -104,6 +100,49 @@ public class TimeTableServlet extends HttpServlet {
 
 
     }
+
+    private void addLabCourseinfo(HttpServletRequest req, HttpServletResponse resp) {
+        String [] choices = req.getParameterValues("classchoice");
+        HttpSession hs = req.getSession();
+        LabClassSchedule labClassSchedule = new LabClassSchedule();
+        LabCourse labCourse = new LabCourse();
+        Course course = new Course();
+
+        String labccnum = req.getParameter("labccnum");         //对应课程号
+        String labccname = req.getParameter("labccname");        //对应课程名
+        String labcname = req.getParameter("labcname");         //实验名称
+        String labroom = req.getParameter("labroom");
+
+        course.setCnum(labccnum);
+        course.setCislabcourse(1);
+        System.out.println(course);
+        System.out.println("setCislabcourse:" + course.getCislabcourse());
+
+
+        labCourse.setLcnum(labccnum+"X");
+        labCourse.setLcname(labcname);
+        labCourse.setLcccname(labccname);
+        labCourse.setLcccnum(labccnum);
+        labCourse.setLcclassroomnumber(labroom);
+
+
+        System.out.println(labCourse);
+
+        labClassSchedule.setLcnum(labccnum+"X");
+        labClassSchedule.setLcname(labcname);
+
+
+        System.out.println(labClassSchedule);
+
+
+
+        for(String s :choices){
+            System.out.println(s);
+        }
+
+
+    }
+
 
 
 

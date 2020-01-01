@@ -158,11 +158,6 @@ public class UserServiceImpl implements UserService {
         return msboarddao.updatemessage(msboard);
     }
 
-    @Override
-    public List<List<String>> getStuTable(int tableid) {
-        TimeTable timetable = tabledao.findTableById(tableid);
-        List<List<String>> table = timetable.getTable();
-        return table;
-    }
+
 
 }

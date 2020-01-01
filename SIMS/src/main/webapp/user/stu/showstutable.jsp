@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
          pageEncoding="utf-8"%>
-<%@ page import="java.util.*, com.lwb.pojo.*" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
     String path = request.getContextPath();
@@ -47,8 +46,8 @@
     <span>位置：</span>
     <ul class="placeul">
         <li><a href="javascript:;">首页</a></li>
-        <li><a href="javascript:;">留言板</a></li>
-        <li><a href="javascript:;">查看留言板</a></li>
+        <li><a href="javascript:;">课程表</a></li>
+        <li><a href="javascript:;">查看课程表</a></li>
     </ul>
 </div>
 
@@ -71,7 +70,7 @@
     <c:forEach items="${stutable }" var="t" varStatus="count">
 
         <tr>
-            <td>第${count.count}节</td>
+            <td><b>第${count.count}节</b></td>
         <c:forEach items="${t }" var="c">
 
                 <td>${c}</td>

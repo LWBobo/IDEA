@@ -136,5 +136,5 @@ public interface UserService {
      */
     int updateMessage(MsBoard msboard);
 
-    List<List<String>> getStuTable(int tableid);
+
 }
