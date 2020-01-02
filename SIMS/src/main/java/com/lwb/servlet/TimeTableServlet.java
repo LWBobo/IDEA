@@ -38,6 +38,8 @@ public class TimeTableServlet extends HttpServlet {
             addLabCourse(req,resp);
         }else if(oper.equals("addlabsinfo")){
             addLabCourseinfo(req,resp);
+        }else if(oper.equals("dellabcourse")){
+            delLabCourse(req,resp);
         }else if(oper.equals("showadmintable")){
             showAdminTable(req,resp);
         }else{
@@ -63,17 +65,21 @@ public class TimeTableServlet extends HttpServlet {
  private void showAdminTable(HttpServletRequest req, HttpServletResponse resp) {
         HttpSession hs = req.getSession();
         String uid = (String) hs.getAttribute("userid");
-        List<List<String>> table = ss.getStuTable(uid);
-       if(null != table){
-           hs.setAttribute("admintable",table);
-           try {
-               resp.sendRedirect("user/admin/showadmintable.jsp");
-               logger.debug("管理员查看课表");
-               return;
-           } catch (IOException e) {
-               e.printStackTrace();
-           }
-       }
+        int index = ss.initadminTimeTable(uid);
+        if(index == 1){
+
+            List<List<String>> table = ss.getStuTable(uid);
+            if(null != table){
+                hs.setAttribute("admintable",table);
+                try {
+                    resp.sendRedirect("user/admin/showadmintable.jsp");
+                    logger.debug("管理员查看课表");
+                    return;
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 
     private void showAllCourseWithLabCourse(HttpServletRequest req, HttpServletResponse resp) {
@@ -94,17 +100,21 @@ public class TimeTableServlet extends HttpServlet {
 
     private void addLabCourse(HttpServletRequest req, HttpServletResponse resp) {
         HttpSession hs = req.getSession();
+        String uid = (String) hs.getAttribute("userid");
         Course course = new Course();
         course.setCnum(req.getParameter("cnum"));
         course.setCname(req.getParameter("cname"));
 
         /** 获取课程表*/
-        List<List<String>> table = ss.getStuTable("1001");
+        List<List<String>> table = ss.getStuTable(uid);
         List<Lab> labs = ss.findAllLab();
+        List<Course> courses = ss.findAllCourseWithLabCourse();
         if(table != null){
             hs.setAttribute("addlabcoursetabletemp",table);
         }if(labs != null){
             hs.setAttribute("alllab",labs);
+        }if(courses != null){
+            hs.setAttribute("coursewithlabcourse",courses);
         }
 
         hs.setAttribute("labcourseinfo",course);
@@ -114,6 +124,39 @@ public class TimeTableServlet extends HttpServlet {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+
+    }
+
+
+ private void delLabCourse(HttpServletRequest req, HttpServletResponse resp) {
+        HttpSession hs = req.getSession();
+        String uid = (String) hs.getAttribute("userid");
+        String cnum = req.getParameter("cnum");
+
+
+
+        int index = ss.delLabCourseFromTable(cnum,uid);
+        if(index == 1){  //若执行成功
+            List<List<String>> table = ss.getStuTable(uid);
+            List<Course> courses = ss.findAllCourseWithLabCourse();
+            if(null != table){
+                hs.setAttribute("admintable",table);
+                if(null != courses){
+                    hs.setAttribute("coursewithlabcourse",courses);
+
+                }
+                try {
+                    resp.sendRedirect("user/admin/showadmintable.jsp");
+                    return;
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
+
+
 
 
     }
@@ -184,14 +227,18 @@ public class TimeTableServlet extends HttpServlet {
         if(index == 1){//添加实验课程成功
 
             String uid = (String) hs.getAttribute("userid");
-            List<List<String>> table = ss.getStuTable(uid);
-            if(null != table){
-                hs.setAttribute("admintable",table);
-                try {
-                    resp.sendRedirect("user/admin/showadmintable.jsp");
-                    return;
-                } catch (IOException e) {
-                    e.printStackTrace();
+            int index1 = ss.initadminTimeTable(uid);
+            if(index1 == 1){
+
+                List<List<String>> table = ss.getStuTable(uid);
+                if(null != table){
+                    hs.setAttribute("admintable",table);
+                    try {
+                        resp.sendRedirect("user/admin/showadmintable.jsp");
+                        return;
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }

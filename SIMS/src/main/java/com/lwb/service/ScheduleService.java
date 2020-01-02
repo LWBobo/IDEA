@@ -43,7 +43,7 @@ public interface ScheduleService {
     /**
      * 初始化管理员看到的课表，也就是总课表
      */
-    int initadminTimeTable();
+    int initadminTimeTable(String uid);
 
     /**
      * 根据学号获取学生课表
@@ -65,6 +65,22 @@ public interface ScheduleService {
      * @return
      */
     int insertLabClassSchedule(LabClassSchedule labClassSchedule);
+
+    /**
+     * 根据实验课程号删除实验课程
+     * @param lcnum
+     * @return
+     */
+    int delLabCourse(String lcnum);
+
+    /**
+     * 根据实验课程号删除实验课程安排表
+     * @param lcnum
+     * @return
+     */
+    int delLabClassSchedule(String lcnum);
+
+    int delLabCourseFromTable(String cnum , String adminNum);
 
 
     int addLabScheduleAndUpdateTimetable(Course course,LabCourse labCourse,LabClassSchedule labClassSchedule);

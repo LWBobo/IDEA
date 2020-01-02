@@ -14,7 +14,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.sql.Time;
 import java.util.List;
 
 public class ScheduleServiceImpl implements ScheduleService {
@@ -389,8 +388,8 @@ public class ScheduleServiceImpl implements ScheduleService {
 
             }
 
-            System.out.println(s);
-            System.out.println(timeTable);
+//            System.out.println(s);
+//            System.out.println(timeTable);
 
 
         }
@@ -398,21 +397,21 @@ public class ScheduleServiceImpl implements ScheduleService {
     }
 
     @Override
-    public int initadminTimeTable() {
+    public int initadminTimeTable(String uid) {
         List<ClassSchedule> schedules = classscheduledao.findAll();
 
 
-            TimeTable timeTable = tabledao.findTableById("1001");
-            TimeTable tablecopy = tabledao.findTableById("1001");   //一份备用  避免删除后出现错误造成课表丢失
-            tabledao.delTimeTable("1001");   //将存在的课表删除
+            TimeTable timeTable = tabledao.findTableById(uid);
+            TimeTable tablecopy = tabledao.findTableById(uid);   //一份备用  避免删除后出现错误造成课表丢失
+            tabledao.delTimeTable(uid);   //将存在的课表删除
 
         List<Course> courses = us.showAllCourse();
         TimeTable table = new TimeTable();
-        table.setTableid("1001");
+        table.setTableid(uid);
         for (Course c : courses){
             for(ClassSchedule classschedule : schedules){
-                if(c.getCnum().equals(classschedule.getCnum())){ //如果学生所选课程与课程排课表匹配,将更新课表
-                    TimeTable timeTable1temp = doScheduleToTimetable(classschedule,"1001",table);
+                if(c.getCnum().equals(classschedule.getCnum())){ //如果选课程与课程排课表匹配,将更新课表
+                    TimeTable timeTable1temp = doScheduleToTimetable(classschedule,uid,table);
                     if(timeTable1temp != null ){
                         table = timeTable1temp;
                     }else{
@@ -421,7 +420,7 @@ public class ScheduleServiceImpl implements ScheduleService {
                     }
                     if(c.getCislabcourse() == 1){  //如果该课程拥有实验课
                         LabClassSchedule labClassSchedule = labclasssdao.findScheduleByLcnum(c.getCnum() + "X");
-                        TimeTable tabletemp = doLabScheduleToTimetable(labClassSchedule,"1001",table);
+                        TimeTable tabletemp = doLabScheduleToTimetable(labClassSchedule,uid,table);
                         if(tabletemp != null){//如果实验课程没有冲突,成功排课
                             table = tabletemp;
 
@@ -506,6 +505,7 @@ public class ScheduleServiceImpl implements ScheduleService {
 
     @Override
     public List<List<String>> getStuTable(String tableid) {
+    //    System.out.println( "impl: "+tableid);
         TimeTable timetable = tabledao.findTableById(tableid);
         List<List<String>> table = timetable.getTable();
         return table;
@@ -519,6 +519,50 @@ public class ScheduleServiceImpl implements ScheduleService {
     @Override
     public int insertLabClassSchedule(LabClassSchedule labClassSchedule) {
         return labclasssdao.addLabClassSchedule(labClassSchedule);
+    }
+
+    @Override
+    public int delLabCourse(String lcnum) {
+        return labcoursedao.delLabCourse(lcnum);
+    }
+
+    @Override
+    public int delLabClassSchedule(String lcnum) {
+        return labclasssdao.delLabClassSchedule(lcnum);
+    }
+
+    @Override
+    public int delLabCourseFromTable(String cnum ,String adminNum) {
+
+        String lcnum = cnum +"X";
+        Course course = new Course();
+        course.setCnum(cnum);
+        course.setCislabcourse(0);
+
+        int index1 = delLabClassSchedule(lcnum);   //先删除实验课安排表
+        int index2 = delLabCourse(lcnum);        //再删除实验课程表
+        int index3 = us.updateCourseInfo(course);       //将课程的是否有实验课字段置为0
+
+        if(index1 ==1 && index2 == 1 && index3 == 1){   //操作执行成功
+            try {
+                initTimeTable();
+            } catch (ClassRepeatException e) {
+                e.printStackTrace();
+                System.err.println("课程存在冲突");
+                return 0;
+            }
+            int index4 = initadminTimeTable(adminNum);
+           if(index4 == 1){
+               return 1;
+           }
+           return 0;
+
+        }else{
+            sqlSession.rollback();
+            return 0;
+        }
+
+
     }
 
     @Override

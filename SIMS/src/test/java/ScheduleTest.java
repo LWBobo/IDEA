@@ -143,7 +143,7 @@ public class ScheduleTest {
         ScheduleService scheduleService = new ScheduleServiceImpl();
 
 
-        int index = scheduleService.initadminTimeTable();
+        int index = scheduleService.initadminTimeTable("1001");
         if(index == 1){
             TimeTable timeTable = tabledao.findTableById("1001");
             System.out.println(timeTable);
