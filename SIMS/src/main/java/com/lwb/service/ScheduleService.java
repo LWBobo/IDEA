@@ -39,10 +39,33 @@ public interface ScheduleService {
      */
     void initTimeTable() throws ClassRepeatException;
 
+
+    /**
+     * 初始化管理员看到的课表，也就是总课表
+     */
+    int initadminTimeTable();
+
     /**
      * 根据学号获取学生课表
      * @param tableid
      * @return
      */
     List<List<String>> getStuTable(String tableid);
+
+    /**
+     * 添加实验课程
+     * @param labCourse
+     * @return
+     */
+    int insertLabCourse(LabCourse labCourse);
+
+    /**
+     * 添加实验课安排表
+     * @param labClassSchedule
+     * @return
+     */
+    int insertLabClassSchedule(LabClassSchedule labClassSchedule);
+
+
+    int addLabScheduleAndUpdateTimetable(Course course,LabCourse labCourse,LabClassSchedule labClassSchedule);
 }

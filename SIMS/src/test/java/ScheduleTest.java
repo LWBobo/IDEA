@@ -138,9 +138,56 @@ public class ScheduleTest {
         }
 
     }
+    @Test
+    public void testLabCourse111(){
+        ScheduleService scheduleService = new ScheduleServiceImpl();
+
+
+        int index = scheduleService.initadminTimeTable();
+        if(index == 1){
+            TimeTable timeTable = tabledao.findTableById("1001");
+            System.out.println(timeTable);
+        }else{
+            System.out.println("出现课程冲突");
+        }
+
+
+    }
 
 
 
+    @Test
+    public void testaddlabcourseschedule(){
+
+      // lcsd.delLabClassSchedule("5003003X");
+      //  labcoursedao.delLabCourse("5003003X");
+
+        LabClassSchedule labClassSchedule = new LabClassSchedule();
+        LabCourse labCourse = new LabCourse();
+        labCourse.setLcnum("5003003X");
+        labCourse.setLcname("插入测试");
+        labCourse.setLcccnum("5003003");
+        labCourse.setLcccname("离散数学");
+        labCourse.setLcclassroomnumber("6308");
+
+
+
+        labClassSchedule.setFriday(5);
+        labClassSchedule.setTuesday(3);
+        labClassSchedule.setLcnum("5003003X");
+        labClassSchedule.setLcname("插入测试");
+        int indexx = labcoursedao.insertLabCourse(labCourse);
+        if(indexx == 1){
+            System.out.println("实验课插入成功");
+        }
+        int index = lcsd.addLabClassSchedule(labClassSchedule);
+        if(index == 1){
+            System.out.println("实验课安排插入成功");
+        }
+
+
+
+    }
 
 
 

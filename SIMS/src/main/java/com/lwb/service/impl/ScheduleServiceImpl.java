@@ -27,6 +27,7 @@ public class ScheduleServiceImpl implements ScheduleService {
     private LabDao labdao;
     private UserService us;
     private ClassScheduleDao classscheduledao;
+    private LabCourseDao labcoursedao;
 
     public ScheduleServiceImpl(){
         //1.读取配置文件，生成字节输入流
@@ -46,6 +47,7 @@ public class ScheduleServiceImpl implements ScheduleService {
         labdao = sqlSession.getMapper(LabDao.class);
         classscheduledao = sqlSession.getMapper(ClassScheduleDao.class);
         us = new UserServiceImpl();
+        labcoursedao = sqlSession.getMapper(LabCourseDao.class);
     }
 
 
@@ -395,6 +397,57 @@ public class ScheduleServiceImpl implements ScheduleService {
 
     }
 
+    @Override
+    public int initadminTimeTable() {
+        List<ClassSchedule> schedules = classscheduledao.findAll();
+
+
+            TimeTable timeTable = tabledao.findTableById("1001");
+            TimeTable tablecopy = tabledao.findTableById("1001");   //一份备用  避免删除后出现错误造成课表丢失
+            tabledao.delTimeTable("1001");   //将存在的课表删除
+
+        List<Course> courses = us.showAllCourse();
+        TimeTable table = new TimeTable();
+        table.setTableid("1001");
+        for (Course c : courses){
+            for(ClassSchedule classschedule : schedules){
+                if(c.getCnum().equals(classschedule.getCnum())){ //如果学生所选课程与课程排课表匹配,将更新课表
+                    TimeTable timeTable1temp = doScheduleToTimetable(classschedule,"1001",table);
+                    if(timeTable1temp != null ){
+                        table = timeTable1temp;
+                    }else{
+                        tabledao.insertTimeTable(tablecopy);  //如果发生异常,执行返回操作
+                        return -1;
+                    }
+                    if(c.getCislabcourse() == 1){  //如果该课程拥有实验课
+                        LabClassSchedule labClassSchedule = labclasssdao.findScheduleByLcnum(c.getCnum() + "X");
+                        TimeTable tabletemp = doLabScheduleToTimetable(labClassSchedule,"1001",table);
+                        if(tabletemp != null){//如果实验课程没有冲突,成功排课
+                            table = tabletemp;
+
+                        }else{
+                            tabledao.insertTimeTable(tablecopy);    //如果发生异常,执行返回操作
+                            return -1;
+                        }
+                    }
+
+                }
+            }
+        }
+        timeTable = table;
+
+
+
+        int index2 = tabledao.insertTimeTable(timeTable);
+        if(index2 == 1){
+            System.out.println("插入成功!!");
+            return 1;
+        }
+
+
+    return 0;
+    }
+
 
     /**
      * 使用反射动态获取课表信息
@@ -456,6 +509,39 @@ public class ScheduleServiceImpl implements ScheduleService {
         TimeTable timetable = tabledao.findTableById(tableid);
         List<List<String>> table = timetable.getTable();
         return table;
+    }
+
+    @Override
+    public int insertLabCourse(LabCourse labCourse) {
+        return labcoursedao.insertLabCourse(labCourse);
+    }
+
+    @Override
+    public int insertLabClassSchedule(LabClassSchedule labClassSchedule) {
+        return labclasssdao.addLabClassSchedule(labClassSchedule);
+    }
+
+    @Override
+    public int addLabScheduleAndUpdateTimetable(Course course, LabCourse labCourse, LabClassSchedule labClassSchedule) {
+        int courseindex = us.updateCourseInfo(course);
+        int labcourseindex = insertLabCourse(labCourse);
+        int labclassscheduleindex = insertLabClassSchedule(labClassSchedule);
+
+        if(courseindex == 1 && labcourseindex == 1 && labclassscheduleindex == 1){ //如果三个值都插入成功
+            try {
+                initTimeTable();
+            } catch (ClassRepeatException e) {
+                e.printStackTrace();
+                return -1;
+            }
+            return 1;
+
+        }else{
+            sqlSession.rollback();  // 如果出现异常,进行回滚
+            return -1;
+        }
+
+
     }
 
 }

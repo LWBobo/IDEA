@@ -38,6 +38,8 @@ public class TimeTableServlet extends HttpServlet {
             addLabCourse(req,resp);
         }else if(oper.equals("addlabsinfo")){
             addLabCourseinfo(req,resp);
+        }else if(oper.equals("showadmintable")){
+            showAdminTable(req,resp);
         }else{
             System.out.println("未找到操作符:" + oper);
         }
@@ -52,6 +54,21 @@ public class TimeTableServlet extends HttpServlet {
            try {
                resp.sendRedirect("user/stu/showstutable.jsp");
                logger.debug("学生用户查看课表");
+               return;
+           } catch (IOException e) {
+               e.printStackTrace();
+           }
+       }
+    }
+ private void showAdminTable(HttpServletRequest req, HttpServletResponse resp) {
+        HttpSession hs = req.getSession();
+        String uid = (String) hs.getAttribute("userid");
+        List<List<String>> table = ss.getStuTable(uid);
+       if(null != table){
+           hs.setAttribute("admintable",table);
+           try {
+               resp.sendRedirect("user/admin/showadmintable.jsp");
+               logger.debug("管理员查看课表");
                return;
            } catch (IOException e) {
                e.printStackTrace();
@@ -82,7 +99,7 @@ public class TimeTableServlet extends HttpServlet {
         course.setCname(req.getParameter("cname"));
 
         /** 获取课程表*/
-        List<List<String>> table = ss.getStuTable("201716040224");
+        List<List<String>> table = ss.getStuTable("1001");
         List<Lab> labs = ss.findAllLab();
         if(table != null){
             hs.setAttribute("addlabcoursetabletemp",table);
@@ -115,8 +132,8 @@ public class TimeTableServlet extends HttpServlet {
 
         course.setCnum(labccnum);
         course.setCislabcourse(1);
-        System.out.println(course);
-        System.out.println("setCislabcourse:" + course.getCislabcourse());
+   //     System.out.println(course);
+  //      System.out.println("setCislabcourse:" + course.getCislabcourse());
 
 
         labCourse.setLcnum(labccnum+"X");
@@ -126,21 +143,75 @@ public class TimeTableServlet extends HttpServlet {
         labCourse.setLcclassroomnumber(labroom);
 
 
-        System.out.println(labCourse);
+    //    System.out.println(labCourse);
 
         labClassSchedule.setLcnum(labccnum+"X");
         labClassSchedule.setLcname(labcname);
 
-
-        System.out.println(labClassSchedule);
-
-
-
+        int monday=0;int tuesday=0;int wednesday = 0;int thursday = 0;int friday = 0;
         for(String s :choices){
-            System.out.println(s);
+     //       System.out.println(s);
+            String []s1 = s.split("-");
+    //        System.out.println("周" + s1[1] + "第" + s1[0]+ "节");
+            if(s1[1].equals("1")){
+                int num = power(2,Integer.parseInt(s1[0])-1);
+                monday += num;
+            }else if(s1[1].equals("2")){
+                int num = power(2,Integer.parseInt(s1[0])-1);
+                tuesday += num;
+
+            }else if(s1[1].equals("3")){
+                int num = power(2,Integer.parseInt(s1[0])-1);
+                wednesday += num;
+
+            }else if(s1[1].equals("4")){
+                int num = power(2,Integer.parseInt(s1[0])-1);
+                thursday += num;
+
+            }else if(s1[1].equals("5")){
+                int num = power(2,Integer.parseInt(s1[0])-1);
+                friday += num;
+
+            }
+        }
+        labClassSchedule.setMonday(monday);
+        labClassSchedule.setTuesday(tuesday);
+        labClassSchedule.setWednesday(wednesday);
+        labClassSchedule.setThursday(thursday);
+        labClassSchedule.setFriday(friday);
+  //      System.out.println(labClassSchedule);
+        int index = ss.addLabScheduleAndUpdateTimetable(course,labCourse,labClassSchedule);
+        if(index == 1){//添加实验课程成功
+
+            String uid = (String) hs.getAttribute("userid");
+            List<List<String>> table = ss.getStuTable(uid);
+            if(null != table){
+                hs.setAttribute("admintable",table);
+                try {
+                    resp.sendRedirect("user/admin/showadmintable.jsp");
+                    return;
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
 
 
+
+    }
+
+
+    /**
+     * 进行一个次方的运算，处理数据
+     * @param a
+     * @param b
+     * @return
+     */
+    public static int power(int a , int b) {
+        int power = 1;
+        for (int c = 0; c < b; c++)
+            power *= a;
+        return power;
     }
 
 

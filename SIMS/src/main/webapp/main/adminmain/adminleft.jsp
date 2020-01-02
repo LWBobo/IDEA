@@ -126,6 +126,7 @@ $(function(){
             </div>
             <ul class="menuson">
                 <li><cite></cite><a href="table?oper=showcoursewithlabcourse" target="rightFrame">查看课程信息</a><i></i></li>
+                <li><cite></cite><a href="table?oper=showadmintable" target="rightFrame">查看课程表</a><i></i></li>
                 <li><cite></cite><a href="user/admin/addlabcourse.jsp" target="rightFrame">添加实验课</a><i></i></li>
             </ul>
         </dd>
