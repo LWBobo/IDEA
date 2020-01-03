@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "TimeTableServlet", urlPatterns = "/table")
@@ -42,6 +43,10 @@ public class TimeTableServlet extends HttpServlet {
             delLabCourse(req,resp);
         }else if(oper.equals("showadmintable")){
             showAdminTable(req,resp);
+        }else if(oper.equals("showteatable")){
+            showTeaTable(req,resp);
+        }else if(oper.equals("showalltable")){
+            showAllTable(req,resp);
         }else{
             System.out.println("未找到操作符:" + oper);
         }
@@ -74,6 +79,56 @@ public class TimeTableServlet extends HttpServlet {
                 try {
                     resp.sendRedirect("user/admin/showadmintable.jsp");
                     logger.debug("管理员查看课表");
+                    return;
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+
+    /**
+     * 教师查看所有的课表
+     * @param req
+     * @param resp
+     */
+    private void showAllTable(HttpServletRequest req, HttpServletResponse resp) {
+        HttpSession hs = req.getSession();
+        String uid = "1001";
+        String teanum = (String) hs.getAttribute("userid");
+        String teacname = ss.getTeaCname(teanum);
+        System.out.println(teacname);
+        int index = ss.initadminTimeTable(uid);
+        if(index == 1){
+
+            List<List<String>> table = ss.getStuTable(uid);
+            if(null != table){
+                hs.setAttribute("alltable",table);
+                hs.setAttribute("teacname",teacname);
+                try {
+                    resp.sendRedirect("user/tea/showalltable.jsp");
+                    logger.debug("教师查看总体课表");
+                    return;
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+ private void showTeaTable(HttpServletRequest req, HttpServletResponse resp) {
+        HttpSession hs = req.getSession();
+        String uid = (String) hs.getAttribute("userid");
+        int index = ss.initTeaTable(uid);
+        if(index == 1){
+
+            List<List<String>> table = ss.getStuTable(uid);
+            if(null != table){
+                hs.setAttribute("teatable",table);
+                try {
+                    resp.sendRedirect("user/tea/showteatable.jsp");
+                    logger.debug("教师" + uid + "查看课表");
                     return;
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -228,7 +283,8 @@ public class TimeTableServlet extends HttpServlet {
 
             String uid = (String) hs.getAttribute("userid");
             int index1 = ss.initadminTimeTable(uid);
-            if(index1 == 1){
+            int index2 = ss.initAllTeaTable();
+            if(index1 == 1 && index2 == 1){
 
                 List<List<String>> table = ss.getStuTable(uid);
                 if(null != table){

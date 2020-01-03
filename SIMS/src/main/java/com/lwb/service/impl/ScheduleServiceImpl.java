@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ScheduleServiceImpl implements ScheduleService {
@@ -58,6 +59,7 @@ public class ScheduleServiceImpl implements ScheduleService {
      */
     @Override
     public TimeTable doLabScheduleToTimetable(LabClassSchedule labClassSchedule, String uid ,TimeTable timetable) {
+        LabCourse labCourse = labcoursedao.findLabCourseByLcnum(labClassSchedule.getLcnum());
 
         if(labClassSchedule.getMonday() != 0){
             String str1 = ClassUtil.decimalToBinary(labClassSchedule.getMonday());
@@ -67,7 +69,7 @@ public class ScheduleServiceImpl implements ScheduleService {
 
                         Object obj = doget(timetable,"getMonday" + k);
                         if(obj == null){
-                            doset(timetable,"setMonday" + k,labClassSchedule.getLcname());
+                            doset(timetable,"setMonday" + k,labClassSchedule.getLcname() + "-"+labCourse.getLcclassroomnumber());
 
 
                         }else {   //如果这节课已经被安排过其他的课程
@@ -87,7 +89,7 @@ public class ScheduleServiceImpl implements ScheduleService {
 
                     Object obj = doget(timetable,"getTuesday" + k);
                     if(obj == null){
-                        doset(timetable,"setTuesday" + k,labClassSchedule.getLcname());
+                        doset(timetable,"setTuesday" + k,labClassSchedule.getLcname()+ "-"+labCourse.getLcclassroomnumber());
 
 
                     }else {   //如果这节课已经被安排过其他的课程
@@ -107,7 +109,7 @@ public class ScheduleServiceImpl implements ScheduleService {
 
                     Object obj = doget(timetable,"getWednesday" + k);
                     if(obj == null){
-                        doset(timetable,"setWednesday" + k,labClassSchedule.getLcname());
+                        doset(timetable,"setWednesday" + k,labClassSchedule.getLcname()+ "-"+labCourse.getLcclassroomnumber());
 
 
                     }else {   //如果这节课已经被安排过其他的课程
@@ -127,7 +129,7 @@ public class ScheduleServiceImpl implements ScheduleService {
 
                     Object obj = doget(timetable,"getThursday" + k);
                     if(obj == null){
-                        doset(timetable,"setThursday" + k,labClassSchedule.getLcname());
+                        doset(timetable,"setThursday" + k,labClassSchedule.getLcname()+ "-"+labCourse.getLcclassroomnumber());
 
 
                     }else {   //如果这节课已经被安排过其他的课程
@@ -148,7 +150,7 @@ public class ScheduleServiceImpl implements ScheduleService {
 
                     Object obj = doget(timetable,"getFriday" + k);
                     if(obj == null){
-                        doset(timetable,"setFriday" + k,labClassSchedule.getLcname());
+                        doset(timetable,"setFriday" + k,labClassSchedule.getLcname()+ "-"+labCourse.getLcclassroomnumber());
 
 
                     }else {   //如果这节课已经被安排过其他的课程
@@ -447,6 +449,118 @@ public class ScheduleServiceImpl implements ScheduleService {
     return 0;
     }
 
+    @Override
+    public int initAllTeaTable() {
+       List<Teacher> teachers = us.showAllTeacherWithCourse();
+        List<ClassSchedule> schedules = classscheduledao.findAll();
+       for(Teacher t : teachers){
+           List<Course> courses = t.getCourses();
+           String uid = t.getTnum();
+           TimeTable timetable = tabledao.findTableById(uid);
+           TimeTable tablecopy = tabledao.findTableById(uid);   //一份备用  避免删除后出现错误造成课表丢失
+           if(timetable != null){  //已经存在该教师的课表
+               tabledao.delTimeTable(t.getTnum());   //将存在的课表删除
+           }else{  //不存在该教师的课表
+               TimeTable table = new TimeTable();
+               table.setTableid(t.getTnum());
+
+               for(Course c : courses){
+                   for(ClassSchedule classschedule : schedules){
+                       if(c.getCnum().equals(classschedule.getCnum())){ //如果选课程与课程排课表匹配,将更新课表
+                           TimeTable timeTable1temp = doScheduleToTimetable(classschedule,uid,table);
+                           if(timeTable1temp != null ){
+                               table = timeTable1temp;
+                           }else{
+                               tabledao.insertTimeTable(tablecopy);  //如果发生异常,执行返回操作
+                               return -1;
+                           }
+                           if(c.getCislabcourse() == 1){  //如果该课程拥有实验课
+                               LabClassSchedule labClassSchedule = labclasssdao.findScheduleByLcnum(c.getCnum() + "X");
+                               TimeTable tabletemp = doLabScheduleToTimetable(labClassSchedule,uid,table);
+                               if(tabletemp != null){//如果实验课程没有冲突,成功排课
+                                   table = tabletemp;
+
+                               }else{
+                                   tabledao.insertTimeTable(tablecopy);    //如果发生异常,执行返回操作
+                                   return -1;
+                               }
+                           }
+
+                       }
+                   }
+               }
+
+               timetable = table;
+
+           }
+
+
+           int index = tabledao.insertTimeTable(timetable);
+           if(index == 1){
+               System.out.println("插入成功!!");
+           }
+
+       }
+
+
+
+
+        return 1;
+    }
+
+    @Override
+    public int initTeaTable(String teanum) {
+        String uid = teanum;
+        List<ClassSchedule> schedules = classscheduledao.findAll();
+        Teacher teacher = us.getTeacher(uid);
+
+
+        TimeTable timeTable = tabledao.findTableById(uid);
+        TimeTable tablecopy = tabledao.findTableById(uid);   //一份备用  避免删除后出现错误造成课表丢失
+        tabledao.delTimeTable(uid);   //将存在的课表删除
+
+        List<Course> courses = teacher.getCourses();
+        TimeTable table = new TimeTable();
+        table.setTableid(uid);
+        for (Course c : courses){
+            for(ClassSchedule classschedule : schedules){
+                if(c.getCnum().equals(classschedule.getCnum())){ //如果选课程与课程排课表匹配,将更新课表
+                    TimeTable timeTable1temp = doScheduleToTimetable(classschedule,uid,table);
+                    if(timeTable1temp != null ){
+                        table = timeTable1temp;
+                    }else{
+                        tabledao.insertTimeTable(tablecopy);  //如果发生异常,执行返回操作
+                        return -1;
+                    }
+                    if(c.getCislabcourse() == 1){  //如果该课程拥有实验课
+                        LabClassSchedule labClassSchedule = labclasssdao.findScheduleByLcnum(c.getCnum() + "X");
+                        TimeTable tabletemp = doLabScheduleToTimetable(labClassSchedule,uid,table);
+                        if(tabletemp != null){//如果实验课程没有冲突,成功排课
+                            table = tabletemp;
+
+                        }else{
+                            tabledao.insertTimeTable(tablecopy);    //如果发生异常,执行返回操作
+                            return -1;
+                        }
+                    }
+
+                }
+            }
+        }
+        timeTable = table;
+
+
+
+        int index2 = tabledao.insertTimeTable(timeTable);
+        if(index2 == 1){
+            System.out.println("插入成功!!");
+            return 1;
+        }
+
+
+        return 0;
+    }
+
 
     /**
      * 使用反射动态获取课表信息
@@ -552,7 +666,8 @@ public class ScheduleServiceImpl implements ScheduleService {
                 return 0;
             }
             int index4 = initadminTimeTable(adminNum);
-           if(index4 == 1){
+            int index5 = initAllTeaTable();
+           if(index4 == 1 && index5 == 1){
                return 1;
            }
            return 0;
@@ -584,6 +699,29 @@ public class ScheduleServiceImpl implements ScheduleService {
             sqlSession.rollback();  // 如果出现异常,进行回滚
             return -1;
         }
+
+
+    }
+
+    @Override
+    public String getTeaCname(String teanum) {
+        Teacher teacher = us.getTeacher(teanum);
+        List<Course> teacourse = teacher.getCourses();
+       StringBuffer teacname = new StringBuffer();
+        List<ClassSchedule> classSchedules = classscheduledao.findAll();   //普通课程安排表
+        for(Course c : teacourse){
+            for(ClassSchedule c1 : classSchedules){
+                if(c.getCnum().equals(c1.getCnum())){//纪录下教师所教课程编号
+                    teacname.append(c1.getCname()+"-" + c1.getClassroomnum() + " ");
+                    if(c.getCislabcourse() == 1){
+                        LabCourse labCourse = labcoursedao.findLabCourseByCnum(c.getCnum());  //实验课程安排表
+                        teacname.append(labCourse.getLcname()+"-"+labCourse.getLcclassroomnumber() + " ");
+                    }
+                }
+            }
+        }
+
+        return teacname.toString();
 
 
     }

@@ -155,6 +155,22 @@ public class ScheduleTest {
     }
 
 
+@Test
+    public void testinitAlltimetable(){
+        ScheduleService scheduleService = new ScheduleServiceImpl();
+
+
+        int index = scheduleService.initAllTeaTable();
+        if(index == 1){
+            System.out.println("插入成功");
+        }else{
+            System.out.println("出现课程冲突");
+        }
+
+
+    }
+
+
 
     @Test
     public void testaddlabcourseschedule(){

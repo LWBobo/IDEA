@@ -45,6 +45,20 @@ public interface ScheduleService {
      */
     int initadminTimeTable(String uid);
 
+
+    /**
+     * 更新所有教师的课表
+     * @return
+     */
+    int initAllTeaTable();
+
+    /**
+     * 更新单个教师的课表
+     * @param teanum
+     * @return
+     */
+    int initTeaTable(String teanum);
+
     /**
      * 根据学号获取学生课表
      * @param tableid
@@ -84,4 +98,12 @@ public interface ScheduleService {
 
 
     int addLabScheduleAndUpdateTimetable(Course course,LabCourse labCourse,LabClassSchedule labClassSchedule);
+
+
+    /**
+     * 根据教师号获取教师所教课程名，与课程表对应
+     * @param teanum
+     * @return
+     */
+    String getTeaCname(String teanum);
 }

@@ -107,6 +107,16 @@ $(function(){
                 <li><cite></cite><a href="user/showmymsboard.jsp" target="rightFrame">管理我的留言</a><i></i></li>
             </ul>
         </dd>
+
+        <dd>
+            <div class="title">
+                <span><img src="images/leftico01.png" /></span>课程表
+            </div>
+            <ul class="menuson">
+                <li><cite></cite><a href="table?oper=showteatable" target="rightFrame">查看个人课程表</a><i></i></li>
+                <li><cite></cite><a href="table?oper=showalltable" target="rightFrame">查看总课程表</a><i></i></li>
+            </ul>
+        </dd>
     </dl>
 </body>
 </html>
