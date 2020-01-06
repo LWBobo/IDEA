@@ -54,7 +54,7 @@
     <ul class="placeul">
         <li><a href="javascript:;">首页</a></li>
         <li><a href="javascript:;">课程表</a></li>
-        <li><a href="javascript:;">查看课程表</a></li>
+        <li><a href="javascript:;">查看个人课程表</a></li>
     </ul>
 </div>
 
