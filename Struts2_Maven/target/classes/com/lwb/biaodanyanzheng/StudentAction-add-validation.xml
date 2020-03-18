@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC
+  		"-//Apache Struts//XWork Validator 1.0.3//EN"
+  		"http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+<validators>
+	<!--
+	 1.  private String username;//不能为空，去空字符串
+		 requiredstring 比 required 好一点，会自动去除空格
+	 -->
+	<validator type="requiredstring">
+		<param name="fieldName">username</param>
+		<message>用户名不能为空</message>
+	</validator>
+	
+	
+	<!--2.private int age;//18~100 
+	  1.表单的类型，会根据模型的属性类型去校验
+	 -->
+	 <validator type="int">
+	 	<param name="fieldName">age</param>
+	 	<param name="min">18</param>
+	 	<param name="max">100</param>
+	 	<message>年龄必须在18~100</message>
+	 </validator>
+	
+	
+	<!-- 3.private String email;//正确邮箱格式-->
+	<validator type="requiredstring">
+		<param name="fieldName">email</param>
+		<message>邮箱不能为空</message>
+	</validator>
+	 <validator type="email">
+	 	<param name="fieldName">email</param>
+	 	<message>邮箱格式不正确</message>
+	 </validator>
+		 
+	 
+	 <!--4. private String password;//3~8 -->
+	 <validator type="requiredstring">
+		<param name="fieldName">password</param>
+		<message>密码不能为空</message>
+	</validator>
+	<validator type="stringlength">
+		<param name="fieldName">password</param>
+		<param name="minLength">3</param>
+		<param name="maxLength">8</param>
+		<message>密码长度为3~8</message>
+	</validator>
+	
+	<!-- 5.private String repassword;//与密码一至 -->
+	<validator type="expression">
+		<param name="expression">
+			<![CDATA[ password == repassword]]>
+		</param>
+		<message>密码不一至</message>
+	</validator>
+	
+	<!-- 6.private int score;//必须是自然数
+		regex :正则
+	 -->
+	<!-- <validator type="regex">
+		<param name="fieldName">score</param>
+		<param name="regexExpression">\d+</param>
+		<message>分数必须要数字</message>
+	</validator> -->
+	
+	
+	<!-- 	private String url;//必须是一个路径 http:// -->
+	<validator type="url">
+		<param name="fieldName">url</param>
+		<message>URL格式不合法，以 http://开头</message>
+	</validator>
+	
+	<!-- 	private String gender;//性别必填，只有男和女 -->
+	<validator type="required">
+		<param name="fieldName">gender</param>
+		<message>性别必选</message>
+	</validator>
+</validators>

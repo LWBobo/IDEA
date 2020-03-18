@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <!--配置国际化，使回显信息显示中文名-->
+    <constant name="struts.custom.i18n.resources" value="fileuploadmessage"></constant>
+
+    <!--配置文件上传大小  200M-->
+    <constant name="struts.multipart.maxSize" value="209715200" />
+
+    <package name="fileupload" extends="struts-default" namespace="/fileupload">
+        
+        <action name="upload" class="com.lwb.fileup_download.FileUploadAction" method="upload">
+            <interceptor-ref name="defaultStack">
+                <!--依赖注入，调用set方法,
+                  allowedTypes:写MIME类型【文件类型-image/png,image/jpeg,image/bmp】
+                  -->
+               <!--
+               <param name="fileUpload.allowedTypes">image/png,image/jpeg</param>
+               -->
+
+                <!--allowedExtensionsSet:写文件扩展名【.jpg,.png】
+						<param name="fileUpload.allowedExtensions">png,jpg</param>-->
+                <param name="fileUpload.allowedExtensions">png,CHM,gif,zip</param>
+            </interceptor-ref>
+            <result>/fileupload/uploadsuccess.jsp</result>
+            <result name="input">/fileupload/upload.jsp</result>
+        </action>
+
+    </package>
+
+
+    <package name="filedownload" extends="struts-default" namespace="/filedownload">
+
+        <action name="download" class="com.lwb.fileup_download.FileDownloadAction" method="download">
+            <!-- 以流的形式返回给客户端 -->
+            <result name="success" type="stream">
+                <!-- 输入流的名称 -->
+                <param name="inputName">inputStream</param>
+                <param name="contentDisposition">attachment;filename=${fileName}</param>
+                <param name="contentType">application/octet-stream</param>
+            </result>
+
+        </action>
+
+    </package>
+</struts>

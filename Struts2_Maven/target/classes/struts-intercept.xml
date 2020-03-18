@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+
+    <!--拦截器配置-->
+
+    <package name="p200" extends="struts-default" namespace="/intercept">
+        <interceptors>
+            <interceptor name="myintercept" class="com.lwb.intercept.Myintercept" />
+        </interceptors>
+
+
+        <action name="action1" class="com.lwb.intercept.MyAction1" method="action1">
+            <!-- 配置拦截器的引用
+                 注意：如果在action配置了拦截器，那么默认的拦截器就不失效
+                      也就是说参数注入拦截器失效 -->
+            <interceptor-ref name="myintercept" />
+                    <result name="success">/success.jsp</result>
+        </action>
+
+    </package>
+
+    <package name="p201" extends="struts-default" namespace="/intercept" >
+        <!-- 声明拦截器 -->
+        <interceptors>
+            <!-- 声明登录校验的拦截器 -->
+            <interceptor name="checkLoginInterceptor" class="com.lwb.intercept.login.CheckLoginInterceptor">
+                <!--不需要拦截login方法-->
+               <!-- <param name="excludeMethods" >login</param>-->
+            </interceptor>
+            <interceptor-stack name="myDefaultStack">
+                <interceptor-ref name="checkLoginInterceptor" />
+                <!--默认的拦截器-->
+                <interceptor-ref name="defaultStack" />
+            </interceptor-stack>
+        </interceptors>
+
+        <!--修改默认拦截器-->
+        <default-interceptor-ref name="myDefaultStack" />
+
+
+
+        <!-- 全局的结果视图 -->
+        <global-results>
+            <result name="toLoginPage">/intercept/intercept_login.jsp</result>
+        </global-results>
+
+        <action name="login" class="com.lwb.intercept.login.UserAction" method="login">
+            <!--配置此方法不被自定义的拦截器拦截-->
+            <interceptor-ref name="myDefaultStack">
+                <param name="checkLoginInterceptor.excludeMethods">login</param>
+            </interceptor-ref>
+            <result>/WEB-INF/intercept/main.jsp</result>
+        </action>
+
+        <action name="studentlist" class="com.lwb.intercept.login.StudentAction" method="list">
+            <!--配置过默认拦截器，就不需要配置这个了-->
+           <!-- <interceptor-ref name="myDefaultStack" />-->
+            <result>/WEB-INF/intercept/stuList.jsp</result>
+        </action>
+
+        <action name="teacherlist" class="com.lwb.intercept.login.TeacherAction" method="list">
+           <!-- <interceptor-ref name="checkLoginInterceptor" />-->
+             <result>/WEB-INF/intercept/teacherList.jsp</result>
+        </action>
+
+    </package>
+</struts>

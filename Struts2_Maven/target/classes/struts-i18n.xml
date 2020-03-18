@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <!--配置常量    全局的-->
+    <constant name="struts.custom.i18n.resources" value="message" />
+
+    <package name="p100" extends="struts-default" namespace="/i18n">
+        <action name="login" class="com.lwb.i18n.i18n_action.UserAction" method="login">
+
+        </action>
+        
+
+    </package>
+</struts>

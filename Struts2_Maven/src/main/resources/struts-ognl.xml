@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <!--配置常量，允许struts2读取静态方法-->
+    <constant name="struts.ognl.allowStaticMethodAccess" value="true"></constant>
+    <package name="ognl" extends="struts-default" namespace="ognl">
+
+
+        <!--在配置文件中ognl表达式的使用-->
+        <!--<param name="contentDisposition">attachment;filename=${@java.net.URLEncoder@encode(fileName,"UTF-8")}</param>-->
+    </package>
+</struts>

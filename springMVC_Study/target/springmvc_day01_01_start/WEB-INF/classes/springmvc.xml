@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--开启注解扫描-->
+    <context:component-scan base-package="cn.itcast"></context:component-scan>
+
+    <!--视图解析器对象-->
+    <bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/pages/"></property>
+        <property name="suffix" value=".jsp"></property>
+    </bean>
+
+    <!--配置文件解析器对象-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="10485760"></property>
+    </bean>
+
+    <!--配置拦截器-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/interceptor/**"/>
+            <bean id="MyInterceptor1" class="cn.itcast.interceptor.MyInterceptor1"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+    <!--配置异常处理器-->
+    <bean id="SysExcrptionResolver" class="cn.itcast.exception.SysExcrptionResolver"></bean>
+    
+    <!--前端控制器，那些资源不拦截-->
+    <mvc:resources location="/js/" mapping="/js/**"></mvc:resources>
+
+    <!--开启SpringMVC框架注解支持-->
+    <mvc:annotation-driven></mvc:annotation-driven>
+</beans>

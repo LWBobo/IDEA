@@ -1,0 +1,49 @@
+package com.lwb.result;
+
+import cn.dsna.util.images.ValidateCode;
+import com.opensymphony.xwork2.ActionInvocation;
+import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.dispatcher.StrutsResultSupport;
+
+import javax.servlet.http.HttpServletResponse;
+
+
+/**
+ * 自定义结果类型（验证码类型）
+ */
+public class CAPTCHAResult extends StrutsResultSupport {
+
+    //验证码宽度
+    private int width;
+    //验证码高度
+    private int height;
+
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    @Override
+    protected void doExecute(String s, ActionInvocation actionInvocation) throws Exception {
+        //生成验证码
+        ValidateCode code = new ValidateCode(width,height,4,10);
+
+        //获取response对象
+        HttpServletResponse response = ServletActionContext.getResponse();
+
+        System.out.println(code.getCode());
+        //把图片返回给客户端
+        code.write(response.getOutputStream());
+    }
+}

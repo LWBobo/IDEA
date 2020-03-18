@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<!--suppress ALL -->
+<struts>
+
+    <!--多配置文件-->
+    <include file="struts-i18n.xml" ></include>
+    <include file="struts-intercept.xml" ></include>
+    <include file="struts-fileupload.xml" ></include>
+    <include file="struts-ognl.xml" ></include>
+    <!--配置常量 配置访问的路径后缀-->
+   <!-- <constant name="struts.action.extension" value="do"></constant>-->
+    <!--
+    package 表示包
+    name 包名  是唯一的
+    extends 继承
+    abstruct:抽象包，被用于继承。一般抽象包里面，不声明action
+    namespace：命名空间，访问路径，默认是空字符串，如果设置，访问路径=命名空间+动作名称。
+                用于模块的划分（需要加/ eg："/user"）
+    -->
+    <package name="p1" extends="struts-default" >
+        <!--action:相当于servlet的映射路径
+            class:处理请求的类
+            method:处理请求的方法 没有参数，返回值是String
+            -->
+        <action name="hello" class="com.lwb.action.HelloAction" method="sayHello">
+            <!--
+                result:返回的jsp页面
+                type属性:
+                    dispatcher:转发到一个页面 （默认）
+                    redirect：重定向到一个页面
+                    chain：转发到（同一个包/不同包）另一个action
+                    refirectAction：重定向到（同一个包/不同包）另一个action
+
+                    //1.chain:转发到另一个同一个包action
+			<result name="success" type="chain">action2</result>
+
+			//2.redirectAction:重定向到另一个同一个包action
+			<result name="success" type="redirectAction">action2</result>
+
+               // 3.chain:转发到另一个不同的包action3
+           <result name="success" type="redirectAction/chain">
+                //  依赖注入
+                <param name="namespace">/n2</param>
+                <param name="actionName">action3</param>
+            </result>
+
+            -->
+            <result name="success">/success.jsp</result>
+        </action>
+    </package>
+
+    <package name="p2" extends="struts-default" namespace="/user">
+        <action name="*_*" class="com.lwb.action.UserAction" method="{1}">
+            <result name="success">/{2}/{1}.jsp</result>
+        </action>
+
+    </package>
+
+    <!--配置验证码类型-->
+    <package name="p3" extends="struts-default">
+        <!--声明一个结果类型-->
+        <!--局部的自定义类型-->
+        <result-types>
+            <result-type name="captcha" class="com.lwb.result.CAPTCHAResult"></result-type>
+        </result-types>
+        
+        <action name="checkcode">
+            <result type="captcha">
+                <!--自定义验证码的长和宽-->
+                <param name="width">120</param>
+                <param name="height">30</param>
+            </result>
+        </action>
+    </package>
+    <package name="p4" extends="struts-default">
+        <action name="login" class="com.lwb.action.LogInAction" method="login">
+            <interceptor-ref name="defaultStack"/>
+            <!--使用tokensession防止表单多次提交-->
+            <interceptor-ref name="tokenSession"/>
+            <result name="success">/success.jsp</result>
+        </action>
+        <!--封装到模型-->
+        <action name="login2" class="com.lwb.action.LogInAction2" method="login">
+        </action>
+        <!--通过模型驱动-->
+        <action name="login3" class="com.lwb.action.LogInAction3" method="login">
+        </action>
+    </package>
+    <package name="p5" extends="struts-default" namespace="/user">
+        <action name="register" class="com.lwb.biaodanyanzheng.UserAction" method="register">
+            <!-- input:回显，出现错误后，显示哪个界面 -->
+            <result name="input">/register.jsp</result>
+        </action>
+        <action name="list" class="com.lwb.biaodanyanzheng.UserAction" method="list">
+        <result name="success">/success.jsp</result>
+    </action>
+        <action name="add" class="com.lwb.biaodanyanzheng.StudentAction" method="add">
+            <result name="input">/student/add.jsp</result>
+        </action>
+    </package>
+
+
+    <package name="contextmap" extends="struts-default" namespace="/contextmap">
+
+        <action name="test01" class="com.lwb.contextmap.ContextMap01">
+            <result>/contextmap/result01.jsp</result>
+        </action>
+        <action name="test02" class="com.lwb.contextmap.ValueStackAction">
+            <result>/contextmap/result01.jsp</result>
+        </action>
+        <action name="list" class="com.lwb.contextmap.ListValueStack" method="list">
+            <result name="list">/contextmap/result02.jsp</result>
+        </action>
+
+
+    </package>
+</struts>
