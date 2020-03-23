@@ -1,4 +1,6 @@
 plugins {
+    id 'org.springframework.boot' version '2.2.5.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
     id 'java'
 }
 
@@ -13,4 +15,46 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web'
+    /*该坐标支持热部署*/
+    compile group: 'org.springframework.boot', name: 'spring-boot-devtools'
+
+    /*提示配置文件命名*/
+    compile group: 'org.springframework.boot', name: 'spring-boot-configuration-processor'
+
+    implementation('org.springframework.boot:spring-boot-starter')
+
+
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.2'
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation group: 'org.hsqldb', name: 'hsqldb', version: '2.5.0'
+    implementation 'org.springframework.boot:spring-boot-starter-cache'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+}
+
+
+
+test {
+    useJUnitPlatform()
+}
+task dbStart(type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    main = 'org.hsqldb.server.Server'
+    workingDir='db'
+}
+task dbManager(type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    main = 'org.hsqldb.util.DatabaseManagerSwing'
+}
+
+tasks.withType(JavaCompile){
+    options.encoding = "UTF-8"
+}
+[compileJava,javadoc,compileTestJava]*.options*.encoding = "UTF-8"
+
+bootRun() {
+    standardInput = System.in
 }
