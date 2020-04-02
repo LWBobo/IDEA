@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>显示所有学生信息</title>
+</head>
+<body>
+
+<table border="1">
+    <tr >
+        <th>学号</th>
+        <th>姓名</th>
+        <th>性别</th>
+        <th>年龄</th>
+        <th>地址</th>
+        <th>JEE分数</th>
+        <th>操作</th>
+    </tr>
+
+
+
+   <tr th:each="s : ${allstu}">
+       <td th:text="${s.id}"></td>
+       <td th:text="${s.name}"></td>
+       <td th:text="${s.sex}"></td>
+       <td th:text="${s.age}"></td>
+       <td th:text="${s.address}"></td>
+       <td th:text="${s.jeescore}"></td>
+       <td ><a th:href="@{'delstu?id='+${s.id}}" th:text="删除"></a></td>
+
+
+   </tr>
+
+
+
+</table>
+</body>
+</html>

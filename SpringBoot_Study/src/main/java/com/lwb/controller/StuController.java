@@ -5,6 +5,8 @@ import com.lwb.service.StuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -25,7 +27,7 @@ public class StuController {
             //登陆成功，存入session
             session.setAttribute("loginuser",student);
 
-            return "redirect:/success.html";
+            return "redirect:/main.html";
         }else{
             model.addAttribute("msg","用户名或密码错误！！");
             return "index";
@@ -45,11 +47,12 @@ public class StuController {
     }
 
     @RequestMapping("/addstu")
-    public String addStu(Model model,Student student){
-        if(student.getId().equals("") || student.getAddress().equals("")||student.getAge() == 0
-                ||student.getJeescore() == 0||student.getName().equals("") || student.getSex().equals("")){
-            return "false";
+    public String addStu(Model model, @Validated Student student, BindingResult result){
+
+        if(result.hasErrors()){
+            return "addstu";
         }
+
         Student student1 = stuService.insertStu(student);
         //System.out.println(student);
         if(student1!= null){
