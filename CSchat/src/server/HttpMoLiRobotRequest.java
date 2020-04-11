@@ -19,6 +19,7 @@ import org.json.JSONObject;
             try {
     			enParam = URLEncoder.encode(param,"UTF-8");
     			//对编码进行URL转码
+                //在线获取人机对话内容
                 String urlNameString = "http://i.itpk.cn/api.php?question=" + enParam;
                 URL realUrl = new URL(urlNameString);
                 // 打开和URL之间的连接
