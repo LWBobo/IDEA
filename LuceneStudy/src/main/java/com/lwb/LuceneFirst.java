@@ -17,18 +17,20 @@ import java.io.IOException;
 
 public class LuceneFirst {
 
+    private IndexWriter indexWriter;
+
     /**
      * 创建索引
      * @throws IOException
      */
     public void createIndex() throws IOException {
 
-        //指定索引库存放的路径
-        //D:\temp\index
-        Directory directory = FSDirectory.open(new File("c:\\temp\\index").toPath());
-        // 基于directory对象创建indexwriter对象
-        IndexWriterConfig indexWriterConfig = new IndexWriterConfig(new IKAnalyzer());
-        IndexWriter indexWriter = new IndexWriter(directory,indexWriterConfig);
+            //指定索引库存放的路径
+            //D:\temp\index
+//            Directory directory = FSDirectory.open(new File("c:\\temp\\index").toPath());
+            // 基于directory对象创建indexwriter对象
+//            IndexWriterConfig indexWriterConfig = new IndexWriterConfig(new IKAnalyzer());
+            indexWriter = new IndexManager().getIndexWriter();
         //读取磁盘上的文件，对应每个文件创建一个文档对象
         File dir = new File("D:\\学习资料\\10 Lucene\\87.lucene\\lucene\\02.参考资料\\searchsource");
         File[] files = dir.listFiles();
@@ -38,7 +40,9 @@ public class LuceneFirst {
             //获取文件路径
             String filePath = f.getPath();
             //文件内容
-            String fileContent = FileUtils.readFileToString(f, "utf-8");
+            String fileContent = null;
+            fileContent = FileUtils.readFileToString(f, "utf-8");
+
             //文件的大小
             long fileSize = FileUtils.sizeOf(f);
             //创建field
@@ -66,6 +70,7 @@ public class LuceneFirst {
         indexWriter.close();
     }
 
+
     /**
      * 查询索引
      */
@@ -77,7 +82,7 @@ public class LuceneFirst {
         //3、创建一个IndexSearcher对象，构造方法中的参数indexReader对象。
         IndexSearcher indexSearcher = new IndexSearcher(indexReader);
         //4、创建一个Query对象，TermQuery
-        Query query = new TermQuery(new Term("name", "java"));
+        Query query = new TermQuery(new Term("name", "spring"));
         //5、执行查询，得到一个TopDocs对象
         //参数1：查询对象 参数2：查询结果返回的最大记录数
         TopDocs topDocs = indexSearcher.search(query, 10);
