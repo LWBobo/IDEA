@@ -59,8 +59,8 @@ public class SearchIndex {
      */
     public void testQueryParser() throws Exception {
         //创建一个QueryPaser对象，两个参数
-        QueryParser queryParser = new QueryParser("name", new IKAnalyzer());
         //参数1：默认搜索域，参数2：分析器对象
+        QueryParser queryParser = new QueryParser("name", new IKAnalyzer());
         //使用QueryPaser对象创建一个Query对象
         Query query = queryParser.parse("lucene是一个Java开发的全文检索工具包");
         //执行查询
