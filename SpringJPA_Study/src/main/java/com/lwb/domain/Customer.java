@@ -34,7 +34,7 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cust_id")
-    private Long custId;    //客户主键
+    private Integer custId;    //客户主键
 
     @Column(name = "cust_name")
     private String custName;    //客户名称
@@ -57,11 +57,11 @@ public class Customer {
     public Customer() {
     }
 
-    public Long getCustId() {
+    public Integer getCustId() {
         return custId;
     }
 
-    public void setCustId(Long custId) {
+    public void setCustId(Integer custId) {
         this.custId = custId;
     }
 
