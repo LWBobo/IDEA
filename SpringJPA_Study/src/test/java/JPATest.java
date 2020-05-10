@@ -32,8 +32,8 @@ public class JPATest {
         transaction.begin();
         //4.完成增删改查操作
         Customer customer = new Customer();
-        customer.setCustName("尚硅谷");
-        customer.setCustIndustry("教育");
+        customer.setCustName("Adidas");
+        customer.setCustIndustry("服装");
         //保存
         entityManager.persist(customer);   //保存操作
         transaction.commit();
@@ -70,7 +70,7 @@ public class JPATest {
          *      id：查询的主键的取值
          */
 
-        Customer customer = entityManager.find(Customer.class, 2);
+        Customer customer = entityManager.find(Customer.class, 4);
         System.out.println(customer);
 
         // System.out.print(customer);
