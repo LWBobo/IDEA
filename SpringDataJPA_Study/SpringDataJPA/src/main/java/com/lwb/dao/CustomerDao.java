@@ -1,6 +1,5 @@
 package com.lwb.dao;
 
-
 import com.lwb.domain.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
