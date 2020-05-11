@@ -1,3 +1,5 @@
+package JPA;
+
 import com.lwb.domain.Customer;
 import com.lwb.utils.JpaUtils;
 import org.junit.Test;

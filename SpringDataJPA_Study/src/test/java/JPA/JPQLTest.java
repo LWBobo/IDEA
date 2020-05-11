@@ -1,3 +1,5 @@
+package JPA;
+
 import com.lwb.utils.JpaUtils;
 import org.junit.Test;
 
@@ -126,7 +128,7 @@ public class JPQLTest {
         Query query = em.createQuery(jpql);
         //ii.对参数赋值 -- 分页参数
         //起始索引
-        query.setFirstResult(0);
+        query.setFirstResult(2);
         //每页查询的条数
         query.setMaxResults(2);
 
