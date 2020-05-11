@@ -26,7 +26,6 @@ public interface CustomerDao extends JpaRepository<Customer,Integer> ,JpaSpecifi
      * 		findAll() : 查询全部
      */
 
-
     /**
      * 案例：根据客户名称查询客户
      *      使用jpql的形式查询
