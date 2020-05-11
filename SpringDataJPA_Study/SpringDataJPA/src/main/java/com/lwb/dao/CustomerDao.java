@@ -32,7 +32,7 @@ public interface CustomerDao extends JpaRepository<Customer,Integer> ,JpaSpecifi
      *
      *  配置jpql语句，使用的@Query注解
      */
-    @Query(value="from Customer where custName = ?")
+    @Query(value="from Customer where custName = ?1")
     public Customer findJpql(String custName);
 
 
@@ -47,7 +47,7 @@ public interface CustomerDao extends JpaRepository<Customer,Integer> ,JpaSpecifi
      *      ? 索引的方式，指定此占位的取值来源
      */
     @Query(value = "from Customer where custName = ?2 and custId = ?1")
-    public Customer findCustNameAndId(Long id, String name);
+    public Customer findCustNameAndId(Integer id, String name);
 
     /**
      * 使用jpql完成更新操作
@@ -65,7 +65,7 @@ public interface CustomerDao extends JpaRepository<Customer,Integer> ,JpaSpecifi
      */
     @Query(value = " update Customer set custName = ?2 where custId = ?1 ")
     @Modifying
-    public void updateCustomer(long custId, String custName);
+    public void updateCustomer(Integer custId, String custName);
 
 
     /**
@@ -105,6 +105,10 @@ public interface CustomerDao extends JpaRepository<Customer,Integer> ,JpaSpecifi
      *          findBy + 属性名 + “查询方式”   + “多条件的连接符（and|or）”  + 属性名 + “查询方式”
      */
     public Customer findByCustName(String custName);
+
+    public Customer findByCustIdOrCustName(Integer id, String name);
+
+    public Customer findByCustIdAndCustName(Integer id, String name);
 
 
     public List<Customer> findByCustNameLike(String custName);
